@@ -1,1 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <meta
+    name="description"
+    content="Mehka Garments — Premium men's clothing, shirts, pants, trousers and shorts."
+  />
+
+  <title>Mehka Garments | Premium Men's Clothing</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ================= PRELOADER ================= -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-inner">
+      <div class="loader-logo">MEHKA</div>
+      <span>GARMENTS</span>
+    </div>
+  </div>
+
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+
+    <a href="#home" class="brand" aria-label="Mehka Garments Home">
+      <span class="brand-mark">M</span>
+
+      <span class="brand-text">
+        <strong>MEHKA</strong>
+        <small>GARMENTS</small>
+      </span>
+    </a>
+
+
+    <nav class="main-nav">
+      <a href="#shirts">Shirts</a>
+      <a href="#pants">Pants</a>
+      <a href="#trousers">Trousers</a>
+      <a href="#shorts">Shorts</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+
+    <button
+      class="bag-button"
+      id="bagButton"
+      type="button"
+      aria-label="Open shopping bag"
+    >
+      Bag
+      <span id="bagCount">0</span>
+    </button>
+
+  </header>
+
+
+
+  <!-- ================= MAIN ================= -->
+  <main id="home">
+
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero">
+
+      <!--
+        IMPORTANT:
+        Put your landscape hero video here:
+        assets/videos/hero-video.mp4
+      -->
+
+      <video
+        class="hero-video"
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="assets/videos/hero-video.mp4"
+          type="video/mp4"
+        />
+
+        Your browser does not support HTML5 video.
+      </video>
+
+
+      <!-- Fallback background -->
+      <div class="hero-fallback"></div>
+
+
+      <!-- Video readability layer -->
+      <div class="hero-overlay"></div>
+
+
+      <!-- Hero content -->
+      <div class="hero-content reveal">
+
+        <p class="eyebrow">
+          MEHKA GARMENTS · MEN'S COLLECTION
+        </p>
+
+        <h1>
+          Built for
+          <br />
+          <em>your standard.</em>
+        </h1>
+
+        <p class="hero-subtitle">
+          Premium men's clothing designed with clean fits,
+          refined details and everyday confidence.
+        </p>
+
+        <a href="#shirts" class="hero-button">
+          Explore Collection
+          <span>↗</span>
+        </a>
+
+      </div>
+
+
+      <div class="hero-scroll">
+        SCROLL
+        <span>↓</span>
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= INTRO ================= -->
+    <section class="intro section-pad reveal">
+
+      <p class="eyebrow">
+        THE MEHKA EDIT
+      </p>
+
+      <h2>
+        Premium pieces.
+        <br />
+        <em>Everyday confidence.</em>
+      </h2>
+
+      <p>
+        Discover a refined men's clothing collection created
+        for modern everyday style. Choose your colour, size
+        and quantity with a smooth shopping experience.
+      </p>
+
+    </section>
+
+
+
+    <!-- ================= PRODUCT CATALOG ================= -->
+
+    <div id="catalog">
+
+
+      <!-- ==================================================
+           SHIRTS
+      =================================================== -->
+
+      <section
+        class="category reveal"
+        id="shirts"
+      >
+
+        <div class="category-head">
+
+          <div>
+            <p class="eyebrow">
+              MEN'S COLLECTION
+            </p>
+
+            <h2>Shirts</h2>
+          </div>
+
+          <p>
+            Premium formal, casual and polo styles
+            designed for a sharp everyday look.
+          </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+
+          <!-- PRODUCT 1 -->
+          <article
+            class="product-card"
+            data-product="Essential Formal Shirt"
+            data-price="3000"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="assets/images/shirt-formal.jpg"
+                alt="Essential Formal Shirt"
+                loading="lazy"
+              />
+
+              <span class="image-placeholder">
+                PRODUCT IMAGE
+              </span>
+
+            </div>
+
+
+            <div class="product-info">
+
+              <p class="product-type">
+                FORMAL SHIRT
+              </p>
+
+              <h3>
+                Essential Formal Shirt
+              </h3>
+
+
+              <div class="options">
+
+                <div class="option-label">
+                  COLOUR
+                </div>
+
+                <div class="colors">
+
+                  <button
+                    class="color-dot active"
+                    style="background:#ffffff"
+                    data-color="White"
+                    aria-label="White"
+                  ></button>
+
+                  <button
+                    class="color-dot"
+                    style="background:#111111"
+                    data-color="Black"
+                    aria-label="Black"
+                  ></button>
+
+                  <button
+                    class="color-dot"
+                    style="background:#8b8175"
+                    data-color="Beige"
+                    aria-label="Beige"
+                  ></button>
+
+                  <button
+                    class="color-dot"
+                    style="background:#52604e"
+                    data-color="Olive"
+                    aria-label="Olive"
+                  ></button>
+
+                </div>
+
+
+                <div class="option-label">
+                  SIZE
+                </div>
+
+                <div class="sizes">
+
+                  <button class="size-btn" data-size="S">
+                    S
+                  </button>
+
+                  <button class="size-btn active" data-size="M">
+                    M
+                  </button>
+
+                  <button class="size-btn" data-size="L">
+                    L
+                  </button>
+
+                  <button class="size-btn" data-size="XL">
+                    XL
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="price-row">
+
+                <span class="old-price">
+                  Rs. 3,250
+                </span>
+
+                <strong class="price">
+                  Rs. 3,000
+                </strong>
+
+              </div>
+
+
+              <div class="quantity">
+
+                <span class="option-label">
+                  QUANTITY
+                </span>
+
+                <div class="quantity-controls">
+
+                  <button
+                    type="button"
+                    class="qty-minus"
+                  >
+                    −
+                  </button>
+
+                  <span class="qty-value">
+                    1
+                  </span>
+
+                  <button
+                    type="button"
+                    class="qty-plus"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="add-button"
+              >
+                Add to Bag
+              </button>
+
+
+              <div class="votes">
+
+                <button
+                  type="button"
+                  class="like-button"
+                >
+                  👍
+                  <span>0</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="dislike-button"
+                >
+                  👎
+                  <span>0</span>
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PRODUCT 2 -->
+          <article
+            class="product-card"
+            data-product="Signature Check Shirt"
+            data-price="2800"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="assets/images/shirt-check.jpg"
+                alt="Signature Check Shirt"
+                loading="lazy"
+              />
+
+              <span class="image-placeholder">
+                PRODUCT IMAGE
+              </span>
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-type">
+                CHECK SHIRT
+              </p>
+
+              <h3>
+                Signature Check Shirt
+              </h3>
+
+              <div class="options">
+
+                <div class="option-label">
+                  COLOUR
+                </div>
+
+                <div class="colors">
+
+                  <button class="color-dot active"
+                    style="background:#263b2c"
+                    data-color="Forest"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#53657a"
+                    data-color="Blue"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#8b6b55"
+                    data-color="Brown"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#222"
+                    data-color="Black"
+                  ></button>
+
+                </div>
+
+                <div class="option-label">
+                  SIZE
+                </div>
+
+                <div class="sizes">
+
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn active" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+
+                </div>
+
+              </div>
+
+              <div class="price-row">
+                <span class="old-price">Rs. 3,050</span>
+                <strong class="price">Rs. 2,800</strong>
+              </div>
+
+              <div class="quantity">
+
+                <span class="option-label">
+                  QUANTITY
+                </span>
+
+                <div class="quantity-controls">
+
+                  <button type="button" class="qty-minus">−</button>
+                  <span class="qty-value">1</span>
+                  <button type="button" class="qty-plus">+</button>
+
+                </div>
+
+              </div>
+
+              <button type="button" class="add-button">
+                Add to Bag
+              </button>
+
+              <div class="votes">
+                <button type="button" class="like-button">
+                  👍 <span>0</span>
+                </button>
+
+                <button type="button" class="dislike-button">
+                  👎 <span>0</span>
+                </button>
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PRODUCT 3 -->
+          <article
+            class="product-card"
+            data-product="Classic Premium Polo"
+            data-price="2600"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="assets/images/polo.jpg"
+                alt="Classic Premium Polo"
+                loading="lazy"
+              />
+
+              <span class="image-placeholder">
+                PRODUCT IMAGE
+              </span>
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-type">
+                PREMIUM POLO
+              </p>
+
+              <h3>
+                Classic Premium Polo
+              </h3>
+
+              <div class="options">
+
+                <div class="option-label">COLOUR</div>
+
+                <div class="colors">
+
+                  <button class="color-dot active"
+                    style="background:#111"
+                    data-color="Black"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#fff"
+                    data-color="White"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#243f5c"
+                    data-color="Navy"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#65735d"
+                    data-color="Olive"
+                  ></button>
+
+                </div>
+
+                <div class="option-label">SIZE</div>
+
+                <div class="sizes">
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn active" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+                </div>
+
+              </div>
+
+              <div class="price-row">
+                <span class="old-price">Rs. 2,900</span>
+                <strong class="price">Rs. 2,600</strong>
+              </div>
+
+              <div class="quantity">
+                <span class="option-label">QUANTITY</span>
+
+                <div class="quantity-controls">
+                  <button type="button" class="qty-minus">−</button>
+                  <span class="qty-value">1</span>
+                  <button type="button" class="qty-plus">+</button>
+                </div>
+              </div>
+
+              <button type="button" class="add-button">
+                Add to Bag
+              </button>
+
+              <div class="votes">
+                <button type="button" class="like-button">
+                  👍 <span>0</span>
+                </button>
+
+                <button type="button" class="dislike-button">
+                  👎 <span>0</span>
+                </button>
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PRODUCT 4 -->
+          <article
+            class="product-card"
+            data-product="Signature Stripe Polo"
+            data-price="2750"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="assets/images/polo-stripe.jpg"
+                alt="Signature Stripe Polo"
+                loading="lazy"
+              />
+
+              <span class="image-placeholder">
+                PRODUCT IMAGE
+              </span>
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-type">
+                STRIPE POLO
+              </p>
+
+              <h3>
+                Signature Stripe Polo
+              </h3>
+
+              <div class="options">
+
+                <div class="option-label">COLOUR</div>
+
+                <div class="colors">
+
+                  <button class="color-dot active"
+                    style="background:#111"
+                    data-color="Black"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#fff"
+                    data-color="White"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#274c43"
+                    data-color="Green"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#7a2f32"
+                    data-color="Maroon"
+                  ></button>
+
+                </div>
+
+                <div class="option-label">SIZE</div>
+
+                <div class="sizes">
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn active" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+                </div>
+
+              </div>
+
+              <div class="price-row">
+                <span class="old-price">Rs. 3,000</span>
+                <strong class="price">Rs. 2,750</strong>
+              </div>
+
+              <div class="quantity">
+                <span class="option-label">QUANTITY</span>
+
+                <div class="quantity-controls">
+                  <button type="button" class="qty-minus">−</button>
+                  <span class="qty-value">1</span>
+                  <button type="button" class="qty-plus">+</button>
+                </div>
+              </div>
+
+              <button type="button" class="add-button">
+                Add to Bag
+              </button>
+
+              <div class="votes">
+                <button type="button" class="like-button">
+                  👍 <span>0</span>
+                </button>
+
+                <button type="button" class="dislike-button">
+                  👎 <span>0</span>
+                </button>
+              </div>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PRODUCT 5 -->
+          <article
+            class="product-card"
+            data-product="Modern Collar T-Shirt"
+            data-price="2400"
+          >
+
+            <div class="product-image">
+
+              <img
+                src="assets/images/collar-tshirt.jpg"
+                alt="Modern Collar T-Shirt"
+                loading="lazy"
+              />
+
+              <span class="image-placeholder">
+                PRODUCT IMAGE
+              </span>
+
+            </div>
+
+            <div class="product-info">
+
+              <p class="product-type">
+                COLLAR T-SHIRT
+              </p>
+
+              <h3>
+                Modern Collar T-Shirt
+              </h3>
+
+              <div class="options">
+
+                <div class="option-label">COLOUR</div>
+
+                <div class="colors">
+
+                  <button class="color-dot active"
+                    style="background:#fff"
+                    data-color="White"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#111"
+                    data-color="Black"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#b7b0a3"
+                    data-color="Sand"
+                  ></button>
+
+                  <button class="color-dot"
+                    style="background:#52604e"
+                    data-color="Olive"
+                  ></button>
+
+                </div>
+
+                <div class="option-label">SIZE</div>
+
+                <div class="sizes">
+                  <button class="size-btn" data-size="S">S</button>
+                  <button class="size-btn active" data-size="M">M</button>
+                  <button class="size-btn" data-size="L">L</button>
+                  <button class="size-btn" data-size="XL">XL</button>
+                </div>
+
+              </div>
+
+              <div class="price-row">
+                <span class="old-price">Rs. 2,700</span>
+                <strong class="price">Rs. 2,400</strong>
+              </div>
+
+              <div class="quantity">
+                <span class="option-label">QUANTITY</span>
+
+                <div class="quantity-controls">
+                  <button type="button" class="qty-minus">−</button>
+                  <span class="qty-value">1</span>
+                  <button type="button" class="qty-plus">+</button>
+                </div>
+              </div>
+
+              <button type="button" class="add-button">
+                Add to Bag
+              </button>
+
+              <div class="votes">
+                <button type="button" class="like-button">
+                  👍 <span>0</span>
+                </button>
+
+                <button type="button" class="dislike-button">
+                  👎 <span>0</span>
+                </button>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ================= PANTS ================= -->
+
+      <section
+        class="category reveal"
+        id="pants"
+      >
+
+        <div class="category-head">
+
+          <div>
+            <p class="eyebrow">
+              MEN'S COLLECTION
+            </p>
+
+            <h2>Pants</h2>
+          </div>
+
+          <p>
+            Refined cotton and denim fits built for
+            everyday comfort and modern style.
+          </p>
+
+        </div>
+
+        <div class="product-grid" id="pantsGrid">
+          <!-- Pants products are generated by script.js -->
+        </div>
+
+      </section>
+
+
+
+      <!-- ================= TROUSERS ================= -->
+
+      <section
+        class="category reveal"
+        id="trousers"
+      >
+
+        <div class="category-head">
+
+          <div>
+            <p class="eyebrow">
+              MEN'S COLLECTION
+            </p>
+
+            <h2>Trousers</h2>
+          </div>
+
+          <p>
+            Clean silhouettes and versatile colours
+            for a polished everyday wardrobe.
+          </p>
+
+        </div>
+
+        <div class="product-grid" id="trousersGrid">
+          <!-- Trouser products are generated by script.js -->
+        </div>
+
+      </section>
+
+
+
+      <!-- ================= SHORTS ================= -->
+
+      <section
+        class="category reveal"
+        id="shorts"
+      >
+
+        <div class="category-head">
+
+          <div>
+            <p class="eyebrow">
+              MEN'S COLLECTION
+            </p>
+
+            <h2>Shorts</h2>
+          </div>
+
+          <p>
+            Lightweight casual styles made for
+            effortless everyday comfort.
+          </p>
+
+        </div>
+
+        <div class="product-grid" id="shortsGrid">
+          <!-- Shorts products are generated by script.js -->
+        </div>
+
+      </section>
+
+    </div>
+
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section
+      class="contact section-pad reveal"
+      id="contact"
+    >
+
+      <div>
+
+        <p class="eyebrow">
+          GET IN TOUCH
+        </p>
+
+        <h2>
+          Let's talk
+          <br />
+          <em>style.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="contact-details">
+
+        <!-- Replace placeholders with real details -->
+
+        <a href="mailto:YOUR-GMAIL@example.com">
+          YOUR-GMAIL@example.com
+        </a>
+
+        <a href="tel:+92XXXXXXXXXX">
+          +92 XXX XXXXXXX
+        </a>
+
+        <a
+          href="https://wa.me/92XXXXXXXXXX"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp ↗
+        </a>
+
+        <p>
+          SHOP ADDRESS
+          <br />
+
+          <span>
+            YOUR SHOP ADDRESS, PAKISTAN
+          </span>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ================= SHOPPING CART ================= -->
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-hidden="true"
+  >
+
+    <div class="cart-panel">
+
+      <button
+        class="close-cart"
+        id="closeCart"
+        type="button"
+        aria-label="Close shopping bag"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">
+        YOUR BAG
+      </p>
+
+      <h2>
+        Selected pieces
+      </h2>
+
+      <div id="cartItems">
+        <p>
+          Your bag is empty.
+        </p>
+      </div>
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          Rs. 0
+        </strong>
+
+      </div>
+
+      <button
+        class="checkout-button"
+        id="checkoutButton"
+        type="button"
+      >
+        Order on WhatsApp ↗
+      </button>
+
+    </div>
+
+  </aside>
+
+
+
+  <!-- ================= TOAST ================= -->
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  >
+    Added to your bag
+  </div>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <span>
+      © <span id="year"></span>
+      Mehka Garments
+    </span>
+
+    <span>
+      Premium Men's Clothing
+    </span>
+
+  </footer>
+
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
