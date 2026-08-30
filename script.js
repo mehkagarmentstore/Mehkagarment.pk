@@ -1,271 +1,186 @@
 /* =========================================================
-   MEHKA GARMENTS — FINAL SCRIPT
-   Premium Men's Fashion Website
+   MEHKA GARMENTS — FINAL PRODUCT SCRIPT
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================================================
-     PRELOADER
-  ========================================================= */
-
-  const pageLoader = document.getElementById("pageLoader");
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      pageLoader?.classList.add("hidden");
-      document.body.classList.remove("no-scroll");
-    }, 700);
-  });
-
-
-  /* =========================================================
+  /* =========================
      YEAR
-  ========================================================= */
+  ========================= */
 
   const year = document.getElementById("year");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
+  if (year) year.textContent = new Date().getFullYear();
 
 
-  /* =========================================================
-     HEADER SCROLL
-  ========================================================= */
+  /* =========================
+     HEADER
+  ========================= */
 
   const header = document.querySelector(".site-header");
 
-  const updateHeader = () => {
+  function updateHeader() {
     if (!header) return;
 
-    if (window.scrollY > 40) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  };
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 40
+    );
+  }
 
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
+
   updateHeader();
 
 
-  /* =========================================================
+  /* =========================
      PRODUCT DATA
-     Selected Mehka Garments Collection
-  ========================================================= */
+  ========================= */
 
-  const pantsProducts = [
+  const products = [
+
+    /* ---------- FORMAL SHIRT ---------- */
+
     {
-      name: "Premium Cotton Pant",
-      type: "COTTON PANT",
-      price: 2800,
-      oldPrice: 3100,
-      image: "assets/images/cotton-pant.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Beige", "#b7aa96"],
-        ["Olive", "#59634f"],
-        ["Navy", "#273a52"]
-      ]
-    },
-    {
-      name: "Formal Washing Wear Pant",
-      type: "FORMAL WASHING WEAR",
-      price: 3000,
-      oldPrice: 3300,
-      image: "assets/images/formal-washing-wear.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Grey", "#777777"],
-        ["Charcoal", "#393939"],
-        ["Navy", "#26384d"]
-      ]
-    },
-    {
-      name: "Classic Simple Denim",
-      type: "SIMPLE DENIM",
+      name: "Signature Formal Shirt",
+      type: "FORMAL SHIRT",
       price: 3200,
       oldPrice: 3500,
-      image: "assets/images/simple-denim.jpg",
+      image: "assets/images/signature-formal-shirt-black.jpg",
       colors: [
-        ["Dark Blue", "#26394b"],
-        ["Light Blue", "#7890a5"],
-        ["Black", "#111111"]
+        ["Black", "#111111", "assets/images/signature-formal-shirt-black.jpg"],
+        ["Olive", "#59634f", "assets/images/signature-formal-shirt-olive.jpg"],
+        ["Sky Blue", "#9bb7c9", "assets/images/signature-formal-shirt-sky-blue.jpg"],
+        ["White", "#ffffff", "assets/images/signature-formal-shirt-white.jpg"]
       ]
     },
+
+    /* ---------- CHECK SHIRT ---------- */
+
+    {
+      name: "Premium Check Shirt",
+      type: "CHECK SHIRT",
+      price: 3300,
+      oldPrice: 3600,
+      image: "assets/images/premium-check-shirt-black-ivory-stripe.jpg",
+      colors: [
+        ["Black Ivory", "#222222", "assets/images/premium-check-shirt-black-ivory-stripe.jpg"],
+        ["Ivory Sand", "#d8cdbb", "assets/images/premium-check-shirt-ivory-sand.jpg"],
+        ["Midnight Navy", "#17263a", "assets/images/premium-check-shirt-midnight-navy.jpg"],
+        ["Navy Burgundy", "#303d50", "assets/images/premium-check-shirt-navy-burgundy.jpg"],
+        ["Slate Blue", "#617589", "assets/images/premium-check-shirt-slate-blue.jpg"]
+      ]
+    },
+
+    /* ---------- SIMPLE POLO ---------- */
+
+    {
+      name: "Essential Contrast Polo",
+      type: "SIMPLE POLO",
+      price: 2800,
+      oldPrice: 3100,
+      image: "assets/images/classic-contrast-polo.jpg",
+      colors: [
+        ["Classic Contrast", "#222222", "assets/images/classic-contrast-polo.jpg"],
+        ["Jet Black", "#111111", "assets/images/simple-polo-jet-black.jpg"],
+        ["Deep Forest", "#284536", "assets/images/simple-polo-deep-forest-green.jpg"],
+        ["Ocean Teal", "#247681", "assets/images/simple-polo-ocean-teal-blue.jpg"],
+        ["Rich Mocha", "#654936", "assets/images/simple-polo-rich-mocha-brown.jpg"],
+        ["Burgendy Wine", "#6e3037", "assets/images/simple-polo-burgendy-wine.jpg"]
+      ]
+    },
+
+    /* ---------- STRIPE POLO ---------- */
+
+    {
+      name: "Executive Stripe Polo",
+      type: "STRIPE POLO",
+      price: 2900,
+      oldPrice: 3200,
+      image: "assets/images/executive-stripe-polo.jpg",
+      colors: [
+        ["Executive Stripe", "#333333", "assets/images/executive-stripe-polo.jpg"],
+        ["Heritage Stripe", "#39485a", "assets/images/heritage-stripe-polo.jpg"],
+        ["Signature Stripe", "#454545", "assets/images/signature-stripe-polo.jpg"],
+        ["Urban Luxe", "#303030", "assets/images/urban-luxe-stripe-polo.jpg"]
+      ]
+    },
+
+    /* ---------- ESSENTIAL T-SHIRT ---------- */
+
+    {
+      name: "Essential Collar T-Shirt",
+      type: "COLLAR T-SHIRT",
+      price: 2500,
+      oldPrice: 2800,
+      image: "assets/images/jet-black-essential.jpg",
+      colors: [
+        ["Jet Black", "#111111", "assets/images/jet-black-essential.jpg"],
+        ["Olive Green", "#59634f", "assets/images/olive-green-essential.jpg"],
+        ["Silver Grey", "#999999", "assets/images/silver-grey-essential.jpg"],
+        ["Powder Light Grey", "#c4c4c0", "assets/images/poder-light-grey.jpg"]
+      ]
+    },
+
+    /* ---------- BRUSHED DENIM ---------- */
+
     {
       name: "Premium Brushed Denim",
       type: "BRUSHED DENIM",
       price: 3400,
       oldPrice: 3700,
-      image: "assets/images/brushed-denim.jpg",
+      image: "assets/images/premium-brushed-denim-blue.jpg",
       colors: [
-        ["Dark Blue", "#29394b"],
-        ["Black", "#111111"],
-        ["Grey", "#666666"]
-      ]
-    },
-    {
-      name: "Straight Fit Denim",
-      type: "SIMPLE STRAIGHT DENIM",
-      price: 3300,
-      oldPrice: 3600,
-      image: "assets/images/simple-straight-denim.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Blue", "#4f6b83"],
-        ["Dark Grey", "#414141"]
+        ["Blue", "#4f6b83", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Dark Blue", "#29394b", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+        ["Dark Grey", "#414141", "assets/images/premium-brushed-denim-dark-grey.jpg"],
+        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"],
+        ["Light Blue", "#7890a5", "assets/images/premium-brushed-denim-light-blue.jpg"]
       ]
     }
+
   ];
 
 
-  const trouserProducts = [
-    {
-      name: "Essential Casual Trouser",
-      type: "CASUAL TROUSER",
-      price: 2700,
-      oldPrice: 3000,
-      image: "assets/images/casual-trouser.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Khaki", "#a89a82"],
-        ["Olive", "#59634f"],
-        ["Navy", "#293b52"]
-      ]
-    },
-    {
-      name: "China Naked Trouser",
-      type: "CHINA NAKED TROUSER",
-      price: 2850,
-      oldPrice: 3150,
-      image: "assets/images/china-naked-trouser.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Cream", "#ddd4c4"],
-        ["Grey", "#737373"],
-        ["Navy", "#283a52"]
-      ]
-    },
-    {
-      name: "Premium Maggi Trouser",
-      type: "MAGGI TROUSER",
-      price: 2900,
-      oldPrice: 3200,
-      image: "assets/images/maggi-trouser.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Dark Grey", "#424242"],
-        ["Beige", "#b5a58e"]
-      ]
-    },
-    {
-      name: "Korean Fit Trouser",
-      type: "KOREAN TROUSER",
-      price: 3100,
-      oldPrice: 3400,
-      image: "assets/images/korean-trouser.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Charcoal", "#3d3d3d"],
-        ["Cream", "#ded6c7"],
-        ["Olive", "#59634f"]
-      ]
-    }
-  ];
-
-
-  const shortsProducts = [
-    {
-      name: "Premium Cotton Short",
-      type: "COTTON SHORT",
-      price: 1900,
-      oldPrice: 2200,
-      image: "assets/images/cotton-short.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["White", "#ffffff"],
-        ["Beige", "#b9ab96"],
-        ["Olive", "#59634f"]
-      ]
-    },
-    {
-      name: "China Lakera Short",
-      type: "CHINA LAKERA SHORT",
-      price: 2000,
-      oldPrice: 2300,
-      image: "assets/images/china-lakera-short.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Grey", "#707070"],
-        ["Navy", "#283a52"],
-        ["Khaki", "#a99b83"]
-      ]
-    },
-    {
-      name: "Premium Jersey Short",
-      type: "JERSEY SHORT",
-      price: 1800,
-      oldPrice: 2100,
-      image: "assets/images/jersey-short.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["Grey", "#737373"],
-        ["Navy", "#283a52"],
-        ["Maroon", "#712f35"]
-      ]
-    },
-    {
-      name: "Hosiery Casual Short",
-      type: "HOSIERY CASUAL SHORTS",
-      price: 1700,
-      oldPrice: 2000,
-      image: "assets/images/hosiery-casual-shorts.jpg",
-      colors: [
-        ["Black", "#111111"],
-        ["White", "#ffffff"],
-        ["Grey", "#777777"],
-        ["Olive", "#59634f"]
-      ]
-    }
-  ];
-
-
-  /* =========================================================
-     PRODUCT CARD GENERATOR
-  ========================================================= */
+  /* =========================
+     CREATE CARD
+  ========================= */
 
   function createProductCard(product) {
 
-    const article = document.createElement("article");
+    const card = document.createElement("article");
 
-    article.className = "product-card generated-card";
+    card.className = "product-card generated-card";
 
-    article.dataset.product = product.name;
-    article.dataset.price = product.price;
+    card.dataset.product = product.name;
+    card.dataset.price = product.price;
 
-    const colorButtons = product.colors.map((color, index) => {
-      return `
+    const colors = product.colors.map(
+      (color, index) => `
         <button
+          type="button"
           class="color-dot ${index === 0 ? "active" : ""}"
           style="background:${color[1]}"
           data-color="${color[0]}"
-          aria-label="${color[0]}"
+          data-image="${color[2]}"
           title="${color[0]}"
-          type="button"
+          aria-label="${color[0]}"
         ></button>
-      `;
-    }).join("");
+      `
+    ).join("");
 
-    article.innerHTML = `
+    card.innerHTML = `
+
       <div class="product-image">
 
         <img
           src="${product.image}"
           alt="${product.name}"
           loading="lazy"
-        />
+        >
 
         <span class="image-placeholder">
           PRODUCT IMAGE
@@ -290,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <div class="colors">
-            ${colorButtons}
+            ${colors}
           </div>
 
           <div class="option-label">
@@ -299,37 +214,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="sizes">
 
-            <button
-              class="size-btn"
-              data-size="S"
-              type="button"
-            >
-              S
-            </button>
+            <button type="button" class="size-btn" data-size="S">S</button>
 
-            <button
-              class="size-btn active"
-              data-size="M"
-              type="button"
-            >
-              M
-            </button>
+            <button type="button" class="size-btn active" data-size="M">M</button>
 
-            <button
-              class="size-btn"
-              data-size="L"
-              type="button"
-            >
-              L
-            </button>
+            <button type="button" class="size-btn" data-size="L">L</button>
 
-            <button
-              class="size-btn"
-              data-size="XL"
-              type="button"
-            >
-              XL
-            </button>
+            <button type="button" class="size-btn" data-size="XL">XL</button>
 
           </div>
 
@@ -355,10 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="quantity-controls">
 
-            <button
-              type="button"
-              class="qty-minus"
-            >
+            <button type="button" class="qty-minus">
               −
             </button>
 
@@ -366,10 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
               1
             </span>
 
-            <button
-              type="button"
-              class="qty-plus"
-            >
+            <button type="button" class="qty-plus">
               +
             </button>
 
@@ -384,281 +269,71 @@ document.addEventListener("DOMContentLoaded", () => {
           Add to Bag
         </button>
 
-        <div class="votes">
-
-          <button
-            type="button"
-            class="like-button"
-          >
-            👍
-            <span>0</span>
-          </button>
-
-          <button
-            type="button"
-            class="dislike-button"
-          >
-            👎
-            <span>0</span>
-          </button>
-
-        </div>
-
       </div>
     `;
 
-    return article;
+    return card;
   }
 
 
-  /* =========================================================
-     RENDER PRODUCTS
-  ========================================================= */
+  /* =========================
+     RENDER
+  ========================= */
 
-  function renderProducts() {
+  const pantsGrid =
+    document.getElementById("pantsGrid");
 
-    const pantsGrid = document.getElementById("pantsGrid");
-    const trousersGrid = document.getElementById("trousersGrid");
-    const shortsGrid = document.getElementById("shortsGrid");
+  const trousersGrid =
+    document.getElementById("trousersGrid");
 
-    if (pantsGrid) {
-      pantsGrid.innerHTML = "";
+  const shortsGrid =
+    document.getElementById("shortsGrid");
 
-      pantsProducts.forEach(product => {
-        pantsGrid.appendChild(createProductCard(product));
-      });
-    }
 
-    if (trousersGrid) {
-      trousersGrid.innerHTML = "";
+  /*
+     Put the available verified products
+     into the existing product areas.
+  */
 
-      trouserProducts.forEach(product => {
-        trousersGrid.appendChild(createProductCard(product));
-      });
-    }
+  const grids = [
+    pantsGrid,
+    trousersGrid,
+    shortsGrid
+  ].filter(Boolean);
 
-    if (shortsGrid) {
-      shortsGrid.innerHTML = "";
 
-      shortsProducts.forEach(product => {
-        shortsGrid.appendChild(createProductCard(product));
-      });
-    }
-  }
+  if (grids.length) {
 
-  renderProducts();
+    grids.forEach(grid => {
+      grid.innerHTML = "";
+    });
 
+    products.forEach((product, index) => {
 
-  /* =========================================================
-     CART
-  ========================================================= */
+      const grid =
+        grids[index % grids.length];
 
-  let cart = [];
+      grid.appendChild(
+        createProductCard(product)
+      );
 
-  const bagButton = document.getElementById("bagButton");
-  const bagCount = document.getElementById("bagCount");
-
-  const cartDrawer = document.getElementById("cartDrawer");
-  const closeCart = document.getElementById("closeCart");
-
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
-
-  const toast = document.getElementById("toast");
-
-
-  /* =========================================================
-     TOAST
-  ========================================================= */
-
-  let toastTimer;
-
-  function showToast(message) {
-
-    if (!toast) return;
-
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2200);
-  }
-
-
-  /* =========================================================
-     OPEN CART
-  ========================================================= */
-
-  function openCart() {
-
-    if (!cartDrawer) return;
-
-    cartDrawer.classList.add("open");
-    cartDrawer.setAttribute("aria-hidden", "false");
-
-    document.body.classList.add("no-scroll");
-  }
-
-
-  /* =========================================================
-     CLOSE CART
-  ========================================================= */
-
-  function closeCartDrawer() {
-
-    if (!cartDrawer) return;
-
-    cartDrawer.classList.remove("open");
-    cartDrawer.setAttribute("aria-hidden", "true");
-
-    document.body.classList.remove("no-scroll");
-  }
-
-
-  bagButton?.addEventListener("click", openCart);
-
-  closeCart?.addEventListener("click", closeCartDrawer);
-
-
-  cartDrawer?.addEventListener("click", event => {
-
-    if (event.target === cartDrawer) {
-      closeCartDrawer();
-    }
-
-  });
-
-
-  document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-      closeCartDrawer();
-    }
-
-  });
-
-
-  /* =========================================================
-     CART UPDATE
-  ========================================================= */
-
-  function updateCart() {
-
-    const totalItems = cart.reduce(
-      (sum, item) => sum + item.quantity,
-      0
-    );
-
-    const totalPrice = cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-
-    if (bagCount) {
-      bagCount.textContent = totalItems;
-    }
-
-    if (cartTotal) {
-      cartTotal.textContent =
-        `Rs. ${totalPrice.toLocaleString()}`;
-    }
-
-    if (!cartItems) return;
-
-    if (cart.length === 0) {
-
-      cartItems.innerHTML = `
-        <p>
-          Your bag is empty.
-        </p>
-      `;
-
-      return;
-    }
-
-
-    cartItems.innerHTML = cart.map((item, index) => {
-
-      return `
-        <div class="cart-item">
-
-          <img
-            class="cart-item-image"
-            src="${item.image}"
-            alt="${item.name}"
-          />
-
-          <div class="cart-item-info">
-
-            <h4>
-              ${item.name}
-            </h4>
-
-            <p>
-              Colour: ${item.color}<br>
-              Size: ${item.size}<br>
-              Quantity: ${item.quantity}
-            </p>
-
-            <button
-              class="remove-item"
-              type="button"
-              data-index="${index}"
-            >
-              Remove
-            </button>
-
-          </div>
-
-          <div class="cart-item-price">
-            Rs. ${(item.price * item.quantity).toLocaleString()}
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
-
-
-    cartItems
-      .querySelectorAll(".remove-item")
-      .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-          const index = Number(button.dataset.index);
-
-          cart.splice(index, 1);
-
-          updateCart();
-
-          showToast("Item removed");
-
-        });
-
-      });
+    });
 
   }
 
 
-  /* =========================================================
+  /* =========================
      PRODUCT INTERACTIONS
-  ========================================================= */
+  ========================= */
 
-  function setupProductInteractions() {
+  document
+    .querySelectorAll(".product-card")
+    .forEach(card => {
 
-    const products =
-      document.querySelectorAll(".product-card");
+      /* COLOUR */
 
-
-    products.forEach(card => {
-
-      /* -----------------------------
-         COLOUR
-      ----------------------------- */
+      const image =
+        card.querySelector(".product-image img");
 
       const colorButtons =
         card.querySelectorAll(".color-dot");
@@ -667,20 +342,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
         button.addEventListener("click", () => {
 
-          colorButtons.forEach(item => {
-            item.classList.remove("active");
-          });
+          colorButtons.forEach(btn =>
+            btn.classList.remove("active")
+          );
 
           button.classList.add("active");
+
+          const newImage =
+            button.dataset.image;
+
+          if (newImage && image) {
+
+            image.style.opacity = "0";
+
+            setTimeout(() => {
+
+              image.src = newImage;
+
+              image.onload = () => {
+                image.style.opacity = "1";
+              };
+
+            }, 150);
+
+          }
 
         });
 
       });
 
 
-      /* -----------------------------
-         SIZE
-      ----------------------------- */
+      /* SIZE */
 
       const sizeButtons =
         card.querySelectorAll(".size-btn");
@@ -689,9 +381,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         button.addEventListener("click", () => {
 
-          sizeButtons.forEach(item => {
-            item.classList.remove("active");
-          });
+          sizeButtons.forEach(btn =>
+            btn.classList.remove("active")
+          );
 
           button.classList.add("active");
 
@@ -700,356 +392,139 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
 
-      /* -----------------------------
-         QUANTITY
-      ----------------------------- */
-
-      const minus =
-        card.querySelector(".qty-minus");
-
-      const plus =
-        card.querySelector(".qty-plus");
-
-      const value =
-        card.querySelector(".qty-value");
-
+      /* QUANTITY */
 
       let quantity = 1;
 
+      const qtyValue =
+        card.querySelector(".qty-value");
 
-      minus?.addEventListener("click", () => {
+      card
+        .querySelector(".qty-minus")
+        ?.addEventListener("click", () => {
 
-        if (quantity > 1) {
-          quantity--;
-        }
+          if (quantity > 1) {
+            quantity--;
+          }
 
-        value.textContent = quantity;
+          qtyValue.textContent = quantity;
 
-      });
+        });
 
 
-      plus?.addEventListener("click", () => {
+      card
+        .querySelector(".qty-plus")
+        ?.addEventListener("click", () => {
 
-        if (quantity < 20) {
-          quantity++;
-        }
+          if (quantity < 20) {
+            quantity++;
+          }
 
-        value.textContent = quantity;
+          qtyValue.textContent = quantity;
 
-      });
+        });
 
 
-      /* -----------------------------
-         ADD TO BAG
-      ----------------------------- */
-
-      const addButton =
-        card.querySelector(".add-button");
-
-
-      addButton?.addEventListener("click", () => {
-
-        const productName =
-          card.dataset.product;
-
-        const price =
-          Number(card.dataset.price);
-
-        const image =
-          card.querySelector("img")?.src || "";
-
-        const activeColor =
-          card.querySelector(".color-dot.active");
-
-        const activeSize =
-          card.querySelector(".size-btn.active");
-
-
-        const color =
-          activeColor?.dataset.color || "Default";
-
-        const size =
-          activeSize?.dataset.size || "M";
-
-
-        const existingItem =
-          cart.find(item =>
-            item.name === productName &&
-            item.color === color &&
-            item.size === size
-          );
-
-
-        if (existingItem) {
-
-          existingItem.quantity += quantity;
-
-        } else {
-
-          cart.push({
-            name: productName,
-            price: price,
-            image: image,
-            color: color,
-            size: size,
-            quantity: quantity
-          });
-
-        }
-
-
-        updateCart();
-
-        showToast(`${productName} added to bag`);
-
-        addButton.textContent = "Added ✓";
-
-        setTimeout(() => {
-          addButton.textContent = "Add to Bag";
-        }, 1400);
-
-      });
-
-
-      /* -----------------------------
-         LIKE
-      ----------------------------- */
-
-      const likeButton =
-        card.querySelector(".like-button");
-
-      const likeCount =
-        likeButton?.querySelector("span");
-
-
-      likeButton?.addEventListener("click", () => {
-
-        let count =
-          Number(likeCount.textContent);
-
-        if (likeButton.classList.contains("active")) {
-
-          count--;
-
-          likeButton.classList.remove("active");
-
-        } else {
-
-          count++;
-
-          likeButton.classList.add("active");
-
-        }
-
-        likeCount.textContent = count;
-
-      });
-
-
-      /* -----------------------------
-         DISLIKE
-      ----------------------------- */
-
-      const dislikeButton =
-        card.querySelector(".dislike-button");
-
-      const dislikeCount =
-        dislikeButton?.querySelector("span");
-
-
-      dislikeButton?.addEventListener("click", () => {
-
-        let count =
-          Number(dislikeCount.textContent);
-
-        if (dislikeButton.classList.contains("active")) {
-
-          count--;
-
-          dislikeButton.classList.remove("active");
-
-        } else {
-
-          count++;
-
-          dislikeButton.classList.add("active");
-
-        }
-
-        dislikeCount.textContent = count;
-
-      });
-
-
-      /* -----------------------------
-         IMAGE CLICK
-      ----------------------------- */
-
-      const image =
-        card.querySelector(".product-image img");
-
+      /* IMAGE VIEWER */
 
       image?.addEventListener("click", () => {
 
-        if (!image.src) return;
+        const viewer =
+          document.createElement("div");
 
-        openImageViewer(
-          image.src,
-          image.alt
+        viewer.style.cssText = `
+          position:fixed;
+          inset:0;
+          z-index:99999;
+          background:rgba(0,0,0,.9);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:25px;
+        `;
+
+        viewer.innerHTML = `
+
+          <button
+            type="button"
+            style="
+              position:absolute;
+              top:20px;
+              right:25px;
+              width:45px;
+              height:45px;
+              border:0;
+              border-radius:50%;
+              font-size:28px;
+              background:white;
+              color:black;
+              cursor:pointer;
+            "
+          >
+            ×
+          </button>
+
+          <img
+            src="${image.src}"
+            alt="${image.alt}"
+            style="
+              max-width:92vw;
+              max-height:90vh;
+              object-fit:contain;
+              border-radius:10px;
+            "
+          >
+
+        `;
+
+        document.body.appendChild(viewer);
+
+        viewer
+          .querySelector("button")
+          .addEventListener(
+            "click",
+            () => viewer.remove()
+          );
+
+        viewer.addEventListener(
+          "click",
+          event => {
+
+            if (event.target === viewer) {
+              viewer.remove();
+            }
+
+          }
         );
 
       });
 
+
+      /* ADD TO BAG */
+
+      card
+        .querySelector(".add-button")
+        ?.addEventListener("click", () => {
+
+          const button =
+            card.querySelector(".add-button");
+
+          button.textContent =
+            "Added ✓";
+
+          setTimeout(() => {
+            button.textContent =
+              "Add to Bag";
+          }, 1400);
+
+        });
+
     });
 
-  }
 
-  setupProductInteractions();
-
-
-  /* =========================================================
-     PRODUCT IMAGE VIEWER
-  ========================================================= */
-
-  function openImageViewer(src, alt) {
-
-    const viewer =
-      document.createElement("div");
-
-    viewer.className = "image-viewer";
-
-    viewer.innerHTML = `
-      <div class="image-viewer-backdrop"></div>
-
-      <button
-        type="button"
-        class="image-viewer-close"
-        aria-label="Close image"
-      >
-        ×
-      </button>
-
-      <img
-        src="${src}"
-        alt="${alt}"
-        class="image-viewer-image"
-      />
-    `;
-
-
-    const viewerStyle =
-      document.createElement("style");
-
-    viewerStyle.textContent = `
-      .image-viewer {
-        position: fixed;
-        inset: 0;
-        z-index: 6000;
-        display: grid;
-        place-items: center;
-        padding: 25px;
-      }
-
-      .image-viewer-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,.88);
-        backdrop-filter: blur(12px);
-      }
-
-      .image-viewer-image {
-        position: relative;
-        z-index: 2;
-        max-width: min(92vw, 900px);
-        max-height: 90vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        border-radius: 10px;
-        box-shadow: 0 30px 80px rgba(0,0,0,.4);
-        animation: imageViewerIn .45s cubic-bezier(.22,1,.36,1);
-      }
-
-      .image-viewer-close {
-        position: absolute;
-        z-index: 3;
-        top: 20px;
-        right: 25px;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: white;
-        color: black;
-        font-size: 28px;
-      }
-
-      @keyframes imageViewerIn {
-        from {
-          opacity: 0;
-          transform: scale(.92);
-        }
-
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-    `;
-
-    document.head.appendChild(viewerStyle);
-    document.body.appendChild(viewer);
-
-    document.body.classList.add("no-scroll");
-
-
-    const closeViewer = () => {
-
-      viewer.remove();
-      viewerStyle.remove();
-
-      document.body.classList.remove("no-scroll");
-
-    };
-
-
-    viewer
-      .querySelector(".image-viewer-close")
-      .addEventListener("click", closeViewer);
-
-
-    viewer
-      .querySelector(".image-viewer-backdrop")
-      .addEventListener("click", closeViewer);
-
-
-    document.addEventListener(
-      "keydown",
-      function escapeHandler(event) {
-
-        if (event.key === "Escape") {
-
-          closeViewer();
-
-          document.removeEventListener(
-            "keydown",
-            escapeHandler
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     REVEAL ANIMATIONS
-  ========================================================= */
-
-  const revealElements =
-    document.querySelectorAll(".reveal");
-
+  /* =========================
+     REVEAL ANIMATION
+  ========================= */
 
   const revealObserver =
     new IntersectionObserver(
@@ -1059,47 +534,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (entry.isIntersecting) {
 
-            entry.target.classList.add("visible");
-
-            revealObserver.unobserve(
-              entry.target
+            entry.target.classList.add(
+              "visible"
             );
 
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
-
-  /* =========================================================
-     PRODUCT CARD STAGGER
-  ========================================================= */
-
-  const productCards =
-    document.querySelectorAll(".product-card");
-
-
-  const productObserver =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            productObserver.unobserve(
+            revealObserver.unobserve(
               entry.target
             );
 
@@ -1114,221 +553,57 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-  productCards.forEach(card => {
-    productObserver.observe(card);
-  });
+  document
+    .querySelectorAll(".reveal, .product-card")
+    .forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
 
 
-  /* =========================================================
+  /* =========================
      HERO VIDEO
-  ========================================================= */
+  ========================= */
 
   const heroVideo =
     document.getElementById("heroVideo");
-
 
   if (heroVideo) {
 
     heroVideo.muted = true;
 
-    const playVideo = () => {
-
-      const promise =
-        heroVideo.play();
-
-      if (promise !== undefined) {
-
-        promise.catch(() => {
-          /* Browser blocked autoplay */
-        });
-
-      }
-
-    };
-
-    playVideo();
-
-    document.addEventListener(
-      "visibilitychange",
-      () => {
-
-        if (
-          document.visibilityState === "visible"
-        ) {
-          playVideo();
-        }
-
-      }
-    );
+    heroVideo.play().catch(() => {});
 
   }
 
 
-  /* =========================================================
-     SMOOTH ANCHOR NAVIGATION
-  ========================================================= */
+  /* =========================
+     ESCAPE
+  ========================= */
 
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
+  document.addEventListener(
+    "keydown",
+    event => {
 
-      link.addEventListener("click", event => {
+      if (event.key === "Escape") {
 
-        const targetId =
-          link.getAttribute("href");
+        document
+          .querySelectorAll(
+            '[style*="z-index:99999"]'
+          )
+          .forEach(element =>
+            element.remove()
+          );
 
-        if (
-          !targetId ||
-          targetId === "#"
-        ) {
-          return;
-        }
-
-
-        const target =
-          document.querySelector(targetId);
-
-        if (!target) return;
-
-
-        event.preventDefault();
-
-
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      });
-
-    });
-
-
-  /* =========================================================
-     WHATSAPP CHECKOUT
-  ========================================================= */
-
-  const checkoutButton =
-    document.getElementById("checkoutButton");
-
-
-  checkoutButton?.addEventListener(
-    "click",
-    () => {
-
-      if (cart.length === 0) {
-
-        showToast("Your bag is empty");
-
-        return;
       }
-
-
-      let message =
-        "Assalam-o-Alaikum, Mehka Garments.%0A%0A";
-
-      message +=
-        "*New Order*%0A%0A";
-
-
-      cart.forEach((item, index) => {
-
-        message +=
-          `${index + 1}. ${item.name}%0A`;
-
-        message +=
-          `Colour: ${item.color}%0A`;
-
-        message +=
-          `Size: ${item.size}%0A`;
-
-        message +=
-          `Quantity: ${item.quantity}%0A`;
-
-        message +=
-          `Price: Rs. ${(item.price * item.quantity).toLocaleString()}%0A%0A`;
-
-      });
-
-
-      const total =
-        cart.reduce(
-          (sum, item) =>
-            sum + item.price * item.quantity,
-          0
-        );
-
-
-      message +=
-        `*Total: Rs. ${total.toLocaleString()}*%0A%0A`;
-
-      message +=
-        "Please confirm my order.";
-
-
-      /*
-        IMPORTANT:
-        Replace the number below with
-        your real WhatsApp number.
-
-        Format:
-        923001234567
-
-        No + sign.
-        No spaces.
-      */
-
-      const whatsappNumber =
-        "92XXXXXXXXXX";
-
-
-      const whatsappURL =
-        `https://wa.me/${whatsappNumber}?text=${message}`;
-
-
-      window.open(
-        whatsappURL,
-        "_blank",
-        "noopener,noreferrer"
-      );
 
     }
   );
 
 
-  /* =========================================================
-     IMAGE ERROR HANDLING
-  ========================================================= */
-
-  document
-    .querySelectorAll(".product-image img")
-    .forEach(image => {
-
-      image.addEventListener(
-        "error",
-        () => {
-
-          image.style.display = "none";
-
-        }
-      );
-
-    });
-
-
-  /* =========================================================
-     INITIAL CART
-  ========================================================= */
-
-  updateCart();
-
-
-  /* =========================================================
-     FINAL READY
-  ========================================================= */
-
   console.log(
-    "MEHKA GARMENTS — Website loaded successfully."
+    "MEHKA GARMENTS — FINAL PRODUCT SCRIPT LOADED"
   );
 
 });
