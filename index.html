@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mehka Garments — Premium Men's Fashion</title>
 
   <meta
     name="description"
     content="Mehka Garments — Premium men's clothing, shirts, pants, trousers and shorts."
-  />
+  >
 
-  <title>Mehka Garments | Premium Men's Clothing</title>
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ================= PRELOADER ================= -->
+  <!-- =========================
+       PAGE LOADER
+  ========================== -->
+
   <div class="page-loader" id="pageLoader">
     <div class="loader-inner">
       <div class="loader-logo">MEHKA</div>
@@ -25,25 +28,34 @@
   </div>
 
 
-  <!-- ================= HEADER ================= -->
-  <header class="site-header">
+  <!-- =========================
+       HEADER
+  ========================== -->
 
-    <a href="#home" class="brand" aria-label="Mehka Garments Home">
-      <span class="brand-mark">M</span>
+  <header class="site-header" id="siteHeader">
 
-      <span class="brand-text">
+    <a href="#top" class="brand">
+
+      <div class="brand-mark">
+        M
+      </div>
+
+      <div class="brand-text">
         <strong>MEHKA</strong>
         <small>GARMENTS</small>
-      </span>
+      </div>
+
     </a>
 
 
     <nav class="main-nav">
+
       <a href="#shirts">Shirts</a>
       <a href="#pants">Pants</a>
       <a href="#trousers">Trousers</a>
       <a href="#shorts">Shorts</a>
       <a href="#contact">Contact</a>
+
     </nav>
 
 
@@ -51,27 +63,35 @@
       class="bag-button"
       id="bagButton"
       type="button"
-      aria-label="Open shopping bag"
     >
-      Bag
-      <span id="bagCount">0</span>
+      BAG
+
+      <span id="bagCount">
+        0
+      </span>
+
     </button>
 
   </header>
 
 
-
-  <!-- ================= MAIN ================= -->
-  <main id="home">
+  <main id="top">
 
 
-    <!-- ================= HERO ================= -->
-    <section class="hero" id="hero">
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
 
       <!--
-        IMPORTANT:
-        Put your landscape hero video here:
+        VIDEO PLACEHOLDER
+
+        Later simply put:
         assets/videos/hero-video.mp4
+
+        The website will still work if the video
+        is missing.
       -->
 
       <video
@@ -81,45 +101,43 @@
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
+        aria-hidden="true"
       >
         <source
           src="assets/videos/hero-video.mp4"
           type="video/mp4"
-        />
-
-        Your browser does not support HTML5 video.
+        >
       </video>
 
 
-      <!-- Fallback background -->
       <div class="hero-fallback"></div>
 
 
-      <!-- Video readability layer -->
       <div class="hero-overlay"></div>
 
 
-      <!-- Hero content -->
-      <div class="hero-content reveal">
+      <div class="hero-content">
 
         <p class="eyebrow">
-          MEHKA GARMENTS · MEN'S COLLECTION
+          MEHKA GARMENTS
         </p>
 
         <h1>
-          Built for
-          <br />
-          <em>your standard.</em>
+          Built for<br>
+          <em>your style.</em>
         </h1>
 
         <p class="hero-subtitle">
-          Premium men's clothing designed with clean fits,
-          refined details and everyday confidence.
+          Premium men's fashion designed with clean
+          silhouettes, refined colours and everyday comfort.
         </p>
 
-        <a href="#shirts" class="hero-button">
-          Explore Collection
+        <a
+          href="#shirts"
+          class="hero-button"
+        >
+          Shop Collection
           <span>↗</span>
         </a>
 
@@ -134,826 +152,245 @@
     </section>
 
 
+    <!-- =========================
+         INTRO
+    ========================== -->
 
-    <!-- ================= INTRO ================= -->
-    <section class="intro section-pad reveal">
+    <section class="section-pad">
 
-      <p class="eyebrow">
-        THE MEHKA EDIT
-      </p>
+      <div class="intro reveal">
 
-      <h2>
-        Premium pieces.
-        <br />
-        <em>Everyday confidence.</em>
-      </h2>
+        <p class="eyebrow">
+          THE COLLECTION
+        </p>
 
-      <p>
-        Discover a refined men's clothing collection created
-        for modern everyday style. Choose your colour, size
-        and quantity with a smooth shopping experience.
-      </p>
+        <h2>
+          Everyday luxury,<br>
+          <em>made simple.</em>
+        </h2>
+
+        <p>
+          Discover premium men's essentials from
+          refined shirts and polos to modern pants,
+          trousers and comfortable shorts.
+        </p>
+
+      </div>
 
     </section>
 
 
-
-    <!-- ================= PRODUCT CATALOG ================= -->
-
-    <div id="catalog">
-
-
-      <!-- ==================================================
-           SHIRTS
-      =================================================== -->
-
-      <section
-        class="category reveal"
-        id="shirts"
-      >
-
-        <div class="category-head">
-
-          <div>
-            <p class="eyebrow">
-              MEN'S COLLECTION
-            </p>
-
-            <h2>Shirts</h2>
-          </div>
-
-          <p>
-            Premium formal, casual and polo styles
-            designed for a sharp everyday look.
-          </p>
-
-        </div>
-
-
-        <div class="product-grid">
-
-
-          <!-- PRODUCT 1 -->
-          <article
-            class="product-card"
-            data-product="Essential Formal Shirt"
-            data-price="3000"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="assets/images/shirt-formal.jpg"
-                alt="Essential Formal Shirt"
-                loading="lazy"
-              />
-
-              <span class="image-placeholder">
-                PRODUCT IMAGE
-              </span>
-
-            </div>
-
-
-            <div class="product-info">
-
-              <p class="product-type">
-                FORMAL SHIRT
-              </p>
-
-              <h3>
-                Essential Formal Shirt
-              </h3>
-
-
-              <div class="options">
-
-                <div class="option-label">
-                  COLOUR
-                </div>
-
-                <div class="colors">
-
-                  <button
-                    class="color-dot active"
-                    style="background:#ffffff"
-                    data-color="White"
-                    aria-label="White"
-                  ></button>
-
-                  <button
-                    class="color-dot"
-                    style="background:#111111"
-                    data-color="Black"
-                    aria-label="Black"
-                  ></button>
-
-                  <button
-                    class="color-dot"
-                    style="background:#8b8175"
-                    data-color="Beige"
-                    aria-label="Beige"
-                  ></button>
-
-                  <button
-                    class="color-dot"
-                    style="background:#52604e"
-                    data-color="Olive"
-                    aria-label="Olive"
-                  ></button>
-
-                </div>
-
-
-                <div class="option-label">
-                  SIZE
-                </div>
-
-                <div class="sizes">
-
-                  <button class="size-btn" data-size="S">
-                    S
-                  </button>
-
-                  <button class="size-btn active" data-size="M">
-                    M
-                  </button>
-
-                  <button class="size-btn" data-size="L">
-                    L
-                  </button>
-
-                  <button class="size-btn" data-size="XL">
-                    XL
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <div class="price-row">
-
-                <span class="old-price">
-                  Rs. 3,250
-                </span>
-
-                <strong class="price">
-                  Rs. 3,000
-                </strong>
-
-              </div>
-
-
-              <div class="quantity">
-
-                <span class="option-label">
-                  QUANTITY
-                </span>
-
-                <div class="quantity-controls">
-
-                  <button
-                    type="button"
-                    class="qty-minus"
-                  >
-                    −
-                  </button>
-
-                  <span class="qty-value">
-                    1
-                  </span>
-
-                  <button
-                    type="button"
-                    class="qty-plus"
-                  >
-                    +
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <button
-                type="button"
-                class="add-button"
-              >
-                Add to Bag
-              </button>
-
-
-              <div class="votes">
-
-                <button
-                  type="button"
-                  class="like-button"
-                >
-                  👍
-                  <span>0</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="dislike-button"
-                >
-                  👎
-                  <span>0</span>
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- PRODUCT 2 -->
-          <article
-            class="product-card"
-            data-product="Signature Check Shirt"
-            data-price="2800"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="assets/images/shirt-check.jpg"
-                alt="Signature Check Shirt"
-                loading="lazy"
-              />
-
-              <span class="image-placeholder">
-                PRODUCT IMAGE
-              </span>
-
-            </div>
-
-            <div class="product-info">
-
-              <p class="product-type">
-                CHECK SHIRT
-              </p>
-
-              <h3>
-                Signature Check Shirt
-              </h3>
-
-              <div class="options">
-
-                <div class="option-label">
-                  COLOUR
-                </div>
-
-                <div class="colors">
-
-                  <button class="color-dot active"
-                    style="background:#263b2c"
-                    data-color="Forest"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#53657a"
-                    data-color="Blue"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#8b6b55"
-                    data-color="Brown"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#222"
-                    data-color="Black"
-                  ></button>
-
-                </div>
-
-                <div class="option-label">
-                  SIZE
-                </div>
-
-                <div class="sizes">
-
-                  <button class="size-btn" data-size="S">S</button>
-                  <button class="size-btn active" data-size="M">M</button>
-                  <button class="size-btn" data-size="L">L</button>
-                  <button class="size-btn" data-size="XL">XL</button>
-
-                </div>
-
-              </div>
-
-              <div class="price-row">
-                <span class="old-price">Rs. 3,050</span>
-                <strong class="price">Rs. 2,800</strong>
-              </div>
-
-              <div class="quantity">
-
-                <span class="option-label">
-                  QUANTITY
-                </span>
-
-                <div class="quantity-controls">
-
-                  <button type="button" class="qty-minus">−</button>
-                  <span class="qty-value">1</span>
-                  <button type="button" class="qty-plus">+</button>
-
-                </div>
-
-              </div>
-
-              <button type="button" class="add-button">
-                Add to Bag
-              </button>
-
-              <div class="votes">
-                <button type="button" class="like-button">
-                  👍 <span>0</span>
-                </button>
-
-                <button type="button" class="dislike-button">
-                  👎 <span>0</span>
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- PRODUCT 3 -->
-          <article
-            class="product-card"
-            data-product="Classic Premium Polo"
-            data-price="2600"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="assets/images/polo.jpg"
-                alt="Classic Premium Polo"
-                loading="lazy"
-              />
-
-              <span class="image-placeholder">
-                PRODUCT IMAGE
-              </span>
-
-            </div>
-
-            <div class="product-info">
-
-              <p class="product-type">
-                PREMIUM POLO
-              </p>
-
-              <h3>
-                Classic Premium Polo
-              </h3>
-
-              <div class="options">
-
-                <div class="option-label">COLOUR</div>
-
-                <div class="colors">
-
-                  <button class="color-dot active"
-                    style="background:#111"
-                    data-color="Black"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#fff"
-                    data-color="White"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#243f5c"
-                    data-color="Navy"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#65735d"
-                    data-color="Olive"
-                  ></button>
-
-                </div>
-
-                <div class="option-label">SIZE</div>
-
-                <div class="sizes">
-                  <button class="size-btn" data-size="S">S</button>
-                  <button class="size-btn active" data-size="M">M</button>
-                  <button class="size-btn" data-size="L">L</button>
-                  <button class="size-btn" data-size="XL">XL</button>
-                </div>
-
-              </div>
-
-              <div class="price-row">
-                <span class="old-price">Rs. 2,900</span>
-                <strong class="price">Rs. 2,600</strong>
-              </div>
-
-              <div class="quantity">
-                <span class="option-label">QUANTITY</span>
-
-                <div class="quantity-controls">
-                  <button type="button" class="qty-minus">−</button>
-                  <span class="qty-value">1</span>
-                  <button type="button" class="qty-plus">+</button>
-                </div>
-              </div>
-
-              <button type="button" class="add-button">
-                Add to Bag
-              </button>
-
-              <div class="votes">
-                <button type="button" class="like-button">
-                  👍 <span>0</span>
-                </button>
-
-                <button type="button" class="dislike-button">
-                  👎 <span>0</span>
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- PRODUCT 4 -->
-          <article
-            class="product-card"
-            data-product="Signature Stripe Polo"
-            data-price="2750"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="assets/images/polo-stripe.jpg"
-                alt="Signature Stripe Polo"
-                loading="lazy"
-              />
-
-              <span class="image-placeholder">
-                PRODUCT IMAGE
-              </span>
-
-            </div>
-
-            <div class="product-info">
-
-              <p class="product-type">
-                STRIPE POLO
-              </p>
-
-              <h3>
-                Signature Stripe Polo
-              </h3>
-
-              <div class="options">
-
-                <div class="option-label">COLOUR</div>
-
-                <div class="colors">
-
-                  <button class="color-dot active"
-                    style="background:#111"
-                    data-color="Black"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#fff"
-                    data-color="White"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#274c43"
-                    data-color="Green"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#7a2f32"
-                    data-color="Maroon"
-                  ></button>
-
-                </div>
-
-                <div class="option-label">SIZE</div>
-
-                <div class="sizes">
-                  <button class="size-btn" data-size="S">S</button>
-                  <button class="size-btn active" data-size="M">M</button>
-                  <button class="size-btn" data-size="L">L</button>
-                  <button class="size-btn" data-size="XL">XL</button>
-                </div>
-
-              </div>
-
-              <div class="price-row">
-                <span class="old-price">Rs. 3,000</span>
-                <strong class="price">Rs. 2,750</strong>
-              </div>
-
-              <div class="quantity">
-                <span class="option-label">QUANTITY</span>
-
-                <div class="quantity-controls">
-                  <button type="button" class="qty-minus">−</button>
-                  <span class="qty-value">1</span>
-                  <button type="button" class="qty-plus">+</button>
-                </div>
-              </div>
-
-              <button type="button" class="add-button">
-                Add to Bag
-              </button>
-
-              <div class="votes">
-                <button type="button" class="like-button">
-                  👍 <span>0</span>
-                </button>
-
-                <button type="button" class="dislike-button">
-                  👎 <span>0</span>
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
-
-          <!-- PRODUCT 5 -->
-          <article
-            class="product-card"
-            data-product="Modern Collar T-Shirt"
-            data-price="2400"
-          >
-
-            <div class="product-image">
-
-              <img
-                src="assets/images/collar-tshirt.jpg"
-                alt="Modern Collar T-Shirt"
-                loading="lazy"
-              />
-
-              <span class="image-placeholder">
-                PRODUCT IMAGE
-              </span>
-
-            </div>
-
-            <div class="product-info">
-
-              <p class="product-type">
-                COLLAR T-SHIRT
-              </p>
-
-              <h3>
-                Modern Collar T-Shirt
-              </h3>
-
-              <div class="options">
-
-                <div class="option-label">COLOUR</div>
-
-                <div class="colors">
-
-                  <button class="color-dot active"
-                    style="background:#fff"
-                    data-color="White"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#111"
-                    data-color="Black"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#b7b0a3"
-                    data-color="Sand"
-                  ></button>
-
-                  <button class="color-dot"
-                    style="background:#52604e"
-                    data-color="Olive"
-                  ></button>
-
-                </div>
-
-                <div class="option-label">SIZE</div>
-
-                <div class="sizes">
-                  <button class="size-btn" data-size="S">S</button>
-                  <button class="size-btn active" data-size="M">M</button>
-                  <button class="size-btn" data-size="L">L</button>
-                  <button class="size-btn" data-size="XL">XL</button>
-                </div>
-
-              </div>
-
-              <div class="price-row">
-                <span class="old-price">Rs. 2,700</span>
-                <strong class="price">Rs. 2,400</strong>
-              </div>
-
-              <div class="quantity">
-                <span class="option-label">QUANTITY</span>
-
-                <div class="quantity-controls">
-                  <button type="button" class="qty-minus">−</button>
-                  <span class="qty-value">1</span>
-                  <button type="button" class="qty-plus">+</button>
-                </div>
-              </div>
-
-              <button type="button" class="add-button">
-                Add to Bag
-              </button>
-
-              <div class="votes">
-                <button type="button" class="like-button">
-                  👍 <span>0</span>
-                </button>
-
-                <button type="button" class="dislike-button">
-                  👎 <span>0</span>
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- ================= PANTS ================= -->
-
-      <section
-        class="category reveal"
-        id="pants"
-      >
-
-        <div class="category-head">
-
-          <div>
-            <p class="eyebrow">
-              MEN'S COLLECTION
-            </p>
-
-            <h2>Pants</h2>
-          </div>
-
-          <p>
-            Refined cotton and denim fits built for
-            everyday comfort and modern style.
-          </p>
-
-        </div>
-
-        <div class="product-grid" id="pantsGrid">
-          <!-- Pants products are generated by script.js -->
-        </div>
-
-      </section>
-
-
-
-      <!-- ================= TROUSERS ================= -->
-
-      <section
-        class="category reveal"
-        id="trousers"
-      >
-
-        <div class="category-head">
-
-          <div>
-            <p class="eyebrow">
-              MEN'S COLLECTION
-            </p>
-
-            <h2>Trousers</h2>
-          </div>
-
-          <p>
-            Clean silhouettes and versatile colours
-            for a polished everyday wardrobe.
-          </p>
-
-        </div>
-
-        <div class="product-grid" id="trousersGrid">
-          <!-- Trouser products are generated by script.js -->
-        </div>
-
-      </section>
-
-
-
-      <!-- ================= SHORTS ================= -->
-
-      <section
-        class="category reveal"
-        id="shorts"
-      >
-
-        <div class="category-head">
-
-          <div>
-            <p class="eyebrow">
-              MEN'S COLLECTION
-            </p>
-
-            <h2>Shorts</h2>
-          </div>
-
-          <p>
-            Lightweight casual styles made for
-            effortless everyday comfort.
-          </p>
-
-        </div>
-
-        <div class="product-grid" id="shortsGrid">
-          <!-- Shorts products are generated by script.js -->
-        </div>
-
-      </section>
-
-    </div>
-
-
-
-    <!-- ================= CONTACT ================= -->
+    <!-- =========================
+         SHIRTS
+    ========================== -->
 
     <section
-      class="contact section-pad reveal"
-      id="contact"
+      class="category"
+      id="shirts"
     >
 
-      <div>
+      <div class="category-head reveal">
 
-        <p class="eyebrow">
-          GET IN TOUCH
+        <div>
+
+          <p class="eyebrow">
+            01 — COLLECTION
+          </p>
+
+          <h2>
+            Shirts
+          </h2>
+
+        </div>
+
+        <p>
+          Refined formal shirts, checks, polos and
+          collar essentials designed for modern men's wardrobes.
         </p>
-
-        <h2>
-          Let's talk
-          <br />
-          <em>style.</em>
-        </h2>
 
       </div>
 
 
-      <div class="contact-details">
+      <div
+        class="product-grid"
+        id="shirtsGrid"
+      ></div>
 
-        <!-- Replace placeholders with real details -->
+    </section>
 
-        <a href="mailto:YOUR-GMAIL@example.com">
-          YOUR-GMAIL@example.com
-        </a>
 
-        <a href="tel:+92XXXXXXXXXX">
-          +92 XXX XXXXXXX
-        </a>
+    <!-- =========================
+         PANTS
+    ========================== -->
 
-        <a
-          href="https://wa.me/92XXXXXXXXXX"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp ↗
-        </a>
+    <section
+      class="category"
+      id="pants"
+    >
+
+      <div class="category-head reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            02 — COLLECTION
+          </p>
+
+          <h2>
+            Pants
+          </h2>
+
+        </div>
 
         <p>
-          SHOP ADDRESS
-          <br />
-
-          <span>
-            YOUR SHOP ADDRESS, PAKISTAN
-          </span>
+          Clean cuts, premium textures and versatile
+          colours for everyday and smart-casual dressing.
         </p>
+
+      </div>
+
+
+      <div
+        class="product-grid"
+        id="pantsGrid"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         TROUSERS
+    ========================== -->
+
+    <section
+      class="category"
+      id="trousers"
+    >
+
+      <div class="category-head reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            03 — COLLECTION
+          </p>
+
+          <h2>
+            Trousers
+          </h2>
+
+        </div>
+
+        <p>
+          Contemporary trouser silhouettes with
+          comfortable fits and premium everyday styling.
+        </p>
+
+      </div>
+
+
+      <div
+        class="product-grid"
+        id="trousersGrid"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         SHORTS
+    ========================== -->
+
+    <section
+      class="category"
+      id="shorts"
+    >
+
+      <div class="category-head reveal">
+
+        <div>
+
+          <p class="eyebrow">
+            04 — COLLECTION
+          </p>
+
+          <h2>
+            Shorts
+          </h2>
+
+        </div>
+
+        <p>
+          Comfortable casual shorts made for relaxed
+          summer styling and everyday movement.
+        </p>
+
+      </div>
+
+
+      <div
+        class="product-grid"
+        id="shortsGrid"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+      class="section-pad"
+      id="contact"
+    >
+
+      <div class="contact">
+
+        <div class="reveal">
+
+          <p class="eyebrow">
+            GET IN TOUCH
+          </p>
+
+          <h2>
+            Let's<br>
+            talk.
+          </h2>
+
+        </div>
+
+
+        <div class="contact-details reveal">
+
+          <a
+            href="mailto:your-email@gmail.com"
+          >
+            your-email@gmail.com
+          </a>
+
+          <a
+            href="tel:+923000000000"
+          >
+            +92 300 0000000
+          </a>
+
+          <a
+            href="https://wa.me/923000000000"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+
+          <p>
+            STORE
+            <span>
+              Mehka Garments — Pakistan
+            </span>
+          </p>
+
+        </div>
 
       </div>
 
@@ -962,13 +399,13 @@
   </main>
 
 
+  <!-- =========================
+       CART
+  ========================== -->
 
-  <!-- ================= SHOPPING CART ================= -->
-
-  <aside
+  <div
     class="cart-drawer"
     id="cartDrawer"
-    aria-hidden="true"
   >
 
     <div class="cart-panel">
@@ -977,18 +414,20 @@
         class="close-cart"
         id="closeCart"
         type="button"
-        aria-label="Close shopping bag"
+        aria-label="Close cart"
       >
         ×
       </button>
 
+
       <p class="eyebrow">
-        YOUR BAG
+        YOUR SELECTION
       </p>
 
       <h2>
-        Selected pieces
+        Your Bag
       </h2>
+
 
       <div id="cartItems">
         <p>
@@ -996,10 +435,11 @@
         </p>
       </div>
 
+
       <div class="cart-total">
 
         <span>
-          Total
+          TOTAL
         </span>
 
         <strong id="cartTotal">
@@ -1008,51 +448,75 @@
 
       </div>
 
+
       <button
         class="checkout-button"
         id="checkoutButton"
         type="button"
       >
-        Order on WhatsApp ↗
+        Order on WhatsApp
       </button>
 
     </div>
 
-  </aside>
+  </div>
 
 
+  <!-- =========================
+       IMAGE VIEWER
+  ========================== -->
 
-  <!-- ================= TOAST ================= -->
+  <div
+    class="image-viewer"
+    id="imageViewer"
+    aria-hidden="true"
+  >
+
+    <button
+      type="button"
+      id="closeViewer"
+      class="viewer-close"
+    >
+      ×
+    </button>
+
+    <img
+      id="viewerImage"
+      src=""
+      alt="Product preview"
+    >
+
+  </div>
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
 
   <div
     class="toast"
     id="toast"
-    role="status"
-    aria-live="polite"
   >
-    Added to your bag
+    Added to bag
   </div>
 
 
-
-  <!-- ================= FOOTER ================= -->
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer>
 
     <span>
-      © <span id="year"></span>
-      Mehka Garments
+      © <span id="year"></span> Mehka Garments
     </span>
 
     <span>
-      Premium Men's Clothing
+      Premium Men's Fashion
     </span>
 
   </footer>
 
-
-
-  <!-- ================= JAVASCRIPT ================= -->
 
   <script src="script.js"></script>
 
