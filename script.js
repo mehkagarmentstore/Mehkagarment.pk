@@ -132,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
       oldPrice: 3100,
 
       colors: [
-        ["Classic Contrast", "#222222", "assets/images/classic-contrast-polo.jpg"],
         ["Jet Black", "#111111", "assets/images/simple-polo-jet-black.jpg"],
         ["Deep Forest", "#284536", "assets/images/simple-polo-deep-forest-green.jpg"],
         ["Ocean Teal", "#247681", "assets/images/simple-polo-ocean-teal-blue.jpg"],
