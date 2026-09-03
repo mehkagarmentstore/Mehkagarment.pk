@@ -164,12 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
       price: 2500,
       oldPrice: 2800,
 
-      colors: [
-        ["Jet Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Olive Green", "#59634f", "assets/images/olive-green-essential.jpg"],
-        ["Silver Grey", "#999999", "assets/images/silver-grey-essential.jpg"],
-        ["Powder Light Grey", "#c4c4c0", "assets/images/poder-light-grey.jpg"]
-      ]
+     colors: [
+  ["Mocha Brown", "#6B4632", "assets/images/essential-collar-tshirt-mocha-brown.jpg"],
+  ["Sage Green", "#A9B69F", "assets/images/essential-collar-tshirt-sage-green.jpg"],
+  ["Navy Blue", "#14233D", "assets/images/essential-collar-tshirt-navy-blue.jpg"],
+  ["White", "#F7F7F5", "assets/images/essential-collar-tshirt-white.jpg"],
+  ["Black", "#111111", "assets/images/essential-collar-tshirt-black.jpg"]
+]
     },
 
 
