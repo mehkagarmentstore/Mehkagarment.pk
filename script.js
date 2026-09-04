@@ -224,18 +224,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     {
-      category: "pants",
-      name: "Premium Brushed Denim",
-      type: "BRUSHED DENIM",
-      price: 3600,
-      oldPrice: 4000,
+      {
+  category: "pants",
+  name: "Premium Brushed Denim",
+  type: "PREMIUM DENIM",
+  price: 3200,
+  oldPrice: 3600,
 
-      colors: [
-        ["Blue", "#4f6b83", "assets/images/premium-brushed-denim-blue.jpg"],
-        ["Dark Grey", "#414141", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"]
-      ]
-    },
+  colors: [
+    ["Denim Blue", "#315878", "assets/images/premium-brushed-denim-blue.jpg"],
+    ["Dark Blue", "#182B3A", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+    ["Dark Grey", "#3A3A3A", "assets/images/premium-brushed-denim-dark-grey.jpg"],
+    ["Grey", "#777777", "assets/images/premium-brushed-denim-grey.jpg"],
+    ["Light Blue", "#8FAFC4", "assets/images/premium-brushed-denim-light-blue.jpg"]
+  ]
+},
 
 
     {
