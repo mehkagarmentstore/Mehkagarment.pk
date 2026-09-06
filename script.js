@@ -223,9 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
 
-    {
-      {
- {
+  {
   category: "pants",
   name: "Premium Brushed Denim",
   type: "PREMIUM DENIM",
