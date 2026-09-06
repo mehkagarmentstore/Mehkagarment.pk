@@ -1,829 +1,530 @@
-/* =========================================================
-   MEHKA GARMENTS — FINAL SCRIPT
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =======================================================
-     BASIC
-  ======================================================= */
+  /* =========================
+     MEHKA GARMENTS
+     FINAL WEBSITE SCRIPT
+  ========================= */
 
-  const year = document.getElementById("year");
+  const $ = (id) => document.getElementById(id);
 
-  if (year) {
-    year.textContent = new Date().getFullYear();
+  /* YEAR */
+  if ($("year")) {
+    $("year").textContent = new Date().getFullYear();
   }
 
-
-  /* =======================================================
-     PAGE LOADER
-  ======================================================= */
-
-  const loader = document.getElementById("pageLoader");
-
-  window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-      loader?.classList.add("hidden");
-
-    }, 500);
-
-  });
-
-
-  /* =======================================================
-     HEADER
-  ======================================================= */
-
-  const header =
-    document.getElementById("siteHeader");
-
-  function updateHeader() {
-
-    if (!header) return;
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 40
-    );
-
-  }
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
-
-  updateHeader();
-
-
-  /* =======================================================
-     IMAGE FALLBACK
-  ======================================================= */
-
-  function protectImage(image) {
-
-    if (!image) return;
-
-    image.addEventListener(
-      "error",
-      () => {
-
-        image.classList.add("image-error");
-
-        image.removeAttribute("src");
-
-      }
-    );
-
-  }
-
-
-  /* =======================================================
-     PRODUCT DATABASE
-  ======================================================= */
+  /* =========================
+     PRODUCTS — 18 TOTAL
+  ========================= */
 
   const products = [
 
-    /* =====================================================
-       SHIRTS
-    ===================================================== */
+    /* ---------- SHIRTS ---------- */
 
     {
       category: "shirts",
       name: "Signature Formal Shirt",
-      type: "FORMAL SHIRT",
+      tag: "FORMAL SHIRT",
       price: 3200,
       oldPrice: 3500,
-
       colors: [
-        ["Black", "#111111", "assets/images/signature-formal-shirt-black.jpg"],
-        ["Olive", "#59634f", "assets/images/signature-formal-shirt-olive.jpg"],
-        ["Sky Blue", "#9bb7c9", "assets/images/signature-formal-shirt-sky-blue.jpg"],
-        ["White", "#ffffff", "assets/images/signature-formal-shirt-white.jpg"]
+        ["Black", "assets/images/signature-formal-shirt-black.jpg"],
+        ["Olive", "assets/images/signature-formal-shirt-olive.jpg"],
+        ["Sky Blue", "assets/images/signature-formal-shirt-sky-blue.jpg"],
+        ["White", "assets/images/signature-formal-shirt-white.jpg"]
       ]
     },
-
 
     {
       category: "shirts",
       name: "Premium Check Shirt",
-      type: "CHECK SHIRT",
+      tag: "CHECK SHIRT",
       price: 3300,
       oldPrice: 3600,
-
       colors: [
-        ["Black Ivory", "#222222", "assets/images/premium-check-shirt-black-ivory-stripe.jpg"],
-        ["Ivory Sand", "#d8cdbb", "assets/images/premium-check-shirt-ivory-sand.jpg"],
-        ["Midnight Navy", "#17263a", "assets/images/premium-check-shirt-midnight-navy.jpg"],
-        ["Navy Burgundy", "#303d50", "assets/images/premium-check-shirt-navy-burgundy.jpg"],
-        ["Slate Blue", "#617589", "assets/images/premium-check-shirt-slate-blue.jpg"]
+        ["Black Ivory", "assets/images/premium-check-shirt-black-ivory-stripe.jpg"],
+        ["Ivory Sand", "assets/images/premium-check-shirt-ivory-sand.jpg"],
+        ["Midnight Navy", "assets/images/premium-check-shirt-midnight-navy.jpg"],
+        ["Navy Burgundy", "assets/images/premium-check-shirt-navy-burgundy.jpg"],
+        ["Slate Blue", "assets/images/premium-check-shirt-slate-blue.jpg"]
       ]
     },
-
 
     {
       category: "shirts",
       name: "Essential Contrast Polo",
-      type: "PREMIUM POLO",
+      tag: "PREMIUM POLO",
       price: 2800,
       oldPrice: 3100,
-
       colors: [
-        ["Jet Black", "#111111", "assets/images/simple-polo-jet-black.jpg"],
-        ["Deep Forest", "#284536", "assets/images/simple-polo-deep-forest-green.jpg"],
-        ["Ocean Teal", "#247681", "assets/images/simple-polo-ocean-teal-blue.jpg"],
-        ["Rich Mocha", "#654936", "assets/images/simple-polo-rich-mocha-brown.jpg"],
-        ["Burgundy Wine", "#6e3037", "assets/images/simple-polo-burgendy-wine.jpg"]
+        ["Jet Black", "assets/images/simple-polo-jet-black.jpg"],
+        ["Forest Green", "assets/images/simple-polo-deep-forest-green.jpg"],
+        ["Ocean Teal", "assets/images/simple-polo-ocean-teal-blue.jpg"],
+        ["Mocha Brown", "assets/images/simple-polo-rich-mocha-brown.jpg"],
+        ["Burgundy Wine", "assets/images/simple-polo-burgendy-wine.jpg"]
       ]
     },
-
 
     {
       category: "shirts",
       name: "Executive Stripe Polo",
-      type: "STRIPE POLO",
+      tag: "STRIPE POLO",
       price: 2900,
       oldPrice: 3200,
-
       colors: [
-        ["Executive Stripe", "#333333", "assets/images/executive-stripe-polo.jpg"],
-        ["Heritage Stripe", "#39485a", "assets/images/heritage-stripe-polo.jpg"],
-        ["Signature Stripe", "#454545", "assets/images/signature-stripe-polo.jpg"],
-        ["Urban Luxe", "#303030", "assets/images/urban-luxe-stripe-polo.jpg"]
+        ["Executive Stripe", "assets/images/executive-stripe-polo.jpg"],
+        ["Heritage Stripe", "assets/images/heritage-stripe-polo.jpg"],
+        ["Signature Stripe", "assets/images/signature-stripe-polo.jpg"],
+        ["Urban Luxe Stripe", "assets/images/urban-luxe-stripe-polo.jpg"]
       ]
     },
-
 
     {
       category: "shirts",
       name: "Essential Collar T-Shirt",
-      type: "COLLAR T-SHIRT",
+      tag: "COLLAR T-SHIRT",
       price: 2500,
       oldPrice: 2800,
-
-     colors: [
-  ["Mocha Brown", "#6B4632", "assets/images/essential-collar-tshirt-mocha-brown.jpg"],
-  ["Sage Green", "#A9B69F", "assets/images/essential-collar-tshirt-sage-green.jpg"],
-  ["Navy Blue", "#14233D", "assets/images/essential-collar-tshirt-navy-blue.jpg"],
-  ["White", "#F7F7F5", "assets/images/essential-collar-tshirt-white.jpg"],
-  ["Black", "#111111", "assets/images/essential-collar-tshirt-black.jpg"]
-]
+      colors: [
+        ["Mocha Brown", "assets/images/essential-collar-tshirt-mocha-brown.jpg"],
+        ["Sage Green", "assets/images/essential-collar-tshirt-sage-green.jpg"],
+        ["Navy Blue", "assets/images/essential-collar-tshirt-navy-blue.jpg"],
+        ["White", "assets/images/essential-collar-tshirt-white.jpg"],
+        ["Black", "assets/images/essential-collar-tshirt-black.jpg"]
+      ]
     },
 
-
-    /* =====================================================
-       PANTS
-    ===================================================== */
+    /* ---------- PANTS ---------- */
 
     {
       category: "pants",
       name: "Premium Cotton Pant",
-      type: "COTTON PANT",
+      tag: "COTTON PANT",
       price: 3200,
       oldPrice: 3500,
-
       colors: [
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Olive", "#59634f", "assets/images/olive-green-essential.jpg"],
-        ["Grey", "#666666", "assets/images/silver-grey-essential.jpg"]
+        ["Jet Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive Green", "assets/images/olive-green-essential.jpg"],
+        ["Silver Grey", "assets/images/silver-grey-essential.jpg"]
       ]
     },
-
 
     {
       category: "pants",
       name: "Formal Washing Wear",
-      type: "FORMAL WASHING WEAR",
+      tag: "FORMAL WASHING WEAR",
       price: 3400,
       oldPrice: 3700,
-
       colors: [
-        ["Dark Grey", "#414141", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"],
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"]
+        ["Dark Grey", "assets/images/premium-brushed-denim-dark-grey.jpg"],
+        ["Grey", "assets/images/premium-brushed-denim-grey.jpg"],
+        ["Jet Black", "assets/images/jet-black-essential.jpg"]
       ]
     },
-
 
     {
       category: "pants",
       name: "Premium Denim",
-      type: "SIMPLE DENIM",
+      tag: "SIMPLE DENIM",
       price: 3500,
       oldPrice: 3900,
-
       colors: [
-        ["Blue", "#4f6b83", "assets/images/premium-brushed-denim-blue.jpg"],
-        ["Dark Blue", "#29394b", "assets/images/premium-brushed-denim-dark-blue.jpg"],
-        ["Light Blue", "#7890a5", "assets/images/premium-brushed-denim-light-blue.jpg"]
+        ["Classic Blue", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Dark Blue", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+        ["Light Blue", "assets/images/premium-brushed-denim-light-blue.jpg"]
       ]
     },
 
-
-  {
-  category: "pants",
-  name: "Premium Brushed Denim",
-  type: "PREMIUM DENIM",
-  price: 3200,
-  oldPrice: 3500,
-
-  colors: [
-    ["Classic Blue", "#315477", "assets/images/premium-brushed-denim-blue.jpg"],
-    ["Dark Blue", "#17263A", "assets/images/premium-brushed-denim-dark-blue.jpg"],
-    ["Dark Grey", "#3A3A3A", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-    ["Grey", "#777777", "assets/images/premium-brushed-denim-grey.jpg"],
-    ["Light Blue", "#91A9C1", "assets/images/premium-brushed-denim-light-blue.jpg"]
-  ]
-},
-
+    {
+      category: "pants",
+      name: "Premium Brushed Denim",
+      tag: "PREMIUM DENIM",
+      price: 3200,
+      oldPrice: 3500,
+      colors: [
+        ["Blue", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Dark Blue", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+        ["Dark Grey", "assets/images/premium-brushed-denim-dark-grey.jpg"],
+        ["Grey", "assets/images/premium-brushed-denim-grey.jpg"],
+        ["Light Blue", "assets/images/premium-brushed-denim-light-blue.jpg"]
+      ]
+    },
 
     {
       category: "pants",
       name: "Straight Fit Denim",
-      type: "SIMPLE STRAIGHT DENIM",
+      tag: "SIMPLE STRAIGHT DENIM",
       price: 3500,
       oldPrice: 3900,
-
       colors: [
-        ["Dark Blue", "#29394b", "assets/images/premium-brushed-denim-dark-blue.jpg"],
-        ["Blue", "#4f6b83", "assets/images/premium-brushed-denim-blue.jpg"],
-        ["Light Blue", "#7890a5", "assets/images/premium-brushed-denim-light-blue.jpg"]
+        ["Blue", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Dark Blue", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+        ["Light Blue", "assets/images/premium-brushed-denim-light-blue.jpg"]
       ]
     },
 
-
-    /* =====================================================
-       TROUSERS
-    ===================================================== */
+    /* ---------- TROUSERS ---------- */
 
     {
       category: "trousers",
       name: "Essential Casual Trouser",
-      type: "CASUAL TROUSER",
+      tag: "CASUAL TROUSER",
       price: 3000,
       oldPrice: 3300,
-
       colors: [
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Olive", "#59634f", "assets/images/olive-green-essential.jpg"],
-        ["Grey", "#666666", "assets/images/silver-grey-essential.jpg"]
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"],
+        ["Grey", "assets/images/silver-grey-essential.jpg"]
       ]
     },
-
 
     {
       category: "trousers",
       name: "China Naked Trouser",
-      type: "CHINA NAKED TROUSER",
+      tag: "CHINA NAKED",
       price: 3100,
       oldPrice: 3400,
-
       colors: [
-        ["Charcoal", "#3f3f3f", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"],
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"]
+        ["Blue", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"]
       ]
     },
-
 
     {
       category: "trousers",
       name: "Premium Maggi Trouser",
-      type: "MAGGI TROUSER",
+      tag: "MAGGI TROUSER",
       price: 3200,
       oldPrice: 3500,
-
       colors: [
-        ["Dark Grey", "#414141", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"],
-        ["Olive", "#59634f", "assets/images/olive-green-essential.jpg"]
+        ["Dark Blue", "assets/images/premium-brushed-denim-dark-blue.jpg"],
+        ["Grey", "assets/images/premium-brushed-denim-grey.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"]
       ]
     },
-
 
     {
       category: "trousers",
       name: "Korean Fit Trouser",
-      type: "KOREAN TROUSER",
+      tag: "KOREAN TROUSER",
       price: 3300,
       oldPrice: 3600,
-
       colors: [
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Slate", "#617589", "assets/images/premium-check-shirt-slate-blue.jpg"],
-        ["Olive", "#59634f", "assets/images/olive-green-essential.jpg"]
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Slate Blue", "assets/images/premium-check-shirt-slate-blue.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"]
       ]
     },
 
-
-    /* =====================================================
-       SHORTS
-    ===================================================== */
+    /* ---------- SHORTS ---------- */
 
     {
       category: "shorts",
       name: "Premium Cotton Short",
-      type: "COTTON SHORT",
+      tag: "COTTON SHORT",
       price: 2200,
       oldPrice: 2500,
-
       colors: [
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Olive", "#59634f", "assets/images/olive-green-essential.jpg"],
-        ["Grey", "#666666", "assets/images/silver-grey-essential.jpg"]
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"],
+        ["Grey", "assets/images/silver-grey-essential.jpg"]
       ]
     },
-
 
     {
       category: "shorts",
       name: "China Lakera Short",
-      type: "CHINA LAKERA SHORT",
+      tag: "CHINA LAKERA",
       price: 2300,
       oldPrice: 2600,
-
       colors: [
-        ["Dark Grey", "#414141", "assets/images/premium-brushed-denim-dark-grey.jpg"],
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Grey", "#666666", "assets/images/premium-brushed-denim-grey.jpg"]
+        ["Blue", "assets/images/premium-brushed-denim-blue.jpg"],
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"]
       ]
     },
-
 
     {
       category: "shorts",
       name: "Premium Jersey Short",
-      type: "JERSEY SHORT",
+      tag: "JERSEY SHORT",
       price: 2100,
       oldPrice: 2400,
-
       colors: [
-        ["Jet Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Forest", "#284536", "assets/images/simple-polo-deep-forest-green.jpg"],
-        ["Mocha", "#654936", "assets/images/simple-polo-rich-mocha-brown.jpg"]
+        ["Black", "assets/images/simple-polo-jet-black.jpg"],
+        ["Forest Green", "assets/images/simple-polo-deep-forest-green.jpg"],
+        ["Mocha Brown", "assets/images/simple-polo-rich-mocha-brown.jpg"]
       ]
     },
-
 
     {
       category: "shorts",
       name: "Hosiery Casual Short",
-      type: "HOSIERY CASUAL SHORTS",
+      tag: "HOSIERY CASUAL SHORT",
       price: 2000,
       oldPrice: 2300,
-
       colors: [
-        ["Black", "#111111", "assets/images/jet-black-essential.jpg"],
-        ["Burgundy", "#6e3037", "assets/images/simple-polo-burgendy-wine.jpg"],
-        ["Teal", "#247681", "assets/images/simple-polo-ocean-teal-blue.jpg"]
+        ["Black", "assets/images/jet-black-essential.jpg"],
+        ["Olive", "assets/images/olive-green-essential.jpg"],
+        ["Burgundy", "assets/images/simple-polo-burgendy-wine.jpg"]
       ]
     }
 
   ];
 
 
-  /* =======================================================
+  /* =========================
      CART
-  ======================================================= */
+  ========================= */
 
   let cart = [];
 
-
-  const bagButton =
-    document.getElementById("bagButton");
-
-  const bagCount =
-    document.getElementById("bagCount");
-
-  const cartDrawer =
-    document.getElementById("cartDrawer");
-
-  const closeCart =
-    document.getElementById("closeCart");
-
-  const cartItems =
-    document.getElementById("cartItems");
-
-  const cartTotal =
-    document.getElementById("cartTotal");
-
-  const checkoutButton =
-    document.getElementById("checkoutButton");
-
+  function money(value) {
+    return Number(value).toLocaleString("en-PK");
+  }
 
   function updateCart() {
 
-    const count = cart.reduce(
-      (total, item) => total + item.quantity,
+    const cartItems = $("cartItems");
+    const cartTotal = $("cartTotal");
+    const bagCount = $("bagCount");
+
+    const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
       0
     );
 
     if (bagCount) {
-      bagCount.textContent = count;
+      bagCount.textContent = totalQty;
     }
 
+    if (cartTotal) {
+      cartTotal.textContent = `Rs. ${money(totalPrice)}`;
+    }
 
     if (!cartItems) return;
 
-
     if (!cart.length) {
-
-      cartItems.innerHTML =
-        "<p>Your bag is empty.</p>";
-
-      if (cartTotal) {
-        cartTotal.textContent = "Rs. 0";
-      }
-
+      cartItems.innerHTML = `
+        <div class="empty-cart">
+          <p>Your bag is empty</p>
+        </div>
+      `;
       return;
     }
 
-
-    cartItems.innerHTML = "";
-
-
-    let total = 0;
-
-
-    cart.forEach((item, index) => {
-
-      total +=
-        item.price *
-        item.quantity;
-
-
-      const row =
-        document.createElement("div");
-
-      row.className = "cart-item";
-
-
-      row.innerHTML = `
+    cartItems.innerHTML = cart.map((item, index) => `
+      <div class="cart-item">
 
         <img
-          class="cart-item-image"
           src="${item.image}"
           alt="${item.name}"
+          onerror="this.style.display='none'"
         >
 
         <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p>${item.color} · ${item.size}</p>
+          <strong>Rs. ${money(item.price)}</strong>
 
-          <h4>
-            ${item.name}
-          </h4>
-
-          <p>
-            Colour: ${item.color}<br>
-            Size: ${item.size}<br>
-            Quantity: ${item.quantity}
-          </p>
-
-          <button
-            type="button"
-            class="remove-item"
-            data-index="${index}"
-          >
-            Remove
-          </button>
-
+          <div class="cart-controls">
+            <button data-cart-minus="${index}">−</button>
+            <span>${item.quantity}</span>
+            <button data-cart-plus="${index}">+</button>
+            <button data-cart-remove="${index}" class="remove-item">
+              Remove
+            </button>
+          </div>
         </div>
 
-        <div class="cart-item-price">
-          Rs. ${(item.price * item.quantity).toLocaleString()}
-        </div>
+      </div>
+    `).join("");
 
-      `;
+    cartItems.querySelectorAll("[data-cart-minus]").forEach(button => {
+      button.onclick = () => {
+        const i = Number(button.dataset.cartMinus);
 
+        if (cart[i].quantity > 1) {
+          cart[i].quantity--;
+        } else {
+          cart.splice(i, 1);
+        }
 
-      cartItems.appendChild(row);
-
+        updateCart();
+      };
     });
 
+    cartItems.querySelectorAll("[data-cart-plus]").forEach(button => {
+      button.onclick = () => {
+        const i = Number(button.dataset.cartPlus);
+        cart[i].quantity++;
+        updateCart();
+      };
+    });
 
-    if (cartTotal) {
-
-      cartTotal.textContent =
-        `Rs. ${total.toLocaleString()}`;
-
-    }
-
-
-    cartItems
-      .querySelectorAll(".remove-item")
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            const index =
-              Number(button.dataset.index);
-
-            cart.splice(index, 1);
-
-            updateCart();
-
-          }
-        );
-
-      });
-
+    cartItems.querySelectorAll("[data-cart-remove]").forEach(button => {
+      button.onclick = () => {
+        cart.splice(Number(button.dataset.cartRemove), 1);
+        updateCart();
+      };
+    });
   }
 
 
-  function openCart() {
-
-    cartDrawer?.classList.add("open");
-
-    document.body.classList.add("no-scroll");
-
-  }
-
-
-  function closeCartDrawer() {
-
-    cartDrawer?.classList.remove("open");
-
-    document.body.classList.remove("no-scroll");
-
-  }
-
-
-  bagButton?.addEventListener(
-    "click",
-    openCart
-  );
-
-
-  closeCart?.addEventListener(
-    "click",
-    closeCartDrawer
-  );
-
-
-  cartDrawer?.addEventListener(
-    "click",
-    event => {
-
-      if (event.target === cartDrawer) {
-        closeCartDrawer();
-      }
-
-    }
-  );
-
-
-  /* =======================================================
-     WHATSAPP CHECKOUT
-  ======================================================= */
-
-  checkoutButton?.addEventListener(
-    "click",
-    () => {
-
-      if (!cart.length) {
-
-        showToast(
-          "Your bag is empty"
-        );
-
-        return;
-
-      }
-
-
-      let message =
-        "Assalam-o-Alaikum, I want to place an order from Mehka Garments.%0A%0A";
-
-
-      cart.forEach(item => {
-
-        message +=
-          `Product: ${item.name}%0A` +
-          `Colour: ${item.color}%0A` +
-          `Size: ${item.size}%0A` +
-          `Quantity: ${item.quantity}%0A` +
-          `Price: Rs. ${item.price}%0A%0A`;
-
-      });
-
-
-      const total =
-        cart.reduce(
-          (sum, item) =>
-            sum +
-            item.price *
-            item.quantity,
-          0
-        );
-
-
-      message +=
-        `Total: Rs. ${total}`;
-
-
-      /*
-        CHANGE THIS NUMBER TO YOUR
-        REAL WHATSAPP NUMBER.
-      */
-
-      const whatsappNumber =
-        "923000000000";
-
-
-      window.open(
-        `https://wa.me/${whatsappNumber}?text=${message}`,
-        "_blank"
-      );
-
-    }
-  );
-
-
-  /* =======================================================
+  /* =========================
      TOAST
-  ======================================================= */
-
-  const toast =
-    document.getElementById("toast");
-
+  ========================= */
 
   function showToast(message) {
+
+    const toast = $("toast");
 
     if (!toast) return;
 
     toast.textContent = message;
-
     toast.classList.add("show");
 
+    clearTimeout(window.mehkaToastTimer);
 
-    clearTimeout(
-      window.mehkaToastTimer
-    );
-
-
-    window.mehkaToastTimer =
-      setTimeout(() => {
-
-        toast.classList.remove("show");
-
-      }, 1800);
-
+    window.mehkaToastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2200);
   }
 
 
-  /* =======================================================
-     CREATE PRODUCT CARD
-  ======================================================= */
+  /* =========================
+     IMAGE VIEWER
+  ========================= */
+
+  function openViewer(image, name) {
+
+    const viewer = $("imageViewer");
+    const viewerImage = $("viewerImage");
+
+    if (!viewer || !viewerImage) return;
+
+    viewerImage.src = image;
+    viewerImage.alt = name;
+
+    viewer.classList.add("active");
+    document.body.classList.add("viewer-open");
+  }
+
+
+  function closeViewer() {
+
+    const viewer = $("imageViewer");
+
+    if (!viewer) return;
+
+    viewer.classList.remove("active");
+    document.body.classList.remove("viewer-open");
+  }
+
+
+  /* =========================
+     PRODUCT CARD
+  ========================= */
 
   function createProductCard(product) {
 
-    const card =
-      document.createElement("article");
+    const card = document.createElement("article");
 
+    card.className = "product-card visible";
 
-    card.className =
-      "product-card";
+    let selectedColor = 0;
+    let selectedSize = "M";
+    let quantity = 1;
 
-
-    const firstColor =
-      product.colors[0];
-
+    const firstImage =
+      product.colors[0] ? product.colors[0][1] : "";
 
     card.innerHTML = `
 
-      <div class="product-image">
+      <div class="product-image-wrap">
 
         <img
-          src="${firstColor[2]}"
+          class="product-image"
+          src="${firstImage}"
           alt="${product.name}"
           loading="lazy"
         >
 
-        <span class="image-placeholder">
-          MEHKA GARMENTS
+        <button
+          class="image-view-btn"
+          type="button"
+          aria-label="View ${product.name}"
+        >
+          View
+        </button>
+
+        <span class="product-tag">
+          ${product.tag}
         </span>
 
       </div>
 
-
       <div class="product-info">
 
-        <p class="product-type">
-          ${product.type}
-        </p>
-
-
-        <h3>
-          ${product.name}
-        </h3>
-
-
-        <div class="options">
-
-          <div class="option-label">
-            COLOUR
-          </div>
-
-
-          <div class="colors">
-
-            ${product.colors.map(
-              (color, index) => `
-
-                <button
-                  type="button"
-                  class="color-dot ${
-                    index === 0
-                      ? "active"
-                      : ""
-                  }"
-                  style="background:${color[1]}"
-                  data-color="${color[0]}"
-                  data-image="${color[2]}"
-                  title="${color[0]}"
-                  aria-label="${color[0]}"
-                ></button>
-
-              `
-            ).join("")}
-
-          </div>
-
-
-          <div class="option-label">
-            SIZE
-          </div>
-
-
-          <div class="sizes">
-
-            <button
-              type="button"
-              class="size-btn"
-              data-size="S"
-            >
-              S
-            </button>
-
-            <button
-              type="button"
-              class="size-btn active"
-              data-size="M"
-            >
-              M
-            </button>
-
-            <button
-              type="button"
-              class="size-btn"
-              data-size="L"
-            >
-              L
-            </button>
-
-            <button
-              type="button"
-              class="size-btn"
-              data-size="XL"
-            >
-              XL
-            </button>
-
-          </div>
-
-        </div>
-
+        <h3>${product.name}</h3>
 
         <div class="price-row">
-
-          <span class="old-price">
-            Rs. ${product.oldPrice.toLocaleString()}
+          <span class="price">
+            Rs. ${money(product.price)}
           </span>
 
-          <strong class="price">
-            Rs. ${product.price.toLocaleString()}
-          </strong>
+          <span class="old-price">
+            Rs. ${money(product.oldPrice)}
+          </span>
+        </div>
+
+        <div class="product-option">
+
+          <span class="option-title">Color</span>
+
+          <div class="color-options">
+            ${product.colors.map((color, index) => `
+              <button
+                type="button"
+                class="color-option ${index === 0 ? "selected" : ""}"
+                data-color="${index}"
+                title="${color[0]}"
+              >
+                <img
+                  src="${color[1]}"
+                  alt="${color[0]}"
+                  loading="lazy"
+                >
+              </button>
+            `).join("")}
+          </div>
 
         </div>
 
+        <div class="product-option">
 
-        <div class="quantity">
+          <span class="option-title">Size</span>
 
-          <span class="option-label">
-            QUANTITY
-          </span>
+          <div class="size-options">
+            ${["S", "M", "L", "XL"].map(size => `
+              <button
+                type="button"
+                class="size-option ${size === "M" ? "selected" : ""}"
+                data-size="${size}"
+              >
+                ${size}
+              </button>
+            `).join("")}
+          </div>
 
+        </div>
 
-          <div class="quantity-controls">
+        <div class="product-bottom">
 
-            <button
-              type="button"
-              class="qty-minus"
-            >
+          <div class="quantity-control">
+
+            <button type="button" class="qty-minus">
               −
             </button>
 
@@ -831,581 +532,377 @@ document.addEventListener("DOMContentLoaded", () => {
               1
             </span>
 
-            <button
-              type="button"
-              class="qty-plus"
-            >
+            <button type="button" class="qty-plus">
               +
             </button>
 
           </div>
 
+          <button
+            type="button"
+            class="add-to-bag"
+          >
+            Add to Bag
+          </button>
+
         </div>
 
-
-        <button
-          type="button"
-          class="add-button"
-        >
-          Add to Bag
-        </button>
-
       </div>
-
     `;
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+    /* IMAGE */
 
-    const image =
-      card.querySelector(
-        ".product-image img"
-      );
+    const image = card.querySelector(".product-image");
 
-
-    const colorButtons =
-      card.querySelectorAll(
-        ".color-dot"
-      );
+    image.addEventListener("error", () => {
+      image.style.opacity = "0.35";
+    });
 
 
-    const sizeButtons =
-      card.querySelectorAll(
-        ".size-btn"
-      );
+    /* COLOR */
+
+    card.querySelectorAll("[data-color]").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedColor = Number(button.dataset.color);
+
+        card.querySelectorAll("[data-color]").forEach(btn => {
+          btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+
+        image.src = product.colors[selectedColor][1];
+      });
+
+    });
 
 
-    const qtyValue =
-      card.querySelector(
-        ".qty-value"
-      );
+    /* SIZE */
+
+    card.querySelectorAll("[data-size]").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedSize = button.dataset.size;
+
+        card.querySelectorAll("[data-size]").forEach(btn => {
+          btn.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+      });
+
+    });
 
 
-    const minus =
-      card.querySelector(
-        ".qty-minus"
-      );
+    /* QUANTITY */
+
+    const qtyValue = card.querySelector(".qty-value");
+
+    card.querySelector(".qty-minus").addEventListener("click", () => {
+
+      if (quantity > 1) {
+        quantity--;
+        qtyValue.textContent = quantity;
+      }
+
+    });
 
 
-    const plus =
-      card.querySelector(
-        ".qty-plus"
-      );
+    card.querySelector(".qty-plus").addEventListener("click", () => {
+
+      if (quantity < 20) {
+        quantity++;
+        qtyValue.textContent = quantity;
+      }
+
+    });
 
 
-    const addButton =
-      card.querySelector(
-        ".add-button"
-      );
+    /* VIEW IMAGE */
 
+    card.querySelector(".image-view-btn").addEventListener("click", () => {
 
-    let quantity = 1;
-
-    let selectedColor =
-      firstColor[0];
-
-    let selectedSize = "M";
-
-
-    /* =====================================================
-       PROTECT IMAGE
-    ===================================================== */
-
-    protectImage(image);
-
-
-    /* =====================================================
-       COLOUR
-    ===================================================== */
-
-    colorButtons.forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          colorButtons.forEach(
-            item =>
-              item.classList.remove(
-                "active"
-              )
-          );
-
-
-          button.classList.add(
-            "active"
-          );
-
-
-          selectedColor =
-            button.dataset.color;
-
-
-          const newImage =
-            button.dataset.image;
-
-
-          if (image && newImage) {
-
-            image.style.opacity = "0";
-
-
-            const temp =
-              new Image();
-
-
-            temp.onload = () => {
-
-              image.src =
-                newImage;
-
-              image.style.opacity =
-                "1";
-
-            };
-
-
-            temp.onerror = () => {
-
-              image.style.opacity =
-                "1";
-
-            };
-
-
-            temp.src =
-              newImage;
-
-          }
-
-        }
+      openViewer(
+        product.colors[selectedColor][1],
+        product.name
       );
 
     });
 
 
-    /* =====================================================
-       SIZE
-    ===================================================== */
+    /* ADD TO BAG */
 
-    sizeButtons.forEach(button => {
+    card.querySelector(".add-to-bag").addEventListener("click", () => {
 
-      button.addEventListener(
-        "click",
-        () => {
+      const color = product.colors[selectedColor][0];
+      const imageSrc = product.colors[selectedColor][1];
 
-          sizeButtons.forEach(
-            item =>
-              item.classList.remove(
-                "active"
-              )
-          );
-
-
-          button.classList.add(
-            "active"
-          );
-
-
-          selectedSize =
-            button.dataset.size;
-
-        }
+      const existing = cart.find(item =>
+        item.name === product.name &&
+        item.color === color &&
+        item.size === selectedSize
       );
 
+      if (existing) {
+        existing.quantity += quantity;
+      } else {
+        cart.push({
+          name: product.name,
+          price: product.price,
+          color,
+          size: selectedSize,
+          quantity,
+          image: imageSrc
+        });
+      }
+
+      updateCart();
+
+      showToast(`${product.name} added to bag`);
+
+      const drawer = $("cartDrawer");
+
+      if (drawer) {
+        drawer.classList.add("active");
+      }
+
     });
-
-
-    /* =====================================================
-       QUANTITY
-    ===================================================== */
-
-    minus?.addEventListener(
-      "click",
-      () => {
-
-        if (quantity > 1) {
-
-          quantity--;
-
-          qtyValue.textContent =
-            quantity;
-
-        }
-
-      }
-    );
-
-
-    plus?.addEventListener(
-      "click",
-      () => {
-
-        if (quantity < 20) {
-
-          quantity++;
-
-          qtyValue.textContent =
-            quantity;
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       ADD TO BAG
-    ===================================================== */
-
-    addButton?.addEventListener(
-      "click",
-      () => {
-
-        const existing =
-          cart.find(item =>
-            item.name === product.name &&
-            item.color === selectedColor &&
-            item.size === selectedSize
-          );
-
-
-        if (existing) {
-
-          existing.quantity +=
-            quantity;
-
-        } else {
-
-          cart.push({
-
-            name:
-              product.name,
-
-            color:
-              selectedColor,
-
-            size:
-              selectedSize,
-
-            quantity:
-              quantity,
-
-            price:
-              product.price,
-
-            image:
-              image?.src ||
-              firstColor[2]
-
-          });
-
-        }
-
-
-        updateCart();
-
-        showToast(
-          `${product.name} added to bag`
-        );
-
-
-        addButton.textContent =
-          "Added ✓";
-
-
-        setTimeout(() => {
-
-          addButton.textContent =
-            "Add to Bag";
-
-        }, 1300);
-
-      }
-    );
-
-
-    /* =====================================================
-       IMAGE VIEWER
-    ===================================================== */
-
-    image?.addEventListener(
-      "click",
-      () => {
-
-        const viewer =
-          document.getElementById(
-            "imageViewer"
-          );
-
-        const viewerImage =
-          document.getElementById(
-            "viewerImage"
-          );
-
-
-        if (!viewer || !viewerImage)
-          return;
-
-
-        viewerImage.src =
-          image.src;
-
-
-        viewerImage.alt =
-          product.name;
-
-
-        viewer.classList.add(
-          "open"
-        );
-
-
-        viewer.setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
-      }
-    );
 
 
     return card;
+  }
+
+
+  /* =========================
+     RENDER PRODUCTS
+  ========================= */
+
+  function renderProducts() {
+
+    const grids = {
+      shirts: $("shirtsGrid"),
+      pants: $("pantsGrid"),
+      trousers: $("trousersGrid"),
+      shorts: $("shortsGrid")
+    };
+
+    Object.values(grids).forEach(grid => {
+      if (grid) {
+        grid.innerHTML = "";
+      }
+    });
+
+    products.forEach(product => {
+
+      const grid = grids[product.category];
+
+      if (!grid) return;
+
+      try {
+        grid.appendChild(createProductCard(product));
+      } catch (error) {
+        console.error(
+          "Product render error:",
+          product.name,
+          error
+        );
+      }
+
+    });
+
+    console.log(
+      `MEHKA GARMENTS: ${products.length} products rendered.`
+    );
+  }
+
+
+  /* =========================
+     CART DRAWER
+  ========================= */
+
+  const bagButton = $("bagButton");
+  const cartDrawer = $("cartDrawer");
+  const closeCart = $("closeCart");
+
+  if (bagButton && cartDrawer) {
+
+    bagButton.addEventListener("click", () => {
+      cartDrawer.classList.add("active");
+    });
+
+  }
+
+  if (closeCart && cartDrawer) {
+
+    closeCart.addEventListener("click", () => {
+      cartDrawer.classList.remove("active");
+    });
 
   }
 
 
-  /* =======================================================
-     RENDER ALL PRODUCTS
-  ======================================================= */
+  /* =========================
+     CHECKOUT WHATSAPP
+  ========================= */
 
-  const grids = {
+  const checkoutButton = $("checkoutButton");
 
-    shirts:
-      document.getElementById(
-        "shirtsGrid"
-      ),
+  if (checkoutButton) {
 
-    pants:
-      document.getElementById(
-        "pantsGrid"
-      ),
+    checkoutButton.addEventListener("click", () => {
 
-    trousers:
-      document.getElementById(
-        "trousersGrid"
-      ),
+      if (!cart.length) {
+        showToast("Your bag is empty");
+        return;
+      }
 
-    shorts:
-      document.getElementById(
-        "shortsGrid"
-      )
+      const whatsappNumber = "923000000000";
 
-  };
+      let message =
+        "Assalam o Alaikum Mehka Garments,%0A%0A" +
+        "I want to place an order:%0A%0A";
+
+      cart.forEach((item, index) => {
+
+        message +=
+          `${index + 1}. ${item.name}%0A` +
+          `Color: ${item.color}%0A` +
+          `Size: ${item.size}%0A` +
+          `Quantity: ${item.quantity}%0A` +
+          `Price: Rs. ${money(item.price * item.quantity)}%0A%0A`;
+
+      });
+
+      const total = cart.reduce(
+        (sum, item) =>
+          sum + item.price * item.quantity,
+        0
+      );
+
+      message +=
+        `Total: Rs. ${money(total)}%0A%0A` +
+        "Please confirm my order.";
+
+      window.open(
+        `https://wa.me/${whatsappNumber}?text=${message}`,
+        "_blank"
+      );
+
+    });
+
+  }
 
 
-  Object.values(grids)
-    .forEach(grid => {
+  /* =========================
+     IMAGE VIEWER CLOSE
+  ========================= */
 
-      if (grid) {
-        grid.innerHTML = "";
+  const closeViewerButton = $("closeViewer");
+
+  if (closeViewerButton) {
+    closeViewerButton.addEventListener(
+      "click",
+      closeViewer
+    );
+  }
+
+  const viewer = $("imageViewer");
+
+  if (viewer) {
+
+    viewer.addEventListener("click", event => {
+
+      if (event.target === viewer) {
+        closeViewer();
       }
 
     });
 
-
-  products.forEach(product => {
-
-    const grid =
-      grids[product.category];
+  }
 
 
-    if (grid) {
+  document.addEventListener("keydown", event => {
 
-      grid.appendChild(
-        createProductCard(product)
-      );
+    if (event.key === "Escape") {
+      closeViewer();
 
+      if (cartDrawer) {
+        cartDrawer.classList.remove("active");
+      }
     }
 
   });
 
 
-  /* =======================================================
-     IMAGE VIEWER CLOSE
-  ======================================================= */
+  /* =========================
+     HEADER SCROLL
+  ========================= */
 
-  const viewer =
-    document.getElementById(
-      "imageViewer"
-    );
+  const header = $("siteHeader");
 
-  const closeViewer =
-    document.getElementById(
-      "closeViewer"
-    );
+  window.addEventListener(
+    "scroll",
+    () => {
 
+      if (!header) return;
 
-  function closeImageViewer() {
-
-    viewer?.classList.remove(
-      "open"
-    );
-
-    viewer?.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-  }
-
-
-  closeViewer?.addEventListener(
-    "click",
-    closeImageViewer
-  );
-
-
-  viewer?.addEventListener(
-    "click",
-    event => {
-
-      if (event.target === viewer) {
-        closeImageViewer();
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
       }
 
-    }
+    },
+    { passive: true }
   );
 
 
-  /* =======================================================
-     ESCAPE
-  ======================================================= */
+  /* =========================
+     HERO VIDEO
+  ========================= */
 
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (event.key === "Escape") {
-
-        closeCartDrawer();
-
-        closeImageViewer();
-
-      }
-
-    }
-  );
-
-
-  /* =======================================================
-     HERO VIDEO — SAFE
-  ======================================================= */
-
-  const heroVideo =
-    document.getElementById(
-      "heroVideo"
-    );
-
+  const heroVideo = $("heroVideo");
 
   if (heroVideo) {
 
     heroVideo.muted = true;
 
-
-    heroVideo
-      .play()
-      .catch(() => {
-        /*
-          Video unavailable or autoplay blocked.
-          Website continues normally.
-        */
-      });
-
-
-    heroVideo.addEventListener(
-      "error",
-      () => {
-
-        heroVideo.style.display =
-          "none";
-
-      }
-    );
+    heroVideo.play().catch(() => {
+      console.log("Hero video autoplay waiting for browser.");
+    });
 
   }
 
 
-  /* =======================================================
-     REVEAL ANIMATION
-  ======================================================= */
+  /* =========================
+     PAGE LOADER
+  ========================= */
 
-  const revealElements =
-    document.querySelectorAll(
-      ".reveal, .product-card"
-    );
+  window.addEventListener("load", () => {
 
+    const loader = $("pageLoader");
 
-  if (
-    "IntersectionObserver"
-    in window
-  ) {
+    if (loader) {
+      loader.classList.add("hidden");
 
-    const observer =
-      new IntersectionObserver(
-        entries => {
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 700);
+    }
 
-          entries.forEach(entry => {
-
-            if (
-              entry.isIntersecting
-            ) {
-
-              entry.target.classList.add(
-                "visible"
-              );
+  });
 
 
-              observer.unobserve(
-                entry.target
-              );
+  /* =========================
+     INITIALIZE
+  ========================= */
 
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.08
-        }
-      );
-
-
-    revealElements.forEach(
-      element =>
-        observer.observe(element)
-    );
-
-  } else {
-
-    revealElements.forEach(
-      element =>
-        element.classList.add(
-          "visible"
-        )
-    );
-
-  }
-
-
-  /* =======================================================
-     INITIAL CART
-  ======================================================= */
-
+  renderProducts();
   updateCart();
-
 
   console.log(
     "MEHKA GARMENTS — WEBSITE READY"
