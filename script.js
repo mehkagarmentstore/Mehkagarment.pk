@@ -1,3248 +1,898 @@
 /* =========================================================
-   MEHKA GARMENTS — script.js
-   ORGANIZED + FIXED IMAGE MAPPING
-   ========================================================= */
-
-(function () {
-  "use strict";
-
-  /* =========================================================
-     1. CONFIGURATION
-     ========================================================= */
-
-  const CONFIG = {
-    brand: "MEHKA GARMENTS",
-    currency: "Rs.",
-
-    contact: {
-      email: "EMAIL_HERE",
-      phone: "PHONE_HERE",
-      whatsappNumber: "WHATSAPP_NUMBER_HERE",
-      address: "SHOP_ADDRESS_HERE"
-    },
-
-    storageKeys: {
-      cart: "mehka_cart_v1",
-      reactions: "mehka_reactions_v1"
-    },
-
-    /* EXACT GitHub folder */
-    imageBase: "assets/images/"
-  };
-
-
-  /* =========================================================
-     2. IMAGE FILES
-     =========================================================
-     IMPORTANT:
-     These names are EXACTLY the filenames you provided.
-     Do not change capitalization/spelling.
-     ========================================================= */
-
-  const IMAGES = {
-    /* ---------- FORMAL SHIRTS ---------- */
-    formalWhite: "signature-formal-shirt-white.jpg",
-    formalBlack: "signature-formal-shirt-black.jpg",
-    formalOlive: "signature-formal-shirt-olive.jpg",
-    formalSkyBlue: "signature-formal-shirt-sky-blue.jpg",
-
-    /* ---------- CHECK SHIRTS ---------- */
-    checkBlackIvory: "premium-check-shirt-black-ivory-stripe.jpg",
-    checkIvorySand: "premium-check-shirt-ivory-sand.jpg",
-    checkMidnightNavy: "premium-check-shirt-midnight-navy.jpg",
-    checkNavyBurgundy: "premium-check-shirt-navy-burgundy.jpg",
-    checkSlateBlue: "premium-check-shirt-slate-blue.jpg",
-
-    /* ---------- SIMPLE POLO ---------- */
-    poloBurgundy: "simple-polo-burgendy-wine.jpg",
-    poloForest: "simple-polo-deep-forest-green.jpg",
-    poloBlack: "simple-polo-jet-black.jpg",
-    poloTeal: "simple-polo-ocean-teal-blue.jpg",
-    poloMocha: "simple-polo-rich-mocha-brown.jpg",
-
-    /* ---------- STRIPE POLOS ---------- */
-    classicContrast: "classic-contrast-polo.jpg",
-    executiveStripe: "executive-stripe-polo.jpg",
-    heritageStripe: "heritage-stripe-polo.jpg",
-    signatureStripe: "signature-stripe-polo.jpg",
-    urbanLuxeStripe: "urban-luxe-stripe-polo.jpg",
-
-    /* ---------- COLLAR T-SHIRTS ---------- */
-    collarBlack: "essential-collar-tshirt-black.jpeg",
-    collarBrown: "essential-collar-tshirt-mocha-brown.jpg",
-    collarNavy: "essential-collar-tshirt-navy-blue.jpg",
-    collarGreen: "essential-collar-tshirt-sage-green.jpg",
-    collarWhite: "essential-collar-tshirt-white.jpg",
-
-    /* ---------- ESSENTIALS ---------- */
-    jetBlackEssential: "jet-black-essential.jpg",
-    oliveEssential: "olive-green-essential.jpg",
-    lightGreyEssential: "poder-light-grey.jpg",
-    silverGreyEssential: "silver-grey-essential.jpg",
-
-    /* ---------- BRUSHED DENIM ---------- */
-    brushedBlue: "primium-brushed-denim-blue.jpg",
-    brushedDarkBlue: "primium-brushed-denim-dark-blue.jpg",
-    brushedDarkGrey: "primium-brushed-denim-dark-grey.jpg",
-    brushedGrey: "primium-brushed-denim-grey.jpg",
-    brushedLightBlue: "primium-brushed-denim-light-blue.jpg"
-  };
-
-
-  /* =========================================================
-     3. PRODUCT DATA
-     ========================================================= */
-
-  const SIZE_SET_STANDARD = ["S", "M", "L", "XL"];
-
-  const PRODUCTS = [
-
-    /* =====================================================
-       SHIRTS & T-SHIRTS
-       ===================================================== */
-
-    {
-      id: "simple-formal-shirt",
-      name: "Simple Formal Shirt",
-      category: "shirts",
-      price: 3200,
-      salePrice: 2499,
-      image: IMAGES.formalWhite,
-
-      description:
-        "A premium formal shirt with a clean modern fit, comfortable fabric and an elegant everyday finish.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "White",
-          hex: "#f5f3ee",
-          image: IMAGES.formalWhite
-        },
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.formalBlack
-        },
-        {
-          name: "Olive",
-          hex: "#5c6044",
-          image: IMAGES.formalOlive
-        },
-        {
-          name: "Sky Blue",
-          hex: "#a9c4d8",
-          image: IMAGES.formalSkyBlue
-        }
-      ]
-    },
-
-
-    {
-      id: "simple-check-shirt",
-      name: "Simple Check Shirt",
-      category: "shirts",
-      price: 3600,
-      salePrice: 2799,
-
-      image: IMAGES.checkBlackIvory,
-
-      description:
-        "A premium check shirt designed for a refined casual look with a comfortable modern fit.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Black / Ivory",
-          pattern: "check",
-          hex: "#3a382f",
-          image: IMAGES.checkBlackIvory
-        },
-        {
-          name: "Ivory / Sand",
-          pattern: "check",
-          hex: "#c8b99c",
-          image: IMAGES.checkIvorySand
-        },
-        {
-          name: "Midnight Navy",
-          pattern: "check",
-          hex: "#28344a",
-          image: IMAGES.checkMidnightNavy
-        },
-        {
-          name: "Navy / Burgundy",
-          pattern: "check",
-          hex: "#30384d",
-          image: IMAGES.checkNavyBurgundy
-        },
-        {
-          name: "Slate Blue",
-          pattern: "check",
-          hex: "#65768a",
-          image: IMAGES.checkSlateBlue
-        }
-      ]
-    },
-
-
-    {
-      id: "simple-polo",
-      name: "Simple Polo",
-      category: "shirts",
-      price: 2600,
-      salePrice: 1999,
-
-      image: IMAGES.poloBlack,
-
-      description:
-        "A premium everyday polo with a clean silhouette, soft feel and modern men's fashion finish.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Jet Black",
-          hex: "#171717",
-          image: IMAGES.poloBlack
-        },
-        {
-          name: "Burgundy Wine",
-          hex: "#641f2c",
-          image: IMAGES.poloBurgundy
-        },
-        {
-          name: "Deep Forest Green",
-          hex: "#294838",
-          image: IMAGES.poloForest
-        },
-        {
-          name: "Ocean Teal Blue",
-          hex: "#1f5960",
-          image: IMAGES.poloTeal
-        },
-        {
-          name: "Rich Mocha Brown",
-          hex: "#634a3b",
-          image: IMAGES.poloMocha
-        }
-      ]
-    },
-
-
-    {
-      id: "polo-stripe-color",
-      name: "Polo Stripe Color",
-      category: "shirts",
-      price: 2900,
-      salePrice: 2199,
-
-      image: IMAGES.classicContrast,
-
-      description:
-        "A premium striped polo collection with a modern sporty-luxury appearance.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Classic Contrast",
-          pattern: "stripe",
-          s1: "#28344a",
-          s2: "#f2efe6",
-          image: IMAGES.classicContrast
-        },
-        {
-          name: "Executive Stripe",
-          pattern: "stripe",
-          s1: "#222222",
-          s2: "#a9a9a9",
-          image: IMAGES.executiveStripe
-        },
-        {
-          name: "Heritage Stripe",
-          pattern: "stripe",
-          s1: "#3e352d",
-          s2: "#d2c3a7",
-          image: IMAGES.heritageStripe
-        },
-        {
-          name: "Signature Stripe",
-          pattern: "stripe",
-          s1: "#25334a",
-          s2: "#e6e0d2",
-          image: IMAGES.signatureStripe
-        },
-        {
-          name: "Urban Luxe Stripe",
-          pattern: "stripe",
-          s1: "#262626",
-          s2: "#777777",
-          image: IMAGES.urbanLuxeStripe
-        }
-      ]
-    },
-
-
-    {
-      id: "simple-collar-tshirt",
-      name: "Simple Collar T-Shirt",
-      category: "shirts",
-      price: 2400,
-      salePrice: 1799,
-
-      image: IMAGES.collarWhite,
-
-      description:
-        "A clean collar T-shirt combining the comfort of a tee with a smart premium appearance.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "White",
-          hex: "#f5f3ee",
-          image: IMAGES.collarWhite
-        },
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.collarBlack
-        },
-        {
-          name: "Mocha Brown",
-          hex: "#684b3c",
-          image: IMAGES.collarBrown
-        },
-        {
-          name: "Navy Blue",
-          hex: "#293953",
-          image: IMAGES.collarNavy
-        },
-        {
-          name: "Sage Green",
-          hex: "#84927a",
-          image: IMAGES.collarGreen
-        }
-      ]
-    },
-
-
-    /* =====================================================
-       PANTS
-       ===================================================== */
-
-    {
-      id: "cotton-pant",
-      name: "Cotton Pant",
-      category: "pants",
-      price: 3800,
-      salePrice: 2999,
-
-      /* No matching cotton-pant file supplied */
-      image: IMAGES.lightGreyEssential,
-
-      description:
-        "A clean everyday cotton pant with a comfortable modern fit.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Light Grey",
-          hex: "#aaa79c",
-          image: IMAGES.lightGreyEssential
-        },
-        {
-          name: "Olive Green",
-          hex: "#5c6044",
-          image: IMAGES.oliveEssential
-        },
-        {
-          name: "Jet Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        },
-        {
-          name: "Silver Grey",
-          hex: "#a6a6a0",
-          image: IMAGES.silverGreyEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "formal-washing-wear",
-      name: "Formal Washing Wear",
-      category: "pants",
-      price: 4000,
-      salePrice: 3199,
-
-      image: IMAGES.silverGreyEssential,
-
-      description:
-        "A refined washing-wear style designed for a smart formal appearance.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Silver Grey",
-          hex: "#a6a6a0",
-          image: IMAGES.silverGreyEssential
-        },
-        {
-          name: "Light Grey",
-          hex: "#aaa79c",
-          image: IMAGES.lightGreyEssential
-        },
-        {
-          name: "Jet Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "simple-denim",
-      name: "Simple Denim",
-      category: "pants",
-      price: 4500,
-      salePrice: 3499,
-
-      image: IMAGES.brushedBlue,
-
-      description:
-        "A versatile denim with a clean modern appearance for everyday wear.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Blue",
-          hex: "#405776",
-          image: IMAGES.brushedBlue
-        },
-        {
-          name: "Dark Blue",
-          hex: "#26374f",
-          image: IMAGES.brushedDarkBlue
-        }
-      ]
-    },
-
-
-    {
-      id: "brushed-denim",
-      name: "Brushed Denim",
-      category: "pants",
-      price: 4700,
-      salePrice: 3699,
-
-      image: IMAGES.brushedBlue,
-
-      description:
-        "Soft brushed denim with a premium finish and comfortable everyday fit.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Light Blue",
-          hex: "#8da0b5",
-          image: IMAGES.brushedLightBlue
-        },
-        {
-          name: "Blue",
-          hex: "#405776",
-          image: IMAGES.brushedBlue
-        },
-        {
-          name: "Dark Blue",
-          hex: "#26374f",
-          image: IMAGES.brushedDarkBlue
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.brushedGrey
-        },
-        {
-          name: "Dark Grey",
-          hex: "#3d4142",
-          image: IMAGES.brushedDarkGrey
-        }
-      ]
-    },
-
-
-    {
-      id: "simple-straight-denim",
-      name: "Simple Straight Denim",
-      category: "pants",
-      price: 4600,
-      salePrice: 3599,
-
-      image: IMAGES.brushedDarkBlue,
-
-      description:
-        "A clean straight denim designed for a timeless modern fit.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Dark Blue",
-          hex: "#26374f",
-          image: IMAGES.brushedDarkBlue
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.brushedGrey
-        }
-      ]
-    },
-
-
-    /* =====================================================
-       TROUSERS
-       ===================================================== */
-
-    {
-      id: "casual-trouser",
-      name: "Casual Trouser",
-      category: "trousers",
-      price: 3700,
-      salePrice: 2899,
-
-      image: IMAGES.oliveEssential,
-
-      description:
-        "A relaxed premium trouser with a clean modern silhouette.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Olive Green",
-          hex: "#5c6044",
-          image: IMAGES.oliveEssential
-        },
-        {
-          name: "Jet Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        },
-        {
-          name: "Light Grey",
-          hex: "#aaa79c",
-          image: IMAGES.lightGreyEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "china-necked-trouser",
-      name: "China Necked Trouser",
-      category: "trousers",
-      price: 3900,
-      salePrice: 3099,
-
-      image: IMAGES.lightGreyEssential,
-
-      description:
-        "A clean and refined trouser style for smart casual dressing.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Light Grey",
-          hex: "#aaa79c",
-          image: IMAGES.lightGreyEssential
-        },
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "maggi-trouser",
-      name: "Maggi Trouser",
-      category: "trousers",
-      price: 3600,
-      salePrice: 2799,
-
-      image: IMAGES.oliveEssential,
-
-      description:
-        "A comfortable everyday trouser with a lightweight modern appearance.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Olive Green",
-          hex: "#5c6044",
-          image: IMAGES.oliveEssential
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.silverGreyEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "korean-trouser",
-      name: "Korean Trouser",
-      category: "trousers",
-      price: 4100,
-      salePrice: 3199,
-
-      image: IMAGES.jetBlackEssential,
-
-      description:
-        "A modern tapered trouser with a clean Korean-inspired silhouette.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.silverGreyEssential
-        }
-      ]
-    },
-
-
-    /* =====================================================
-       SHORTS
-       ===================================================== */
-
-    {
-      id: "cotton-short",
-      name: "Cotton Short",
-      category: "shorts",
-      price: 2200,
-      salePrice: 1699,
-
-      image: IMAGES.poloBlack,
-
-      description:
-        "A clean casual short designed for comfort and warm-weather styling.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.poloBlack
-        },
-        {
-          name: "Olive",
-          hex: "#5c6044",
-          image: IMAGES.oliveEssential
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.silverGreyEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "china-lekra-short",
-      name: "China Lekra Short",
-      category: "shorts",
-      price: 2300,
-      salePrice: 1799,
-
-      image: IMAGES.lightGreyEssential,
-
-      description:
-        "A comfortable stretch-style casual short for everyday movement.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Light Grey",
-          hex: "#aaa79c",
-          image: IMAGES.lightGreyEssential
-        },
-        {
-          name: "Olive",
-          hex: "#5c6044",
-          image: IMAGES.oliveEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "jersey-short",
-      name: "Jersey Short",
-      category: "shorts",
-      price: 2100,
-      salePrice: 1599,
-
-      image: IMAGES.jetBlackEssential,
-
-      description:
-        "A soft jersey short made for relaxed everyday comfort.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        },
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.silverGreyEssential
-        }
-      ]
-    },
-
-
-    {
-      id: "hosiery-casual-shorts",
-      name: "Hosiery Casual Shorts",
-      category: "shorts",
-      price: 1999,
-      salePrice: 1499,
-
-      image: IMAGES.silverGreyEssential,
-
-      description:
-        "A soft casual short with an easy fit for everyday wear.",
-
-      sizes: SIZE_SET_STANDARD,
-
-      colors: [
-        {
-          name: "Grey",
-          hex: "#777875",
-          image: IMAGES.silverGreyEssential
-        },
-        {
-          name: "Black",
-          hex: "#171717",
-          image: IMAGES.jetBlackEssential
-        }
-      ]
-    }
-
-  ];
-
-
-  /* =========================================================
-     4. CATEGORY LABELS
-     ========================================================= */
-
-  const CATEGORY_LABELS = {
-    shirts: "Shirts & T-Shirts",
-    pants: "Pants",
-    trousers: "Trousers",
-    shorts: "Shorts"
-  };
-
-
-  /* =========================================================
-     5. DOM REFERENCES
-     ========================================================= */
-
-  const $ = (selector, context) =>
-    (context || document).querySelector(selector);
-
-  const $all = (selector, context) =>
-    Array.from((context || document).querySelectorAll(selector));
-
-  const dom = {
-    preloader: $("#preloader"),
-    header: $("#siteHeader"),
-
-    menuToggle: $("#menuToggle"),
-    mobileNav: $("#mobileNav"),
-    overlay: $("#overlay"),
-
-    searchToggle: $("#searchToggle"),
-    searchBar: $("#searchBar"),
-    searchInput: $("#searchInput"),
-    searchClose: $("#searchClose"),
-
-    cartToggle: $("#cartToggle"),
-    cartCount: $("#cartCount"),
-    cartDrawer: $("#cartDrawer"),
-    cartClose: $("#cartClose"),
-    cartItems: $("#cartItems"),
-    cartEmpty: $("#cartEmpty"),
-    cartSummary: $("#cartSummary"),
-    cartTotalQty: $("#cartTotalQty"),
-    cartTotalPrice: $("#cartTotalPrice"),
-
-    featuredGrid: $("#featuredGrid"),
-    shirtsGrid: $("#shirtsGrid"),
-    pantsGrid: $("#pantsGrid"),
-    trousersGrid: $("#trousersGrid"),
-    shortsGrid: $("#shortsGrid"),
-
-    emptyState: $("#emptyState"),
-    filterBar: $(".filter-bar"),
-
-    modal: $("#productModal"),
-    modalClose: $("#modalClose"),
-    modalImage: $("#modalImage"),
-    modalCategory: $("#modalCategory"),
-    modalTitle: $("#modalTitle"),
-    modalOldPrice: $("#modalOldPrice"),
-    modalSalePrice: $("#modalSalePrice"),
-    modalDesc: $("#modalDesc"),
-    modalColors: $("#modalColors"),
-    modalColorName: $("#modalColorName"),
-    modalSizes: $("#modalSizes"),
-    modalQtyValue: $("#modalQtyValue"),
-    modalQty: $("#modalQty"),
-    modalAddToCart: $("#modalAddToCart"),
-    modalLike: $("#modalLike"),
-    modalDislike: $("#modalDislike"),
-    modalLikeCount: $("#modalLikeCount"),
-    modalDislikeCount: $("#modalDislikeCount"),
-
-    toast: $("#toast"),
-
-    orderForm: $("#orderForm"),
-    orderFormError: $("#orderFormError"),
-
-    contactEmail: $("#contactEmail"),
-    contactEmailValue: $("#contactEmailValue"),
-
-    contactPhone: $("#contactPhone"),
-    contactPhoneValue: $("#contactPhoneValue"),
-
-    contactWhatsapp: $("#contactWhatsapp"),
-    contactWhatsappValue: $("#contactWhatsappValue"),
-
-    contactAddressValue: $("#contactAddressValue"),
-
-    footerEmail: $("#footerEmail"),
-    footerPhone: $("#footerPhone"),
-
-    backToTop: $("#backToTop"),
-    scrollCue: $("#scrollCue"),
-
-    heroContent: $("#heroContent"),
-    hero: $("#hero"),
-
-    year: $("#year")
-  };
-
-
-  /* =========================================================
-     6. UTILITIES
-     ========================================================= */
-
-  function safe(fn, fallback) {
-    try {
-      return fn();
-    } catch (error) {
-      console.warn("MEHKA handled error:", error);
-
-      if (typeof fallback === "function") {
-        return fallback(error);
-      }
-
-      return fallback;
-    }
+   MEHKA GARMENTS — FINAL PRODUCT SCRIPT
+   Images: assets/images/
+========================================================= */
+
+const CONFIG = {
+  imageBase: "assets/images/",
+  heroVideo: "assets/videos/hero_video.mp4",
+
+  contact: {
+    email: "EMAIL_HERE",
+    phone: "PHONE_HERE",
+    whatsapp: "WHATSAPP_NUMBER_HERE",
+    address: "SHOP_ADDRESS_HERE"
+  }
+};
+
+/* =========================================================
+   EXACT IMAGE FILES FROM YOUR GITHUB FOLDER
+========================================================= */
+
+const IMAGES = {
+  formalWhite: "signature-formal-shirt-white.jpg",
+  formalBlack: "signature-formal-shirt-black.jpg",
+  formalOlive: "signature-formal-shirt-olive.jpg",
+  formalSky: "signature-formal-shirt-sky-blue.jpg",
+
+  checkBlack: "premium-check-shirt-black-ivory-stripe.jpg",
+  checkIvory: "premium-check-shirt-ivory-sand.jpg",
+  checkNavy: "premium-check-shirt-midnight-navy.jpg",
+  checkBurgundy: "premium-check-shirt-navy-burgundy.jpg",
+  checkSlate: "premium-check-shirt-slate-blue.jpg",
+
+  poloBlack: "simple-polo-jet-black.jpg",
+  poloWine: "simple-polo-burgendy-wine.jpg",
+  poloGreen: "simple-polo-deep-forest-green.jpg",
+  poloTeal: "simple-polo-ocean-teal-blue.jpg",
+  poloBrown: "simple-polo-rich-mocha-brown.jpg",
+
+  stripeClassic: "classic-contrast-polo.jpg",
+  stripeExecutive: "executive-stripe-polo.jpg",
+  stripeHeritage: "heritage-stripe-polo.jpg",
+  stripeSignature: "signature-stripe-polo.jpg",
+  stripeUrban: "urban-luxe-stripe-polo.jpg",
+
+  tshirtWhite: "essential-collar-tshirt-white.jpg",
+  tshirtBlack: "essential-collar-tshirt-black.jpeg",
+  tshirtBrown: "essential-collar-tshirt-mocha-brown.jpg",
+  tshirtNavy: "essential-collar-tshirt-navy-blue.jpg",
+  tshirtGreen: "essential-collar-tshirt-sage-green.jpg",
+
+  denimBlue: "primium-brushed-denim-blue.jpg",
+  denimDarkBlue: "primium-brushed-denim-dark-blue.jpg",
+  denimDarkGrey: "primium-brushed-denim-dark-grey.jpg",
+  denimGrey: "primium-brushed-denim-grey.jpg",
+  denimLightBlue: "primium-brushed-denim-light-blue.jpg",
+
+  essentialBlack: "jet-black-essential.jpg",
+  essentialOlive: "olive-green-essential.jpg",
+  essentialGrey: "poder-light-grey.jpg",
+  essentialSilver: "silver-grey-essential.jpg"
+};
+
+function image(filename) {
+  return CONFIG.imageBase + filename;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+const PRODUCTS = [
+
+  /* ---------------- SHIRTS ---------------- */
+
+  {
+    id: "formal-shirt",
+    name: "Simple Formal Shirt",
+    category: "shirts",
+    label: "Formal Shirt",
+    price: 2999,
+    salePrice: 2499,
+    image: image(IMAGES.formalWhite),
+    description: "A clean premium formal shirt designed for a sharp everyday look.",
+    colors: [
+      { name: "White", image: image(IMAGES.formalWhite) },
+      { name: "Black", image: image(IMAGES.formalBlack) },
+      { name: "Olive", image: image(IMAGES.formalOlive) },
+      { name: "Sky Blue", image: image(IMAGES.formalSky) }
+    ]
+  },
+
+  {
+    id: "check-shirt",
+    name: "Simple Check Shirt",
+    category: "shirts",
+    label: "Check Shirt",
+    price: 3199,
+    salePrice: 2699,
+    image: image(IMAGES.checkBlack),
+    description: "Premium checks with a refined modern fit.",
+    colors: [
+      { name: "Black Ivory", image: image(IMAGES.checkBlack), pattern: "checks" },
+      { name: "Ivory Sand", image: image(IMAGES.checkIvory), pattern: "checks" },
+      { name: "Midnight Navy", image: image(IMAGES.checkNavy), pattern: "checks" },
+      { name: "Navy Burgundy", image: image(IMAGES.checkBurgundy), pattern: "checks" },
+      { name: "Slate Blue", image: image(IMAGES.checkSlate), pattern: "checks" }
+    ]
+  },
+
+  {
+    id: "simple-polo",
+    name: "Simple Polo",
+    category: "shirts",
+    label: "Polo",
+    price: 2499,
+    salePrice: 2199,
+    image: image(IMAGES.poloBlack),
+    description: "A versatile premium polo made for effortless everyday style.",
+    colors: [
+      { name: "Jet Black", image: image(IMAGES.poloBlack) },
+      { name: "Burgundy Wine", image: image(IMAGES.poloWine) },
+      { name: "Deep Forest Green", image: image(IMAGES.poloGreen) },
+      { name: "Ocean Teal Blue", image: image(IMAGES.poloTeal) },
+      { name: "Rich Mocha Brown", image: image(IMAGES.poloBrown) }
+    ]
+  },
+
+  {
+    id: "stripe-polo",
+    name: "Polo Stripe Color",
+    category: "shirts",
+    label: "Stripe Polo",
+    price: 2799,
+    salePrice: 2399,
+    image: image(IMAGES.stripeClassic),
+    description: "Statement stripe polos with a clean premium silhouette.",
+    colors: [
+      { name: "Classic Contrast", image: image(IMAGES.stripeClassic), pattern: "stripes" },
+      { name: "Executive Stripe", image: image(IMAGES.stripeExecutive), pattern: "stripes" },
+      { name: "Heritage Stripe", image: image(IMAGES.stripeHeritage), pattern: "stripes" },
+      { name: "Signature Stripe", image: image(IMAGES.stripeSignature), pattern: "stripes" },
+      { name: "Urban Luxe", image: image(IMAGES.stripeUrban), pattern: "stripes" }
+    ]
+  },
+
+  {
+    id: "collar-tshirt",
+    name: "Simple Collar T-Shirt",
+    category: "shirts",
+    label: "Collar T-Shirt",
+    price: 2299,
+    salePrice: 1999,
+    image: image(IMAGES.tshirtWhite),
+    description: "A clean collar T-shirt with a polished casual finish.",
+    colors: [
+      { name: "White", image: image(IMAGES.tshirtWhite) },
+      { name: "Black", image: image(IMAGES.tshirtBlack) },
+      { name: "Mocha Brown", image: image(IMAGES.tshirtBrown) },
+      { name: "Navy Blue", image: image(IMAGES.tshirtNavy) },
+      { name: "Sage Green", image: image(IMAGES.tshirtGreen) }
+    ]
+  },
+
+  /* ---------------- PANTS ---------------- */
+
+  {
+    id: "cotton-pant",
+    name: "Cotton Pant",
+    category: "pants",
+    label: "Cotton Pant",
+    price: 2999,
+    salePrice: 2499,
+    image: image(IMAGES.essentialOlive),
+    description: "Comfortable cotton trousers with a clean office-ready silhouette.",
+    colors: [
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Light Grey", image: image(IMAGES.essentialGrey) },
+      { name: "Silver Grey", image: image(IMAGES.essentialSilver) }
+    ]
+  },
+
+  {
+    id: "formal-washing-wear",
+    name: "Formal Washing Wear",
+    category: "pants",
+    label: "Washing Wear",
+    price: 3299,
+    salePrice: 2799,
+    image: image(IMAGES.essentialGrey),
+    description: "A refined washing-wear trouser for smart everyday dressing.",
+    colors: [
+      { name: "Light Grey", image: image(IMAGES.essentialGrey) },
+      { name: "Silver Grey", image: image(IMAGES.essentialSilver) },
+      { name: "Black", image: image(IMAGES.essentialBlack) }
+    ]
+  },
+
+  {
+    id: "simple-denim",
+    name: "Simple Denim",
+    category: "pants",
+    label: "Denim",
+    price: 3499,
+    salePrice: 2999,
+    image: image(IMAGES.denimBlue),
+    description: "Everyday denim with a clean modern fit.",
+    colors: [
+      { name: "Blue", image: image(IMAGES.denimBlue) },
+      { name: "Dark Blue", image: image(IMAGES.denimDarkBlue) },
+      { name: "Grey", image: image(IMAGES.denimGrey) }
+    ]
+  },
+
+  {
+    id: "brushed-denim",
+    name: "Brushed Denim",
+    category: "pants",
+    label: "Brushed Denim",
+    price: 3699,
+    salePrice: 3199,
+    image: image(IMAGES.denimBlue),
+    description: "Soft brushed denim with a premium everyday finish.",
+    colors: [
+      { name: "Blue", image: image(IMAGES.denimBlue) },
+      { name: "Dark Blue", image: image(IMAGES.denimDarkBlue) },
+      { name: "Dark Grey", image: image(IMAGES.denimDarkGrey) },
+      { name: "Grey", image: image(IMAGES.denimGrey) },
+      { name: "Light Blue", image: image(IMAGES.denimLightBlue) }
+    ]
+  },
+
+  {
+    id: "straight-denim",
+    name: "Simple Straight Denim",
+    category: "pants",
+    label: "Straight Denim",
+    price: 3599,
+    salePrice: 3099,
+    image: image(IMAGES.denimDarkBlue),
+    description: "Straight-fit denim built for a timeless everyday look.",
+    colors: [
+      { name: "Dark Blue", image: image(IMAGES.denimDarkBlue) },
+      { name: "Blue", image: image(IMAGES.denimBlue) },
+      { name: "Grey", image: image(IMAGES.denimGrey) }
+    ]
+  },
+
+  /* ---------------- TROUSERS ---------------- */
+
+  {
+    id: "casual-trouser",
+    name: "Casual Trouser",
+    category: "trousers",
+    label: "Casual Trouser",
+    price: 2999,
+    salePrice: 2499,
+    image: image(IMAGES.essentialBlack),
+    description: "A versatile casual trouser for clean everyday outfits.",
+    colors: [
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Grey", image: image(IMAGES.essentialGrey) }
+    ]
+  },
+
+  {
+    id: "china-necked-trouser",
+    name: "China Necked Trouser",
+    category: "trousers",
+    label: "China Necked",
+    price: 3099,
+    salePrice: 2599,
+    image: image(IMAGES.essentialOlive),
+    description: "A sharp casual silhouette with a modern tapered finish.",
+    colors: [
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Grey", image: image(IMAGES.essentialGrey) }
+    ]
+  },
+
+  {
+    id: "maggi-trouser",
+    name: "Maggi Trouser",
+    category: "trousers",
+    label: "Maggi Trouser",
+    price: 3199,
+    salePrice: 2699,
+    image: image(IMAGES.essentialGrey),
+    description: "Comfort-focused trousers with a clean modern appearance.",
+    colors: [
+      { name: "Light Grey", image: image(IMAGES.essentialGrey) },
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Olive", image: image(IMAGES.essentialOlive) }
+    ]
+  },
+
+  {
+    id: "korean-trouser",
+    name: "Korean Trouser",
+    category: "trousers",
+    label: "Korean Trouser",
+    price: 3299,
+    salePrice: 2799,
+    image: image(IMAGES.essentialBlack),
+    description: "A contemporary Korean-inspired trouser silhouette.",
+    colors: [
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Silver Grey", image: image(IMAGES.essentialSilver) }
+    ]
+  },
+
+  /* ---------------- SHORTS ---------------- */
+
+  {
+    id: "cotton-short",
+    name: "Cotton Short",
+    category: "shorts",
+    label: "Cotton Short",
+    price: 1999,
+    salePrice: 1699,
+    image: image(IMAGES.essentialOlive),
+    description: "Lightweight cotton shorts for comfortable everyday wear.",
+    colors: [
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Grey", image: image(IMAGES.essentialGrey) }
+    ]
+  },
+
+  {
+    id: "china-lekra-short",
+    name: "China Lekra Short",
+    category: "shorts",
+    label: "Lekra Short",
+    price: 2199,
+    salePrice: 1899,
+    image: image(IMAGES.essentialBlack),
+    description: "Clean casual shorts designed for easy movement.",
+    colors: [
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Olive", image: image(IMAGES.essentialOlive) },
+      { name: "Grey", image: image(IMAGES.essentialGrey) }
+    ]
+  },
+
+  {
+    id: "jersey-short",
+    name: "Jersey Short",
+    category: "shorts",
+    label: "Jersey Short",
+    price: 2099,
+    salePrice: 1799,
+    image: image(IMAGES.essentialBlack),
+    description: "Relaxed jersey shorts made for casual comfort.",
+    colors: [
+      { name: "Black", image: image(IMAGES.essentialBlack) },
+      { name: "Grey", image: image(IMAGES.essentialGrey) }
+    ]
+  },
+
+  {
+    id: "hosiery-short",
+    name: "Hosiery Casual Shorts",
+    category: "shorts",
+    label: "Hosiery Shorts",
+    price: 1899,
+    salePrice: 1599,
+    image: image(IMAGES.essentialGrey),
+    description: "Soft casual hosiery shorts for everyday comfort.",
+    colors: [
+      { name: "Grey", image: image(IMAGES.essentialGrey) },
+      { name: "Black", image: image(IMAGES.essentialBlack) }
+    ]
   }
 
+];
 
-  function formatPrice(value) {
-    const number = Number(value) || 0;
+/* =========================================================
+   STATE
+========================================================= */
 
-    return (
-      CONFIG.currency +
-      " " +
-      number.toLocaleString("en-PK")
-    );
-  }
+let cart = JSON.parse(localStorage.getItem("mehkaCart") || "[]");
+let currentProduct = null;
+let currentColor = 0;
+let currentSize = "M";
+let currentQty = 1;
 
+const SIZES = ["S", "M", "L", "XL"];
 
-  function findProduct(id) {
-    return PRODUCTS.find(product => product.id === id) || null;
-  }
+/* =========================================================
+   DOM HELPERS
+========================================================= */
 
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
 
-  function getImagePath(filename) {
-    if (!filename) return "";
+function money(value) {
+  return `Rs. ${Number(value).toLocaleString("en-PK")}`;
+}
 
-    return (
-      CONFIG.imageBase +
-      filename
-    );
-  }
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
 
+function productCard(product) {
 
-  function prefersReducedMotion() {
-    return (
-      window.matchMedia &&
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
-    );
-  }
+  const firstColor = product.colors?.[0];
+  const productImage = firstColor?.image || product.image;
 
+  const swatches = (product.colors || []).map((color, index) => {
 
-  /* =========================================================
-     7. TOAST
-     ========================================================= */
+    let extraClass = "";
 
-  let toastTimer = null;
-
-  function showToast(message) {
-    if (!dom.toast) return;
-
-    dom.toast.textContent = message;
-
-    dom.toast.classList.add("is-visible");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-      dom.toast.classList.remove("is-visible");
-    }, 2400);
-  }
-
-
-  /* =========================================================
-     8. LOCAL STORAGE
-     ========================================================= */
-
-  const storage = {
-
-    available: (() => {
-      try {
-        const testKey = "__mehka_test__";
-
-        localStorage.setItem(testKey, "1");
-        localStorage.removeItem(testKey);
-
-        return true;
-      } catch (error) {
-        return false;
-      }
-    })(),
-
-    get(key, fallback) {
-      if (!storage.available) return fallback;
-
-      return safe(() => {
-        const raw = localStorage.getItem(key);
-
-        return raw
-          ? JSON.parse(raw)
-          : fallback;
-      }, fallback);
-    },
-
-    set(key, value) {
-      if (!storage.available) return false;
-
-      return safe(() => {
-        localStorage.setItem(
-          key,
-          JSON.stringify(value)
-        );
-
-        return true;
-      }, false);
-    }
-  };
-
-
-  /* =========================================================
-     9. STATE
-     ========================================================= */
-
-  const state = {
-
-    cart: storage.get(
-      CONFIG.storageKeys.cart,
-      []
-    ),
-
-    reactions: storage.get(
-      CONFIG.storageKeys.reactions,
-      {}
-    ),
-
-    activeFilter: "all",
-    searchTerm: "",
-
-    modalProduct: null,
-    modalColor: 0,
-    modalSize: null,
-    modalQty: 1
-  };
-
-
-  const cardSelection = {};
-
-
-  function getCardSelection(productId) {
-
-    if (!cardSelection[productId]) {
-
-      cardSelection[productId] = {
-        colorIndex: 0,
-        size: null,
-        qty: 1
-      };
-
-    }
-
-    return cardSelection[productId];
-  }
-
-
-  function getReaction(productId) {
-
-    if (!state.reactions[productId]) {
-
-      state.reactions[productId] = {
-        liked: false,
-        disliked: false,
-        likes: 0,
-        dislikes: 0
-      };
-
-    }
-
-    return state.reactions[productId];
-  }
-
-
-  function saveCart() {
-    storage.set(
-      CONFIG.storageKeys.cart,
-      state.cart
-    );
-  }
-
-
-  function saveReactions() {
-    storage.set(
-      CONFIG.storageKeys.reactions,
-      state.reactions
-    );
-  }
-
-
-  /* =========================================================
-     10. IMAGE / SWATCH HELPERS
-     ========================================================= */
-
-  function swatchClass(color) {
-
-    if (color.pattern === "check") {
-      return "swatch swatch--check";
-    }
-
-    if (color.pattern === "stripe") {
-      return "swatch swatch--stripe";
-    }
-
-    return "swatch";
-  }
-
-
-  function swatchStyle(color) {
-
-    if (color.pattern === "stripe") {
-
-      return `
-        --s1:${color.s1};
-        --s2:${color.s2};
-      `;
-    }
+    if (color.pattern === "checks") extraClass = " swatch--checks";
+    if (color.pattern === "stripes") extraClass = " swatch--stripes";
 
     return `
-      background:${color.hex || "#ccc"};
+      <button
+        type="button"
+        class="product-card__swatch${extraClass}${index === 0 ? " is-active" : ""}"
+        data-product="${product.id}"
+        data-color="${index}"
+        title="${color.name}"
+        aria-label="${color.name}"
+        style="background-image:url('${color.image}')">
+      </button>
     `;
-  }
+  }).join("");
 
+  return `
+    <article class="product-card" data-product-id="${product.id}" data-category="${product.category}">
 
-  function imageMarkup(product) {
+      <div class="product-card__media">
 
-    const src = getImagePath(product.image);
-
-    return `
-      <img
-        src="${src}"
-        alt="${product.name} — MEHKA GARMENTS"
-        loading="lazy"
-        decoding="async"
-        onerror="this.onerror=null; this.style.display='none'; this.parentElement.querySelector('.product-card__placeholder').style.display='flex';"
-      >
-
-      <div
-        class="product-card__placeholder"
-        style="display:none;"
-      >
-        <strong>${product.name}</strong>
-        <span>Image coming soon</span>
-      </div>
-    `;
-  }
-
-
-  /* =========================================================
-     11. PRODUCT CARD
-     ========================================================= */
-
-  function productCardMarkup(product) {
-
-    const reaction = getReaction(product.id);
-
-    const colorsHtml = product.colors
-      .map((color, index) => {
-
-        return `
-          <button
-            type="button"
-            class="${swatchClass(color)}"
-            style="${swatchStyle(color)}"
-            data-color-index="${index}"
-            data-product="${product.id}"
-            aria-label="Select colour ${color.name}"
-            title="${color.name}"
-          ></button>
-        `;
-
-      })
-      .join("");
-
-
-    const sizesHtml = product.sizes
-      .map(size => {
-
-        return `
-          <button
-            type="button"
-            class="size-btn"
-            data-size="${size}"
-            data-product="${product.id}"
-          >
-            ${size}
-          </button>
-        `;
-
-      })
-      .join("");
-
-
-    return `
-      <article
-        class="product-card"
-        data-id="${product.id}"
-        data-category="${product.category}"
-      >
-
-        <div
-          class="product-card__media"
-          data-open-modal="${product.id}"
+        <button
+          type="button"
+          class="product-card__image-button"
+          data-product-open="${product.id}"
+          aria-label="View ${product.name}"
         >
+          <img
+            class="product-card__image"
+            src="${productImage}"
+            alt="${product.name}"
+            loading="lazy"
+            decoding="async"
+            onerror="this.classList.add('image-error'); this.parentElement.classList.add('has-image-error');"
+          >
 
-          ${imageMarkup(product)}
-
-          <span class="product-card__tag">
-            ${CATEGORY_LABELS[product.category] || product.category}
+          <span class="product-card__image-fallback">
+            ${product.name}
           </span>
+        </button>
 
+        <span class="product-card__badge">NEW</span>
+
+        <div class="product-card__quick">
+          <button type="button" class="product-card__quick-btn" data-product-open="${product.id}">
+            View
+          </button>
         </div>
 
+      </div>
 
-        <div class="product-card__body">
+      <div class="product-card__body">
 
-          <p class="product-card__cat">
-            ${CATEGORY_LABELS[product.category] || product.category}
-          </p>
+        <p class="product-card__category">${product.label}</p>
 
-          <h3 class="product-card__name">
+        <h3 class="product-card__title">
+          <button type="button" data-product-open="${product.id}">
             ${product.name}
-          </h3>
+          </button>
+        </h3>
 
+        <div class="product-card__price">
+          <span class="price price--old">${money(product.price)}</span>
+          <span class="price price--sale">${money(product.salePrice)}</span>
+        </div>
 
-          <div class="product-card__price">
+        <div class="product-card__colors">
+          ${swatches}
+        </div>
 
-            <span class="price price--old">
-              ${formatPrice(product.price)}
-            </span>
+        <div class="product-card__bottom">
 
-            <span class="price price--sale">
-              ${formatPrice(product.salePrice)}
-            </span>
-
-          </div>
-
-
-          <div
-            class="swatch-row"
-            data-role="colors"
+          <button
+            type="button"
+            class="btn btn--dark product-card__add"
+            data-add-product="${product.id}"
           >
-            ${colorsHtml}
-          </div>
+            Add to Cart
+          </button>
 
-
-          <div
-            class="size-row"
-            data-role="sizes"
-          >
-            ${sizesHtml}
-          </div>
-
-
-          <div
-            class="option-block--inline"
-            style="
-              display:flex;
-              align-items:center;
-              justify-content:space-between;
-              margin-bottom:.9rem;
-            "
-          >
-
-            <div
-              class="qty-control"
-              data-role="qty"
-            >
-
-              <button
-                type="button"
-                class="qty-btn"
-                data-qty="dec"
-                aria-label="Decrease quantity"
-              >
-                &minus;
-              </button>
-
-              <span class="qty-value">
-                1
-              </span>
-
-              <button
-                type="button"
-                class="qty-btn"
-                data-qty="inc"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-
-            </div>
-
-
-            <div class="feedback-row">
-
-              <button
-                type="button"
-                class="feedback-btn"
-                data-like="${product.id}"
-                aria-pressed="${reaction.liked}"
-                aria-label="Like ${product.name}"
-              >
-                👍
-                <span data-like-count>
-                  ${reaction.likes}
-                </span>
-              </button>
-
-
-              <button
-                type="button"
-                class="feedback-btn"
-                data-dislike="${product.id}"
-                aria-pressed="${reaction.disliked}"
-                aria-label="Dislike ${product.name}"
-              >
-                👎
-                <span data-dislike-count>
-                  ${reaction.dislikes}
-                </span>
-              </button>
-
-            </div>
-
-          </div>
-
-
-          <div class="product-card__footer">
+          <div class="product-card__feedback">
 
             <button
               type="button"
-              class="add-to-cart-btn"
-              data-add-to-cart="${product.id}"
+              class="feedback-btn"
+              data-like-product="${product.id}"
+              aria-label="Like ${product.name}"
             >
-              Add to Cart
+              👍
+            </button>
+
+            <button
+              type="button"
+              class="feedback-btn"
+              data-dislike-product="${product.id}"
+              aria-label="Dislike ${product.name}"
+            >
+              👎
             </button>
 
           </div>
 
         </div>
 
-      </article>
-    `;
+      </div>
+
+    </article>
+  `;
+}
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts() {
+
+  const featured = $("#featuredGrid");
+  const shirts = $("#shirtsGrid");
+  const pants = $("#pantsGrid");
+  const trousers = $("#trousersGrid");
+  const shorts = $("#shortsGrid");
+
+  if (featured) {
+    featured.innerHTML = PRODUCTS.map(productCard).join("");
   }
 
+  if (shirts) {
+    shirts.innerHTML = PRODUCTS
+      .filter(p => p.category === "shirts")
+      .map(productCard)
+      .join("");
+  }
 
-  /* =========================================================
-     12. RENDER PRODUCTS
-     ========================================================= */
+  if (pants) {
+    pants.innerHTML = PRODUCTS
+      .filter(p => p.category === "pants")
+      .map(productCard)
+      .join("");
+  }
 
-  const revealObserver = {
+  if (trousers) {
+    trousers.innerHTML = PRODUCTS
+      .filter(p => p.category === "trousers")
+      .map(productCard)
+      .join("");
+  }
 
-    io: null,
+  if (shorts) {
+    shorts.innerHTML = PRODUCTS
+      .filter(p => p.category === "shorts")
+      .map(productCard)
+      .join("");
+  }
 
-    init() {
+  initProductImages();
+}
 
-      this.io = new IntersectionObserver(
-        entries => {
+/* =========================================================
+   IMAGE ERROR HANDLING
+========================================================= */
 
-          entries.forEach(entry => {
+function initProductImages() {
 
-            if (entry.isIntersecting) {
+  $$(".product-card__image").forEach(img => {
 
-              entry.target.classList.add(
-                "is-visible"
-              );
-
-              this.io.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.15,
-          rootMargin: "0px 0px -60px 0px"
-        }
-      );
-
-    },
-
-
-    observeAll(root) {
-
-      if (!this.io || !root) return;
-
-      $all(
-        ".product-card",
-        root
-      ).forEach(card => {
-
-        this.io.observe(card);
-
-      });
-
-    }
-  };
-
-
-  function renderGrid(container, products) {
-
-    if (!container) return;
-
-
-    if (!products.length) {
-
-      container.innerHTML = "";
-
-      return;
-    }
-
-
-    container.innerHTML =
-      products
-        .map(productCardMarkup)
-        .join("");
-
-
-    products.forEach(product => {
-
-      const card =
-        container.querySelector(
-          `.product-card[data-id="${product.id}"]`
-        );
-
-      if (!card) return;
-
-
-      const selection =
-        getCardSelection(product.id);
-
-
-      const swatches =
-        $all(".swatch", card);
-
-
-      if (swatches[selection.colorIndex]) {
-
-        swatches[
-          selection.colorIndex
-        ].classList.add(
-          "is-selected"
-        );
-
-      }
-
-
-      if (selection.size) {
-
-        const sizeButton =
-          card.querySelector(
-            `.size-btn[data-size="${selection.size}"]`
-          );
-
-        if (sizeButton) {
-
-          sizeButton.classList.add(
-            "is-selected"
-          );
-
-        }
-
-      }
-
-
-      const qtyValue =
-        card.querySelector(
-          ".qty-value"
-        );
-
-      if (qtyValue) {
-
-        qtyValue.textContent =
-          selection.qty;
-
-      }
-
+    img.addEventListener("load", () => {
+      img.classList.add("image-loaded");
     });
 
+    img.addEventListener("error", () => {
+      console.error("MEHKA IMAGE FAILED:", img.src);
 
-    revealObserver.observeAll(
-      container
-    );
+      const button = img.closest(".product-card__image-button");
 
-    tiltObserver.attach(
-      container
-    );
-  }
-
-
-  function renderAllGrids() {
-
-    safe(() => {
-
-      renderGrid(
-        dom.shirtsGrid,
-        PRODUCTS.filter(
-          product =>
-            product.category === "shirts"
-        )
-      );
-
+      if (button) {
+        button.classList.add("has-image-error");
+      }
     });
 
+  });
+}
 
-    safe(() => {
+/* =========================================================
+   OPEN PRODUCT MODAL
+========================================================= */
 
-      renderGrid(
-        dom.pantsGrid,
-        PRODUCTS.filter(
-          product =>
-            product.category === "pants"
-        )
-      );
+function openProduct(productId) {
 
-    });
+  const product = PRODUCTS.find(p => p.id === productId);
 
+  if (!product) return;
 
-    safe(() => {
+  currentProduct = product;
+  currentColor = 0;
+  currentSize = "M";
+  currentQty = 1;
 
-      renderGrid(
-        dom.trousersGrid,
-        PRODUCTS.filter(
-          product =>
-            product.category === "trousers"
-        )
-      );
+  const modal = $("#productModal");
 
-    });
+  if (!modal) return;
 
+  $("#modalTitle").textContent = product.name;
+  $("#modalCategory").textContent = product.label;
+  $("#modalDesc").textContent = product.description;
 
-    safe(() => {
+  $("#modalOldPrice").textContent = money(product.price);
+  $("#modalSalePrice").textContent = money(product.salePrice);
 
-      renderGrid(
-        dom.shortsGrid,
-        PRODUCTS.filter(
-          product =>
-            product.category === "shorts"
-        )
-      );
+  updateModalImage();
+  renderModalColors();
+  renderModalSizes();
+  updateModalQty();
 
-    });
+  modal.hidden = false;
+  document.body.classList.add("modal-open");
 
+  requestAnimationFrame(() => {
+    modal.classList.add("is-open");
+  });
+}
 
-    renderFeatured();
-  }
+function closeProduct() {
 
+  const modal = $("#productModal");
 
-  function renderFeatured() {
+  if (!modal) return;
 
-    let products =
-      PRODUCTS.slice();
+  modal.classList.remove("is-open");
 
+  setTimeout(() => {
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+  }, 250);
+}
 
-    if (
-      state.activeFilter !== "all"
-    ) {
+/* =========================================================
+   MODAL IMAGE
+========================================================= */
 
-      products =
-        products.filter(
-          product =>
-            product.category ===
-            state.activeFilter
-        );
+function updateModalImage() {
 
-    }
+  if (!currentProduct) return;
 
+  const color = currentProduct.colors?.[currentColor];
 
-    const search =
-      state.searchTerm
-        .trim()
-        .toLowerCase();
+  const src = color?.image || currentProduct.image;
 
+  const img = $("#modalImage");
 
-    if (search) {
+  if (!img) return;
 
-      products =
-        products.filter(product => {
+  img.src = src;
+  img.alt = `${currentProduct.name} - ${color?.name || ""}`;
 
-          return (
-            product.name
-              .toLowerCase()
-              .includes(search)
+  console.log("MEHKA MODAL IMAGE:", src);
+}
 
-            ||
+/* =========================================================
+   MODAL COLORS
+========================================================= */
 
-            product.category
-              .toLowerCase()
-              .includes(search)
+function renderModalColors() {
 
-            ||
+  const container = $("#modalColors");
 
-            (
-              CATEGORY_LABELS[
-                product.category
-              ] || ""
-            )
-              .toLowerCase()
-              .includes(search)
-          );
+  if (!container || !currentProduct) return;
 
-        });
+  container.innerHTML = currentProduct.colors.map((color, index) => {
 
-    }
+    let extraClass = "";
 
-
-    renderGrid(
-      dom.featuredGrid,
-      products
-    );
-
-
-    if (dom.emptyState) {
-
-      dom.emptyState.hidden =
-        products.length !== 0;
-
-    }
-
-  }
-
-
-  /* =========================================================
-     13. FILTER
-     ========================================================= */
-
-  function initFilters() {
-
-    if (!dom.filterBar) return;
-
-
-    dom.filterBar.addEventListener(
-      "click",
-      event => {
-
-        const chip =
-          event.target.closest(
-            ".filter-chip"
-          );
-
-        if (!chip) return;
-
-
-        $all(
-          ".filter-chip",
-          dom.filterBar
-        ).forEach(button => {
-
-          button.classList.remove(
-            "is-active"
-          );
-
-          button.setAttribute(
-            "aria-selected",
-            "false"
-          );
-
-        });
-
-
-        chip.classList.add(
-          "is-active"
-        );
-
-        chip.setAttribute(
-          "aria-selected",
-          "true"
-        );
-
-
-        state.activeFilter =
-          chip.dataset.filter;
-
-
-        renderFeatured();
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     14. SEARCH
-     ========================================================= */
-
-  function initSearch() {
-
-    if (
-      !dom.searchToggle ||
-      !dom.searchBar ||
-      !dom.searchInput
-    ) {
-      return;
-    }
-
-
-    dom.searchToggle.addEventListener(
-      "click",
-      () => {
-
-        const open =
-          dom.searchBar.classList.toggle(
-            "is-open"
-          );
-
-
-        dom.searchToggle.setAttribute(
-          "aria-expanded",
-          String(open)
-        );
-
-
-        if (open) {
-
-          dom.searchInput.focus();
-
-        }
-
-      }
-    );
-
-
-    if (dom.searchClose) {
-
-      dom.searchClose.addEventListener(
-        "click",
-        () => {
-
-          dom.searchBar.classList.remove(
-            "is-open"
-          );
-
-          dom.searchToggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-        }
-      );
-
-    }
-
-
-    dom.searchInput.addEventListener(
-      "input",
-      event => {
-
-        state.searchTerm =
-          event.target.value;
-
-
-        renderFeatured();
-
-
-        if (
-          state.searchTerm.trim()
-        ) {
-
-          const shop =
-            document.getElementById(
-              "shop"
-            );
-
-          if (shop) {
-
-            shop.scrollIntoView({
-              behavior:
-                prefersReducedMotion()
-                  ? "auto"
-                  : "smooth"
-            });
-
-          }
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     15. PRODUCT INTERACTIONS
-     ========================================================= */
-
-  function initCardInteractions() {
-
-    document.addEventListener(
-      "click",
-      event => {
-
-
-        /* COLOR */
-
-        const swatch =
-          event.target.closest(
-            ".swatch"
-          );
-
-
-        if (
-          swatch &&
-          swatch.dataset.product
-        ) {
-
-          const productId =
-            swatch.dataset.product;
-
-
-          const card =
-            swatch.closest(
-              ".product-card"
-            );
-
-
-          const index =
-            Number(
-              swatch.dataset.colorIndex
-            );
-
-
-          const selection =
-            getCardSelection(
-              productId
-            );
-
-
-          selection.colorIndex =
-            index;
-
-
-          $all(
-            ".swatch",
-            card
-          ).forEach(button =>
-            button.classList.remove(
-              "is-selected"
-            )
-          );
-
-
-          swatch.classList.add(
-            "is-selected"
-          );
-
-
-          return;
-        }
-
-
-        /* SIZE */
-
-        const sizeButton =
-          event.target.closest(
-            ".product-card .size-btn"
-          );
-
-
-        if (sizeButton) {
-
-          const productId =
-            sizeButton.dataset.product;
-
-
-          const card =
-            sizeButton.closest(
-              ".product-card"
-            );
-
-
-          const selection =
-            getCardSelection(
-              productId
-            );
-
-
-          selection.size =
-            sizeButton.dataset.size;
-
-
-          $all(
-            ".size-btn",
-            card
-          ).forEach(button =>
-            button.classList.remove(
-              "is-selected"
-            )
-          );
-
-
-          sizeButton.classList.add(
-            "is-selected"
-          );
-
-
-          return;
-        }
-
-
-        /* QUANTITY */
-
-        const qtyButton =
-          event.target.closest(
-            ".product-card .qty-btn"
-          );
-
-
-        if (qtyButton) {
-
-          const card =
-            qtyButton.closest(
-              ".product-card"
-            );
-
-
-          const productId =
-            card.dataset.id;
-
-
-          const selection =
-            getCardSelection(
-              productId
-            );
-
-
-          const direction =
-            qtyButton.dataset.qty === "inc"
-              ? 1
-              : -1;
-
-
-          selection.qty =
-            Math.max(
-              1,
-              Math.min(
-                20,
-                selection.qty + direction
-              )
-            );
-
-
-          const value =
-            card.querySelector(
-              ".qty-value"
-            );
-
-
-          if (value) {
-
-            value.textContent =
-              selection.qty;
-
-            value.classList.remove(
-              "bump"
-            );
-
-            void value.offsetWidth;
-
-            value.classList.add(
-              "bump"
-            );
-
-          }
-
-
-          return;
-        }
-
-
-        /* LIKE */
-
-        const like =
-          event.target.closest(
-            "[data-like]"
-          );
-
-
-        if (like) {
-
-          handleReaction(
-            like.dataset.like,
-            "like",
-            like
-          );
-
-          return;
-        }
-
-
-        /* DISLIKE */
-
-        const dislike =
-          event.target.closest(
-            "[data-dislike]"
-          );
-
-
-        if (dislike) {
-
-          handleReaction(
-            dislike.dataset.dislike,
-            "dislike",
-            dislike
-          );
-
-          return;
-        }
-
-
-        /* ADD TO CART */
-
-        const add =
-          event.target.closest(
-            "[data-add-to-cart]"
-          );
-
-
-        if (add) {
-
-          handleAddToCartFromCard(
-            add
-          );
-
-          return;
-        }
-
-
-        /* OPEN PRODUCT */
-
-        const media =
-          event.target.closest(
-            "[data-open-modal]"
-          );
-
-
-        if (media) {
-
-          openProductModal(
-            media.dataset.openModal
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* =========================================================
-     16. ADD TO CART FROM CARD
-     ========================================================= */
-
-  function handleAddToCartFromCard(button) {
-
-    const productId =
-      button.dataset.addToCart;
-
-
-    const product =
-      findProduct(productId);
-
-
-    if (!product) return;
-
-
-    const card =
-      button.closest(
-        ".product-card"
-      );
-
-
-    const selection =
-      getCardSelection(
-        productId
-      );
-
-
-    const size =
-      selection.size ||
-      product.sizes[0];
-
-
-    const color =
-      product.colors[
-        selection.colorIndex
-      ] ||
-      product.colors[0];
-
-
-    addToCart(
-      product,
-      color,
-      size,
-      selection.qty || 1
-    );
-
-
-    const image =
-      card.querySelector(
-        ".product-card__media img"
-      );
-
-
-    flyToCart(
-      image ||
-      card.querySelector(
-        ".product-card__media"
-      )
-    );
-
-
-    button.classList.add(
-      "is-added"
-    );
-
-
-    const original =
-      button.textContent;
-
-
-    button.textContent =
-      "Added ✓";
-
-
-    setTimeout(() => {
-
-      button.classList.remove(
-        "is-added"
-      );
-
-      button.textContent =
-        original;
-
-    }, 1100);
-
-  }
-
-
-  /* =========================================================
-     17. LIKE / DISLIKE
-     ========================================================= */
-
-  function handleReaction(
-    productId,
-    type,
-    button
-  ) {
-
-    const reaction =
-      getReaction(productId);
-
-
-    if (type === "like") {
-
-      if (reaction.liked) {
-
-        reaction.liked = false;
-
-        reaction.likes =
-          Math.max(
-            0,
-            reaction.likes - 1
-          );
-
-      } else {
-
-        reaction.liked = true;
-
-        reaction.likes += 1;
-
-
-        if (reaction.disliked) {
-
-          reaction.disliked = false;
-
-          reaction.dislikes =
-            Math.max(
-              0,
-              reaction.dislikes - 1
-            );
-
-        }
-
-      }
-
-    } else {
-
-      if (reaction.disliked) {
-
-        reaction.disliked = false;
-
-        reaction.dislikes =
-          Math.max(
-            0,
-            reaction.dislikes - 1
-          );
-
-      } else {
-
-        reaction.disliked = true;
-
-        reaction.dislikes += 1;
-
-
-        if (reaction.liked) {
-
-          reaction.liked = false;
-
-          reaction.likes =
-            Math.max(
-              0,
-              reaction.likes - 1
-            );
-
-        }
-
-      }
-
-    }
-
-
-    saveReactions();
-
-    syncReactionUI(
-      productId
-    );
-
-
-    button.classList.remove(
-      "pop"
-    );
-
-    void button.offsetWidth;
-
-    button.classList.add(
-      "pop"
-    );
-
-  }
-
-
-  function syncReactionUI(productId) {
-
-    const reaction =
-      getReaction(productId);
-
-
-    $all(
-      `[data-like="${productId}"]`
-    ).forEach(button => {
-
-      button.setAttribute(
-        "aria-pressed",
-        String(
-          reaction.liked
-        )
-      );
-
-
-      const count =
-        button.querySelector(
-          "[data-like-count]"
-        );
-
-
-      if (count) {
-
-        count.textContent =
-          reaction.likes;
-
-      }
-
-    });
-
-
-    $all(
-      `[data-dislike="${productId}"]`
-    ).forEach(button => {
-
-      button.setAttribute(
-        "aria-pressed",
-        String(
-          reaction.disliked
-        )
-      );
-
-
-      const count =
-        button.querySelector(
-          "[data-dislike-count]"
-        );
-
-
-      if (count) {
-
-        count.textContent =
-          reaction.dislikes;
-
-      }
-
-    });
-
-
-    if (
-      dom.modalLike &&
-      dom.modalLike.dataset.product ===
-        productId
-    ) {
-
-      dom.modalLike.setAttribute(
-        "aria-pressed",
-        String(
-          reaction.liked
-        )
-      );
-
-
-      dom.modalDislike.setAttribute(
-        "aria-pressed",
-        String(
-          reaction.disliked
-        )
-      );
-
-
-      if (dom.modalLikeCount) {
-
-        dom.modalLikeCount.textContent =
-          reaction.likes;
-
-      }
-
-
-      if (dom.modalDislikeCount) {
-
-        dom.modalDislikeCount.textContent =
-          reaction.dislikes;
-
-      }
-
-    }
-
-  }
-
-
-  /* =========================================================
-     18. PRODUCT MODAL
-     ========================================================= */
-
-  function openProductModal(productId) {
-
-    const product =
-      findProduct(productId);
-
-
-    if (!product || !dom.modal) {
-      return;
-    }
-
-
-    state.modalProduct =
-      product;
-
-
-    const selection =
-      getCardSelection(
-        productId
-      );
-
-
-    state.modalColor =
-      selection.colorIndex || 0;
-
-
-    state.modalSize =
-      selection.size || null;
-
-
-    state.modalQty = 1;
-
-
-    if (dom.modalImage) {
-
-      dom.modalImage.src =
-        getImagePath(
-          product.colors[
-            state.modalColor
-          ]?.image ||
-          product.image
-        );
-
-
-      dom.modalImage.alt =
-        product.name +
-        " — MEHKA GARMENTS";
-
-
-      dom.modalImage.onerror =
-        function () {
-
-          this.onerror = null;
-
-          this.src =
-            "data:image/svg+xml;utf8," +
-            encodeURIComponent(
-              `
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   width="600"
-                   height="700">
-
-                <rect
-                  width="100%"
-                  height="100%"
-                  fill="#efe9dc"
-                />
-
-                <text
-                  x="50%"
-                  y="50%"
-                  font-family="sans-serif"
-                  font-size="28"
-                  fill="#75705f"
-                  text-anchor="middle"
-                >
-                  ${product.name}
-                </text>
-
-              </svg>
-              `
-            );
-
-        };
-
-    }
-
-
-    if (dom.modalCategory) {
-
-      dom.modalCategory.textContent =
-        CATEGORY_LABELS[
-          product.category
-        ] ||
-        product.category;
-
-    }
-
-
-    if (dom.modalTitle) {
-
-      dom.modalTitle.textContent =
-        product.name;
-
-    }
-
-
-    if (dom.modalOldPrice) {
-
-      dom.modalOldPrice.textContent =
-        formatPrice(
-          product.price
-        );
-
-    }
-
-
-    if (dom.modalSalePrice) {
-
-      dom.modalSalePrice.textContent =
-        formatPrice(
-          product.salePrice
-        );
-
-    }
-
-
-    if (dom.modalDesc) {
-
-      dom.modalDesc.textContent =
-        product.description;
-
-    }
-
-
-    if (dom.modalColors) {
-
-      dom.modalColors.innerHTML =
-        product.colors
-          .map((color, index) => {
-
-            return `
-              <button
-                type="button"
-                class="${swatchClass(color)}"
-                style="${swatchStyle(color)}"
-                data-modal-color-index="${index}"
-                aria-label="Select colour ${color.name}"
-                title="${color.name}"
-              ></button>
-            `;
-
-          })
-          .join("");
-
-    }
-
-
-    if (dom.modalSizes) {
-
-      dom.modalSizes.innerHTML =
-        product.sizes
-          .map(size => {
-
-            return `
-              <button
-                type="button"
-                class="size-btn"
-                data-modal-size="${size}"
-              >
-                ${size}
-              </button>
-            `;
-
-          })
-          .join("");
-
-    }
-
-
-    updateModalColorSelection();
-
-    updateModalSizeSelection();
-
-
-    if (dom.modalQtyValue) {
-
-      dom.modalQtyValue.textContent =
-        state.modalQty;
-
-    }
-
-
-    if (dom.modalLike) {
-
-      dom.modalLike.dataset.product =
-        product.id;
-
-    }
-
-
-    if (dom.modalDislike) {
-
-      dom.modalDislike.dataset.product =
-        product.id;
-
-    }
-
-
-    syncReactionUI(
-      product.id
-    );
-
-
-    dom.modal.hidden = false;
-
-
-    requestAnimationFrame(() => {
-
-      dom.modal.classList.add(
-        "is-open"
-      );
-
-    });
-
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-
-
-  function updateModalColorSelection() {
-
-    const product =
-      state.modalProduct;
-
-
-    if (!product) return;
-
-
-    $all(
-      ".swatch",
-      dom.modalColors
-    ).forEach(
-      (button, index) => {
-
-        button.classList.toggle(
-          "is-selected",
-          index ===
-            state.modalColor
-        );
-
-      }
-    );
-
-
-    const color =
-      product.colors[
-        state.modalColor
-      ];
-
-
-    if (dom.modalColorName) {
-
-      dom.modalColorName.textContent =
-        color
-          ? color.name
-          : "";
-
-    }
-
-
-    if (
-      dom.modalImage &&
-      color &&
-      color.image
-    ) {
-
-      dom.modalImage.src =
-        getImagePath(
-          color.image
-        );
-
-    }
-
-  }
-
-
-  function updateModalSizeSelection() {
-
-    if (!dom.modalSizes) return;
-
-
-    $all(
-      ".size-btn",
-      dom.modalSizes
-    ).forEach(button => {
-
-      button.classList.toggle(
-        "is-selected",
-        button.dataset.modalSize ===
-          state.modalSize
-      );
-
-    });
-
-  }
-
-
-  function closeProductModal() {
-
-    if (!dom.modal) return;
-
-
-    dom.modal.classList.remove(
-      "is-open"
-    );
-
-
-    document.body.style.overflow =
-      "";
-
-
-    setTimeout(() => {
-
-      dom.modal.hidden = true;
-
-    }, 400);
-
-  }
-
-
-  function initModal() {
-
-    if (!dom.modal) return;
-
-
-    if (dom.modalClose) {
-
-      dom.modalClose.addEventListener(
-        "click",
-        closeProductModal
-      );
-
-    }
-
-
-    dom.modal.addEventListener(
-      "click",
-      event => {
-
-        if (
-          event.target ===
-          dom.modal
-        ) {
-
-          closeProductModal();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape" &&
-          !dom.modal.hidden
-        ) {
-
-          closeProductModal();
-
-        }
-
-
-        if (
-          event.key === "Escape" &&
-          dom.cartDrawer &&
-          dom.cartDrawer.classList.contains(
-            "is-open"
-          )
-        ) {
-
-          closeCart();
-
-        }
-
-      }
-    );
-
-
-    if (dom.modalColors) {
-
-      dom.modalColors.addEventListener(
-        "click",
-        event => {
-
-          const button =
-            event.target.closest(
-              "[data-modal-color-index]"
-            );
-
-
-          if (!button) return;
-
-
-          state.modalColor =
-            Number(
-              button.dataset
-                .modalColorIndex
-            );
-
-
-          updateModalColorSelection();
-
-        }
-      );
-
-    }
-
-
-    if (dom.modalSizes) {
-
-      dom.modalSizes.addEventListener(
-        "click",
-        event => {
-
-          const button =
-            event.target.closest(
-              "[data-modal-size]"
-            );
-
-
-          if (!button) return;
-
-
-          state.modalSize =
-            button.dataset.modalSize;
-
-
-          updateModalSizeSelection();
-
-        }
-      );
-
-    }
-
-
-    if (dom.modalQty) {
-
-      dom.modalQty.addEventListener(
-        "click",
-        event => {
-
-          const button =
-            event.target.closest(
-              ".qty-btn"
-            );
-
-
-          if (!button) return;
-
-
-          const direction =
-            button.dataset.qty === "inc"
-              ? 1
-              : -1;
-
-
-          state.modalQty =
-            Math.max(
-              1,
-              Math.min(
-                20,
-                state.modalQty +
-                  direction
-              )
-            );
-
-
-          dom.modalQtyValue.textContent =
-            state.modalQty;
-
-
-          dom.modalQtyValue.classList.remove(
-            "bump"
-          );
-
-
-          void dom.modalQtyValue.offsetWidth;
-
-
-          dom.modalQtyValue.classList.add(
-            "bump"
-          );
-
-        }
-      );
-
-    }
-
-
-    if (dom.modalAddToCart) {
-
-      dom.modalAddToCart.addEventListener(
-        "click",
-        () => {
-
-          const product =
-            state.modalProduct;
-
-
-          if (!product) return;
-
-
-          const size =
-            state.modalSize ||
-            product.sizes[0];
-
-
-          const color =
-            product.colors[
-              state.modalColor
-            ] ||
-            product.colors[0];
-
-
-          addToCart(
-            product,
-            color,
-            size,
-            state.modalQty
-          );
-
-
-          flyToCart(
-            dom.modalImage
-          );
-
-
-          dom.modalAddToCart.textContent =
-            "Added ✓";
-
-
-          dom.modalAddToCart.classList.add(
-            "is-added"
-          );
-
-
-          setTimeout(() => {
-
-            dom.modalAddToCart.textContent =
-              "Add to Cart";
-
-
-            dom.modalAddToCart.classList.remove(
-              "is-added"
-            );
-
-
-            closeProductModal();
-
-          }, 700);
-
-        }
-      );
-
-    }
-
-
-    if (dom.modalLike) {
-
-      dom.modalLike.addEventListener(
-        "click",
-        () =>
-          handleReaction(
-            dom.modalLike.dataset.product,
-            "like",
-            dom.modalLike
-          )
-      );
-
-    }
-
-
-    if (dom.modalDislike) {
-
-      dom.modalDislike.addEventListener(
-        "click",
-        () =>
-          handleReaction(
-            dom.modalDislike.dataset.product,
-            "dislike",
-            dom.modalDislike
-          )
-      );
-
-    }
-
-  }
-
-
-  /* =========================================================
-     19. CART
-     ========================================================= */
-
-  function cartVariantId(
-    productId,
-    colorName,
-    size
-  ) {
-
-    return (
-      productId +
-      "__" +
-      colorName +
-      "__" +
-      size
-    );
-
-  }
-
-
-  function addToCart(
-    product,
-    color,
-    size,
-    quantity
-  ) {
-
-    if (
-      !product ||
-      !color ||
-      !size
-    ) {
-      return;
-    }
-
-
-    const qty =
-      Math.max(
-        1,
-        Math.min(
-          50,
-          Number(quantity) || 1
-        )
-      );
-
-
-    const cartId =
-      cartVariantId(
-        product.id,
-        color.name,
-        size
-      );
-
-
-    const existing =
-      state.cart.find(
-        item =>
-          item.cartId === cartId
-      );
-
-
-    if (existing) {
-
-      existing.qty =
-        Math.min(
-          50,
-          existing.qty + qty
-        );
-
-    } else {
-
-      state.cart.push({
-
-        cartId,
-
-        productId:
-          product.id,
-
-        name:
-          product.name,
-
-        image:
-          color.image ||
-          product.image,
-
-        color:
-          color.name,
-
-        size,
-
-        qty,
-
-        price:
-          product.salePrice
-
-      });
-
-    }
-
-
-    saveCart();
-
-    renderCart();
-
-    bumpCartIcon();
-
-    showToast(
-      `${qty} × ${product.name} added to cart`
-    );
-
-  }
-
-
-  function updateCartQty(
-    cartId,
-    direction
-  ) {
-
-    const item =
-      state.cart.find(
-        cartItem =>
-          cartItem.cartId ===
-          cartId
-      );
-
-
-    if (!item) return;
-
-
-    item.qty += direction;
-
-
-    if (item.qty <= 0) {
-
-      removeCartItem(
-        cartId
-      );
-
-      return;
-
-    }
-
-
-    item.qty =
-      Math.min(
-        50,
-        item.qty
-      );
-
-
-    saveCart();
-
-    renderCart();
-
-  }
-
-
-  function removeCartItem(
-    cartId
-  ) {
-
-    const element =
-      dom.cartItems
-        ? dom.cartItems.querySelector(
-            `[data-cart-id="${CSS.escape(cartId)}"]`
-          )
-        : null;
-
-
-    const finish = () => {
-
-      state.cart =
-        state.cart.filter(
-          item =>
-            item.cartId !==
-            cartId
-        );
-
-
-      saveCart();
-
-      renderCart();
-
-    };
-
-
-    if (
-      element &&
-      !prefersReducedMotion()
-    ) {
-
-      element.classList.add(
-        "is-removing"
-      );
-
-
-      setTimeout(
-        finish,
-        280
-      );
-
-    } else {
-
-      finish();
-
-    }
-
-  }
-
-
-  function cartTotals() {
-
-    return {
-
-      totalQty:
-        state.cart.reduce(
-          (sum, item) =>
-            sum + item.qty,
-          0
-        ),
-
-      totalPrice:
-        state.cart.reduce(
-          (sum, item) =>
-            sum +
-            item.qty *
-              item.price,
-          0
-        )
-
-    };
-
-  }
-
-
-  function cartItemMarkup(item) {
+    if (color.pattern === "checks") extraClass = " swatch--checks";
+    if (color.pattern === "stripes") extraClass = " swatch--stripes";
 
     return `
-      <div
-        class="cart-item"
-        data-cart-id="${item.cartId}"
-      >
+      <button
+        type="button"
+        class="swatch${extraClass}${index === currentColor ? " is-active" : ""}"
+        data-modal-color="${index}"
+        title="${color.name}"
+        style="background-image:url('${color.image}')">
+      </button>
+    `;
 
-        <div class="cart-item__media">
+  }).join("");
 
-          <img
-            src="${getImagePath(item.image)}"
-            alt="${item.name}"
-            loading="lazy"
-            onerror="
-              this.onerror=null;
-              this.removeAttribute('src');
-              this.alt='';
-              this.style.background='linear-gradient(135deg,#efe9dc,#e2d9c4)';
-            "
-          >
+  const name = $("#modalColorName");
 
+  if (name) {
+    name.textContent =
+      currentProduct.colors[currentColor]?.name || "";
+  }
+}
+
+/* =========================================================
+   MODAL SIZES
+========================================================= */
+
+function renderModalSizes() {
+
+  const container = $("#modalSizes");
+
+  if (!container) return;
+
+  container.innerHTML = SIZES.map(size => `
+    <button
+      type="button"
+      class="size-btn${size === currentSize ? " is-active" : ""}"
+      data-modal-size="${size}"
+    >
+      ${size}
+    </button>
+  `).join("");
+}
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+function updateModalQty() {
+
+  const value = $("#modalQtyValue");
+
+  if (value) {
+    value.textContent = currentQty;
+  }
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+function saveCart() {
+  localStorage.setItem("mehkaCart", JSON.stringify(cart));
+}
+
+function addToCart(product, colorIndex = 0, size = "M", quantity = 1) {
+
+  const color = product.colors?.[colorIndex];
+
+  const key = `${product.id}-${colorIndex}-${size}`;
+
+  const existing = cart.find(item => item.key === key);
+
+  if (existing) {
+
+    existing.quantity += quantity;
+
+  } else {
+
+    cart.push({
+      key,
+      id: product.id,
+      name: product.name,
+      price: product.salePrice,
+      image: color?.image || product.image,
+      color: color?.name || "Default",
+      size,
+      quantity
+    });
+
+  }
+
+  saveCart();
+  renderCart();
+
+  showToast(`${product.name} added to cart`);
+
+  animateCartButton();
+}
+
+function removeCartItem(key) {
+
+  cart = cart.filter(item => item.key !== key);
+
+  saveCart();
+  renderCart();
+}
+
+function changeCartQuantity(key, amount) {
+
+  const item = cart.find(item => item.key === key);
+
+  if (!item) return;
+
+  item.quantity += amount;
+
+  if (item.quantity <= 0) {
+    removeCartItem(key);
+    return;
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function cartTotals() {
+
+  return cart.reduce((total, item) => {
+
+    total.qty += item.quantity;
+    total.price += item.price * item.quantity;
+
+    return total;
+
+  }, {
+    qty: 0,
+    price: 0
+  });
+}
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart() {
+
+  const container = $("#cartItems");
+  const empty = $("#cartEmpty");
+  const summary = $("#cartSummary");
+
+  const count = $("#cartCount");
+  const totalQty = $("#cartTotalQty");
+  const totalPrice = $("#cartTotalPrice");
+
+  if (!container) return;
+
+  if (!cart.length) {
+
+    container.innerHTML = "";
+
+    if (empty) empty.hidden = false;
+    if (summary) summary.hidden = true;
+
+  } else {
+
+    if (empty) empty.hidden = true;
+    if (summary) summary.hidden = false;
+
+    container.innerHTML = cart.map(item => `
+      <div class="cart-item">
+
+        <div class="cart-item__image">
+          <img src="${item.image}" alt="${item.name}" loading="lazy">
         </div>
-
 
         <div class="cart-item__info">
 
-          <p class="cart-item__name">
-            ${item.name}
-          </p>
+          <strong>${item.name}</strong>
 
-          <p class="cart-item__meta">
-            ${item.color} · Size ${item.size}
-          </p>
+          <span>${item.color} · Size ${item.size}</span>
 
+          <b>${money(item.price)}</b>
 
-          <div class="cart-item__row">
+          <div class="cart-item__controls">
 
-            <div
-              class="qty-control"
-              data-cart-qty="${item.cartId}"
+            <button
+              type="button"
+              data-cart-dec="${item.key}"
+              aria-label="Decrease quantity"
             >
+              −
+            </button>
 
-              <button
-                type="button"
-                class="qty-btn"
-                data-cart-dir="-1"
-                aria-label="Decrease quantity"
-              >
-                &minus;
-              </button>
+            <span>${item.quantity}</span>
 
-              <span class="qty-value">
-                ${item.qty}
-              </span>
-
-              <button
-                type="button"
-                class="qty-btn"
-                data-cart-dir="1"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-
-            </div>
-
+            <button
+              type="button"
+              data-cart-inc="${item.key}"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
 
             <button
               type="button"
               class="cart-item__remove"
-              data-cart-remove="${item.cartId}"
+              data-cart-remove="${item.key}"
             >
               Remove
             </button>
@@ -3251,628 +901,703 @@
 
         </div>
 
-
-        <div class="cart-item__price">
-          ${formatPrice(
-            item.price * item.qty
-          )}
-        </div>
-
       </div>
-    `;
-
+    `).join("");
   }
 
+  const totals = cartTotals();
 
-  function renderCart() {
+  if (count) count.textContent = totals.qty;
+  if (totalQty) totalQty.textContent = totals.qty;
+  if (totalPrice) totalPrice.textContent = money(totals.price);
+}
 
-    if (
-      !dom.cartCount ||
-      !dom.cartItems
-    ) {
+/* =========================================================
+   FILTER
+========================================================= */
+
+function setupFilters() {
+
+  $$(".filter-chip").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const filter = button.dataset.filter;
+
+      $$(".filter-chip").forEach(btn => {
+        btn.classList.remove("is-active");
+        btn.setAttribute("aria-selected", "false");
+      });
+
+      button.classList.add("is-active");
+      button.setAttribute("aria-selected", "true");
+
+      const grid = $("#featuredGrid");
+
+      if (!grid) return;
+
+      let list = PRODUCTS;
+
+      if (filter !== "all") {
+        list = PRODUCTS.filter(p => p.category === filter);
+      }
+
+      grid.innerHTML = list.map(productCard).join("");
+
+      initProductImages();
+    });
+  });
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function setupSearch() {
+
+  const input = $("#searchInput");
+  const empty = $("#emptyState");
+
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+
+    const query = input.value.trim().toLowerCase();
+
+    const results = PRODUCTS.filter(product =>
+      product.name.toLowerCase().includes(query) ||
+      product.category.toLowerCase().includes(query) ||
+      product.label.toLowerCase().includes(query)
+    );
+
+    const grid = $("#featuredGrid");
+
+    if (!grid) return;
+
+    grid.innerHTML = results.map(productCard).join("");
+
+    if (empty) {
+      empty.hidden = results.length !== 0;
+    }
+
+    initProductImages();
+  });
+}
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function setupMenu() {
+
+  const toggle = $("#menuToggle");
+  const nav = $("#mobileNav");
+  const overlay = $("#overlay");
+
+  if (!toggle || !nav) return;
+
+  function closeMenu() {
+
+    nav.classList.remove("is-open");
+
+    if (overlay) overlay.classList.remove("is-visible");
+
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", () => {
+
+    const open = nav.classList.toggle("is-open");
+
+    if (overlay) {
+      overlay.classList.toggle("is-visible", open);
+    }
+
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  $$("#mobileNav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  if (overlay) {
+    overlay.addEventListener("click", closeMenu);
+  }
+}
+
+/* =========================================================
+   CART DRAWER
+========================================================= */
+
+function openCart() {
+
+  const drawer = $("#cartDrawer");
+
+  if (!drawer) return;
+
+  drawer.hidden = false;
+
+  requestAnimationFrame(() => {
+    drawer.classList.add("is-open");
+  });
+
+  document.body.classList.add("drawer-open");
+}
+
+function closeCart() {
+
+  const drawer = $("#cartDrawer");
+
+  if (!drawer) return;
+
+  drawer.classList.remove("is-open");
+
+  setTimeout(() => {
+    drawer.hidden = true;
+    document.body.classList.remove("drawer-open");
+  }, 250);
+}
+
+/* =========================================================
+   CART BUTTON
+========================================================= */
+
+function animateCartButton() {
+
+  const button = $("#cartToggle");
+
+  if (!button) return;
+
+  button.classList.remove("cart-pop");
+
+  requestAnimationFrame(() => {
+    button.classList.add("cart-pop");
+  });
+
+  setTimeout(() => {
+    button.classList.remove("cart-pop");
+  }, 500);
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+  const toast = $("#toast");
+
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 2200);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+function setupContact() {
+
+  const email = CONFIG.contact.email;
+  const phone = CONFIG.contact.phone;
+  const whatsapp = CONFIG.contact.whatsapp;
+  const address = CONFIG.contact.address;
+
+  const emailValue = $("#contactEmailValue");
+  const phoneValue = $("#contactPhoneValue");
+  const whatsappValue = $("#contactWhatsappValue");
+  const addressValue = $("#contactAddressValue");
+
+  if (emailValue) emailValue.textContent = email;
+  if (phoneValue) phoneValue.textContent = phone;
+  if (whatsappValue) whatsappValue.textContent = whatsapp;
+  if (addressValue) addressValue.textContent = address;
+
+  const emailLink = $("#contactEmail");
+
+  if (emailLink && email !== "EMAIL_HERE") {
+    emailLink.href = `mailto:${email}`;
+  }
+
+  const phoneLink = $("#contactPhone");
+
+  if (phoneLink && phone !== "PHONE_HERE") {
+    phoneLink.href = `tel:${phone.replace(/\s/g, "")}`;
+  }
+
+  const whatsappLink = $("#contactWhatsapp");
+
+  if (whatsappLink && whatsapp !== "WHATSAPP_NUMBER_HERE") {
+    whatsappLink.href =
+      `https://wa.me/${whatsapp.replace(/\D/g, "")}`;
+  }
+
+  const footerEmail = $("#footerEmail");
+  const footerPhone = $("#footerPhone");
+
+  if (footerEmail) footerEmail.textContent = email;
+  if (footerPhone) footerPhone.textContent = phone;
+}
+
+/* =========================================================
+   ORDER FORM
+========================================================= */
+
+function setupOrderForm() {
+
+  const form = $("#orderForm");
+
+  if (!form) return;
+
+  form.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const error = $("#orderFormError");
+
+    if (!cart.length) {
+
+      if (error) {
+        error.hidden = false;
+        error.textContent =
+          "Please add at least one product to your cart first.";
+      }
+
       return;
     }
 
+    const name = $("#custName")?.value.trim();
+    const phone = $("#custPhone")?.value.trim();
+    const address = $("#custAddress")?.value.trim();
+    const notes = $("#custNotes")?.value.trim();
 
-    const totals =
-      cartTotals();
+    if (!name || !phone || !address) {
 
-
-    dom.cartCount.textContent =
-      totals.totalQty;
-
-
-    dom.cartCount.classList.toggle(
-      "is-visible",
-      totals.totalQty > 0
-    );
-
-
-    if (!state.cart.length) {
-
-      dom.cartItems.innerHTML =
-        "";
-
-
-      if (dom.cartEmpty) {
-
-        dom.cartEmpty.style.display =
-          "block";
-
+      if (error) {
+        error.hidden = false;
+        error.textContent =
+          "Please complete your name, phone number and delivery address.";
       }
-
-
-      if (dom.cartSummary) {
-
-        dom.cartSummary.style.display =
-          "none";
-
-      }
-
 
       return;
-
     }
 
+    if (error) error.hidden = true;
 
-    if (dom.cartEmpty) {
+    const items = cart.map(item =>
+      `• ${item.name} | ${item.color} | Size ${item.size} | Qty ${item.quantity} | ${money(item.price * item.quantity)}`
+    ).join("\n");
 
-      dom.cartEmpty.style.display =
-        "none";
+    const totals = cartTotals();
 
+    const message =
+`MEHKA GARMENTS ORDER
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+ORDER:
+${items}
+
+Total Items: ${totals.qty}
+Total: ${money(totals.price)}
+
+Notes: ${notes || "None"}`;
+
+    const number = CONFIG.contact.whatsapp.replace(/\D/g, "");
+
+    if (!number) {
+
+      if (error) {
+        error.hidden = false;
+        error.textContent =
+          "Please add your WhatsApp number in CONFIG.contact first.";
+      }
+
+      return;
     }
 
+    const url =
+      `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
-    if (dom.cartSummary) {
+    window.open(url, "_blank");
+  });
+}
 
-      dom.cartSummary.style.display =
-        "block";
+/* =========================================================
+   MODAL EVENTS
+========================================================= */
 
+function setupModal() {
+
+  document.addEventListener("click", event => {
+
+    const openButton = event.target.closest("[data-product-open]");
+
+    if (openButton) {
+
+      const id = openButton.dataset.productOpen;
+
+      openProduct(id);
+
+      return;
     }
 
+    const colorButton =
+      event.target.closest("[data-modal-color]");
 
-    dom.cartItems.innerHTML =
-      state.cart
-        .map(cartItemMarkup)
-        .join("");
+    if (colorButton && currentProduct) {
 
+      currentColor =
+        Number(colorButton.dataset.modalColor);
 
-    if (dom.cartTotalQty) {
+      updateModalImage();
+      renderModalColors();
 
-      dom.cartTotalQty.textContent =
-        totals.totalQty;
-
+      return;
     }
 
+    const sizeButton =
+      event.target.closest("[data-modal-size]");
 
-    if (dom.cartTotalPrice) {
+    if (sizeButton) {
 
-      dom.cartTotalPrice.textContent =
-        formatPrice(
-          totals.totalPrice
-        );
+      currentSize = sizeButton.dataset.modalSize;
 
+      renderModalSizes();
+
+      return;
     }
 
-  }
+    const qtyButton =
+      event.target.closest("[data-qty]");
 
+    if (qtyButton) {
 
-  function bumpCartIcon() {
+      if (qtyButton.dataset.qty === "inc") {
+        currentQty++;
+      }
 
-    if (!dom.cartCount) return;
+      if (qtyButton.dataset.qty === "dec") {
+        currentQty = Math.max(1, currentQty - 1);
+      }
 
+      updateModalQty();
+    }
+  });
 
-    dom.cartCount.classList.remove(
-      "bump"
+  $("#modalClose")?.addEventListener("click", closeProduct);
+
+  $("#productModal")?.addEventListener("click", event => {
+
+    if (event.target === $("#productModal")) {
+      closeProduct();
+    }
+  });
+
+  $("#modalAddToCart")?.addEventListener("click", () => {
+
+    if (!currentProduct) return;
+
+    addToCart(
+      currentProduct,
+      currentColor,
+      currentSize,
+      currentQty
     );
 
+    closeProduct();
+  });
+}
 
-    void dom.cartCount.offsetWidth;
+/* =========================================================
+   CART EVENTS
+========================================================= */
 
+function setupCartEvents() {
 
-    dom.cartCount.classList.add(
-      "bump"
-    );
+  $("#cartToggle")?.addEventListener("click", openCart);
 
+  $("#cartClose")?.addEventListener("click", closeCart);
 
-    if (dom.cartToggle) {
+  document.addEventListener("click", event => {
 
-      dom.cartToggle.style.transform =
-        "translateY(-3px) scale(1.08)";
+    const inc = event.target.closest("[data-cart-inc]");
 
+    if (inc) {
+      changeCartQuantity(inc.dataset.cartInc, 1);
+      return;
+    }
+
+    const dec = event.target.closest("[data-cart-dec]");
+
+    if (dec) {
+      changeCartQuantity(dec.dataset.cartDec, -1);
+      return;
+    }
+
+    const remove =
+      event.target.closest("[data-cart-remove]");
+
+    if (remove) {
+      removeCartItem(remove.dataset.cartRemove);
+      return;
+    }
+
+    const add =
+      event.target.closest("[data-add-product]");
+
+    if (add) {
+
+      const product =
+        PRODUCTS.find(p => p.id === add.dataset.addProduct);
+
+      if (product) {
+        addToCart(product, 0, "M", 1);
+      }
+    }
+  });
+
+  $("#cartCheckoutBtn")?.addEventListener("click", () => {
+    closeCart();
+  });
+}
+
+/* =========================================================
+   PRODUCT SWATCH EVENTS
+========================================================= */
+
+function setupProductSwatches() {
+
+  document.addEventListener("click", event => {
+
+    const swatch =
+      event.target.closest("[data-product][data-color]");
+
+    if (!swatch) return;
+
+    const productId = swatch.dataset.product;
+    const colorIndex = Number(swatch.dataset.color);
+
+    const product =
+      PRODUCTS.find(p => p.id === productId);
+
+    if (!product) return;
+
+    const card =
+      swatch.closest(".product-card");
+
+    if (!card) return;
+
+    const img =
+      card.querySelector(".product-card__image");
+
+    const color =
+      product.colors[colorIndex];
+
+    if (img && color?.image) {
+      img.src = color.image;
+    }
+
+    card
+      .querySelectorAll("[data-color]")
+      .forEach(btn => btn.classList.remove("is-active"));
+
+    swatch.classList.add("is-active");
+  });
+}
+
+/* =========================================================
+   HERO VIDEO
+========================================================= */
+
+function setupHeroVideo() {
+
+  const video = $("#heroVideo");
+
+  if (!video) return;
+
+  video.muted = true;
+
+  const play = () => {
+    video.play().catch(() => {});
+  };
+
+  play();
+
+  video.addEventListener("canplay", play);
+}
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+function setupPreloader() {
+
+  const preloader = $("#preloader");
+
+  if (!preloader) return;
+
+  window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+      preloader.classList.add("is-loaded");
 
       setTimeout(() => {
+        preloader.remove();
+      }, 700);
 
-        dom.cartToggle.style.transform =
-          "";
+    }, 400);
+  });
+}
 
-      }, 220);
+/* =========================================================
+   YEAR
+========================================================= */
 
-    }
+function setupYear() {
 
+  const year = $("#year");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
+}
 
+/* =========================================================
+   BACK TO TOP
+========================================================= */
 
-  function openCart() {
+function setupBackToTop() {
 
-    if (!dom.cartDrawer) return;
+  $("#backToTop")?.addEventListener("click", () => {
 
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 
-    dom.cartDrawer.hidden =
-      false;
+  });
+}
 
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
 
-    requestAnimationFrame(() => {
+function setupSmoothScroll() {
 
-      dom.cartDrawer.classList.add(
-        "is-open"
-      );
+  $$("[data-scroll]").forEach(link => {
+
+    link.addEventListener("click", event => {
+
+      const href = link.getAttribute("href");
+
+      if (!href || !href.startsWith("#")) return;
+
+      const target = document.querySelector(href);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
 
     });
 
+  });
+}
 
-    if (dom.cartToggle) {
+/* =========================================================
+   KEYBOARD
+========================================================= */
 
-      dom.cartToggle.setAttribute(
-        "aria-expanded",
-        "true"
-      );
+document.addEventListener("keydown", event => {
 
-    }
+  if (event.key === "Escape") {
 
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-
-
-  function closeCart() {
-
-    if (!dom.cartDrawer) return;
-
-
-    dom.cartDrawer.classList.remove(
-      "is-open"
-    );
-
-
-    if (dom.cartToggle) {
-
-      dom.cartToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    }
-
-
-    document.body.style.overflow =
-      "";
-
-
-    setTimeout(() => {
-
-      dom.cartDrawer.hidden =
-        true;
-
-    }, 500);
+    closeProduct();
+    closeCart();
 
   }
 
+});
 
-  function initCart() {
+/* =========================================================
+   DEBUG — IMAGE CHECK
+========================================================= */
 
-    if (!dom.cartToggle) return;
+function debugProductImages() {
 
+  console.log(
+    "%c MEHKA GARMENTS IMAGE TEST ",
+    "background:#171512;color:#fff;padding:8px;font-weight:bold;"
+  );
 
-    dom.cartToggle.addEventListener(
-      "click",
-      openCart
-    );
+  PRODUCTS.forEach(product => {
 
+    const src =
+      product.colors?.[0]?.image || product.image;
 
-    if (dom.cartClose) {
+    const test = new Image();
 
-      dom.cartClose.addEventListener(
-        "click",
-        closeCart
-      );
+    test.onload = () => {
+      console.log("✓ MEHKA IMAGE OK:", product.name, src);
+    };
 
-    }
+    test.onerror = () => {
+      console.error("✗ MEHKA IMAGE MISSING:", product.name, src);
+    };
 
+    test.src = src;
+  });
+}
 
-    if (dom.cartDrawer) {
+/* =========================================================
+   START
+========================================================= */
 
-      dom.cartDrawer.addEventListener(
-        "click",
-        event => {
+document.addEventListener("DOMContentLoaded", () => {
 
-          if (
-            event.target ===
-            dom.cartDrawer
-          ) {
+  renderProducts();
 
-            closeCart();
+  renderCart();
 
-          }
+  setupFilters();
+  setupSearch();
+  setupMenu();
+  setupModal();
+  setupCartEvents();
+  setupProductSwatches();
 
-        }
-      );
+  setupHeroVideo();
+  setupPreloader();
 
-    }
+  setupContact();
+  setupOrderForm();
 
+  setupYear();
+  setupBackToTop();
+  setupSmoothScroll();
 
-    if (dom.cartItems) {
+  debugProductImages();
 
-      dom.cartItems.addEventListener(
-        "click",
-        event => {
+  console.log(
+    "%c MEHKA GARMENTS READY ✓ ",
+    "background:#171512;color:white;padding:8px 14px;font-weight:bold;"
+  );
 
-          const qty =
-            event.target.closest(
-              "[data-cart-dir]"
-            );
-
-
-          if (qty) {
-
-            const control =
-              qty.closest(
-                "[data-cart-qty]"
-              );
-
-
-            updateCartQty(
-              control.dataset.cartQty,
-              Number(
-                qty.dataset.cartDir
-              )
-            );
-
-
-            return;
-
-          }
-
-
-          const remove =
-            event.target.closest(
-              "[data-cart-remove]"
-            );
-
-
-          if (remove) {
-
-            removeCartItem(
-              remove.dataset.cartRemove
-            );
-
-          }
-
-        }
-      );
-
-    }
-
-
-    renderCart();
-
-  }
-
-
-  /* =========================================================
-     20. FLY IMAGE TO CART
-     ========================================================= */
-
-  function flyToCart(source) {
-
-    if (
-      !source ||
-      !dom.cartToggle ||
-      prefersReducedMotion()
-    ) {
-      return;
-    }
-
-
-    const cartRect =
-      dom.cartToggle.getBoundingClientRect();
-
-
-    const sourceRect =
-      source.getBoundingClientRect();
-
-
-    const ghost =
-      document.createElement(
-        "div"
-      );
-
-
-    ghost.className =
-      "fly-ghost";
-
-
-    ghost.style.backgroundColor =
-      "#e2d9c4";
-
-
-    if (
-      source.tagName === "IMG" &&
-      source.src
-    ) {
-
-      ghost.style.backgroundImage =
-        `url(${source.src})`;
-
-    }
-
-
-    ghost.style.left =
-      sourceRect.left +
-      "px";
-
-
-    ghost.style.top =
-      sourceRect.top +
-      "px";
-
-
-    ghost.style.width =
-      Math.min(
-        80,
-        sourceRect.width
-      ) +
-      "px";
-
-
-    ghost.style.height =
-      Math.min(
-        80,
-        sourceRect.height
-      ) +
-      "px";
-
-
-    document.body.appendChild(
-      ghost
-    );
-
-
-    requestAnimationFrame(() => {
-
-      ghost.style.left =
-        cartRect.left +
-        cartRect.width / 2 -
-        10 +
-        "px";
-
-
-      ghost.style.top =
-        cartRect.top +
-        cartRect.height / 2 -
-        10 +
-        "px";
-
-
-      ghost.style.width =
-        "20px";
-
-
-      ghost.style.height =
-        "20px";
-
-
-      ghost.style.opacity =
-        "0.15";
-
-
-      ghost.style.borderRadius =
-        "50%";
-
-    });
-
-
-    setTimeout(() => {
-
-      ghost.remove();
-
-    }, 750);
-
-  }
-
-
-  /* =========================================================
-     21. NAVIGATION
-     ========================================================= */
-
-  function initNavigation() {
-
-    if (!dom.header) return;
-
-
-    const heroHeight =
-      () =>
-        dom.hero
-          ? dom.hero.offsetHeight
-          : 0;
-
-
-    function updateHeaderState() {
-
-      const scrolled =
-        window.scrollY > 30;
-
-
-      dom.header.classList.toggle(
-        "is-scrolled",
-        scrolled
-      );
-
-
-      dom.header.classList.toggle(
-        "is-hero-dark",
-        !scrolled &&
-        window.scrollY <
-          heroHeight() - 90
-      );
-
-    }
-
-
-    updateHeaderState();
-
-
-    window.addEventListener(
-      "scroll",
-      () =>
-        safe(
-          updateHeaderState
-        ),
-      {
-        passive: true
-      }
-    );
-
-
-    function closeMobileNav() {
-
-      if (dom.mobileNav) {
-
-        dom.mobileNav.classList.remove(
-          "is-open"
-        );
-
-      }
-
-
-      if (dom.overlay) {
-
-        dom.overlay.classList.remove(
-          "is-visible"
-        );
-
-      }
-
-
-      if (dom.menuToggle) {
-
-        dom.menuToggle.classList.remove(
-          "is-open"
-        );
-
-        dom.menuToggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-      }
-
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function openMobileNav() {
-
-      if (dom.mobileNav) {
-
-        dom.mobileNav.classList.add(
-          "is-open"
-        );
-
-      }
-
-
-      if (dom.overlay) {
-
-        dom.overlay.classList.add(
-          "is-visible"
-        );
-
-      }
-
-
-      if (dom.menuToggle) {
-
-        dom.menuToggle.classList.add(
-          "is-open"
-        );
-
-        dom.menuToggle.setAttribute(
-          "aria-expanded",
-          "true"
-        );
-
-      }
-
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    if (dom.menuToggle) {
-
-      dom.menuToggle.addEventListener(
-        "click",
-        () => {
-
-          if (
-            dom.mobileNav &&
-            dom.mobileNav.classList.contains(
-              "is-open"
-            )
-          ) {
-
-            closeMobileNav();
-
-          } else {
-
-            openMobileNav();
-
-          }
-
-        }
-      );
-
-    }
-
-
-    if (dom.overlay) {
-
-      dom.overlay.addEventListener(
-        "click",
-        closeMobileNav
-      );
-
-    }
-
-
-    $all(
-      "[data-scroll], [data-nav]"
-    ).forEach(link => {
-
-      link.addEventListener(
-        "click",
-        event => {
-
-          const href =
-            link.getAttribute(
-              "href"
-            );
-
-
-          if (
-            !href ||
-            href.charAt(0) !== "#"
-          ) {
-            return;
-          }
-
-
-          const targ
+});
