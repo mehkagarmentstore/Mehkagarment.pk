@@ -947,7 +947,7 @@
       <div class="cart-item" data-cart-id="${item.cartId}">
         <div class="cart-item__media">
           <img src="${buildImagePath(item.image)}" alt="${item.name}"
-               onerror="this.onerror=null; this.style.background='linear-gradient(135deg,#efe9dc,#e2d9c4)'; this.style.opacity='.6'; this.src='';">
+               onerror="this.onerror=null; this.removeAttribute('src'); this.alt=''; this.style.background='linear-gradient(135deg,#efe9dc,#e2d9c4)';">
         </div>
         <div class="cart-item__info">
           <p class="cart-item__name">${item.name}</p>
@@ -1298,6 +1298,7 @@
 
   function init() {
     safe(() => { if (dom.year) dom.year.textContent = new Date().getFullYear(); });
+    revealObserver.init();
     safe(applyContactConfig);
     safe(renderAllGrids);
     safe(renderCart);
@@ -1309,7 +1310,6 @@
     safe(initNavigation);
     safe(initHero);
     safe(initOrderForm);
-    revealObserver.init();
     safe(initGenericReveal);
 
     const minDelay = new Promise((res) => setTimeout(res, 900));
