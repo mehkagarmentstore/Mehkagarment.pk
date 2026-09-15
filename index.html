@@ -21,457 +21,1762 @@
   --white:#fff;
   --ease:cubic-bezier(.2,.75,.2,1);
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
+
 html{scroll-behavior:smooth}
+
 body{
   background:var(--bg);
   color:var(--text);
   font-family:"DM Sans",sans-serif;
   overflow-x:hidden;
 }
+
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 img{display:block;max-width:100%}
 
-/* PRELOADER */
+/* ================================
+   PRELOADER
+   ================================ */
+
 .loader{
-  position:fixed;inset:0;z-index:9999;background:#080909;
-  display:grid;place-items:center;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#080909;
+  display:grid;
+  place-items:center;
   transition:.8s var(--ease);
 }
-.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
 .loader-inner{text-align:center}
+
 .logo-mark{
-  width:62px;height:62px;border:1px solid var(--gold);
-  border-radius:50%;display:grid;place-items:center;
-  margin:auto;font-family:"Playfair Display";font-size:23px;
+  width:62px;
+  height:62px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  margin:auto;
+  font-family:"Playfair Display";
+  font-size:23px;
   color:var(--gold2);
   animation:spinGlow 2s infinite;
 }
-.loader p{margin-top:18px;letter-spacing:5px;font-size:10px;color:#aaa}
-@keyframes spinGlow{
-  50%{box-shadow:0 0 40px rgba(199,164,106,.2);transform:scale(1.05)}
+
+.loader p{
+  margin-top:18px;
+  letter-spacing:5px;
+  font-size:10px;
+  color:#aaa;
 }
 
-/* HEADER */
-.announcement{
-  height:34px;background:#000;color:#aaa;
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+@keyframes spinGlow{
+  50%{
+    box-shadow:0 0 40px rgba(199,164,106,.2);
+    transform:scale(1.05);
+  }
 }
+
+/* ================================
+   ANNOUNCEMENT / HEADER
+   ================================ */
+
+.announcement{
+  height:34px;
+  background:#000;
+  color:#aaa;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
 header{
-  position:fixed;top:34px;left:0;width:100%;z-index:1000;
+  position:fixed;
+  top:34px;
+  left:0;
+  width:100%;
+  z-index:1000;
   transition:.4s var(--ease);
 }
+
 header.scrolled{
-  top:0;background:rgba(8,9,9,.82);
-  backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+  top:0;
+  background:rgba(8,9,9,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
 }
+
 .nav{
-  max-width:1400px;margin:auto;height:82px;padding:0 35px;
-  display:flex;align-items:center;justify-content:space-between;
+  max-width:1400px;
+  margin:auto;
+  height:82px;
+  padding:0 35px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.brand{display:flex;align-items:center;gap:12px}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
 .brand-icon{
-  width:42px;height:42px;border:1px solid var(--gold);
-  border-radius:50%;display:grid;place-items:center;
-  font-family:"Playfair Display";color:var(--gold2);
+  width:42px;
+  height:42px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-family:"Playfair Display";
+  color:var(--gold2);
   font-size:15px;
 }
+
 .brand strong{
-  font-family:"Playfair Display";font-size:21px;
-  letter-spacing:.5px;font-weight:600;
+  font-family:"Playfair Display";
+  font-size:21px;
+  letter-spacing:.5px;
+  font-weight:600;
 }
-.nav-links{display:flex;gap:30px;align-items:center}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  align-items:center;
+}
+
 .nav-links a{
-  font-size:12px;color:#c9c9c5;position:relative;padding:10px 0;
+  font-size:12px;
+  color:#c9c9c5;
+  position:relative;
+  padding:10px 0;
 }
+
 .nav-links a:after{
-  content:"";position:absolute;left:0;bottom:2px;width:0;height:1px;
-  background:var(--gold);transition:.35s;
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:2px;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:.35s;
 }
+
 .nav-links a:hover:after{width:100%}
-.nav-actions{display:flex;gap:10px}
+
+.nav-actions{
+  display:flex;
+  gap:10px;
+}
+
 .icon-btn{
-  width:42px;height:42px;border:1px solid var(--line);
-  background:rgba(255,255,255,.03);color:#fff;border-radius:50%;
-  cursor:pointer;transition:.3s;position:relative;
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:#fff;
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+  position:relative;
 }
-.icon-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
+
+.icon-btn:hover{
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
 .cart-count{
-  position:absolute;right:-2px;top:-3px;background:var(--gold);
-  color:#000;width:17px;height:17px;border-radius:50%;
-  display:grid;place-items:center;font-size:9px;font-weight:700;
+  position:absolute;
+  right:-2px;
+  top:-3px;
+  background:var(--gold);
+  color:#000;
+  width:17px;
+  height:17px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:9px;
+  font-weight:700;
 }
+
 .menu{display:none}
 
-/* HERO */
+/* ================================
+   HERO
+   ================================ */
+
 .hero{
-  min-height:100vh;position:relative;display:flex;align-items:center;
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
   overflow:hidden;
   background:
-  radial-gradient(circle at 75% 40%,rgba(199,164,106,.12),transparent 32%),
-  linear-gradient(110deg,#080909 35%,#101111 100%);
+    radial-gradient(circle at 75% 40%,rgba(199,164,106,.12),transparent 32%),
+    linear-gradient(110deg,#080909 35%,#101111 100%);
 }
+
 .hero:before{
-  content:"";position:absolute;width:700px;height:700px;
-  right:-200px;top:90px;border-radius:50%;
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  right:-200px;
+  top:90px;
+  border-radius:50%;
   border:1px solid rgba(199,164,106,.13);
   box-shadow:0 0 100px rgba(199,164,106,.04);
   animation:orb 12s linear infinite;
 }
-@keyframes orb{to{transform:rotate(360deg)}}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  right:2%;
+  top:22%;
+  border-radius:50%;
+  border:1px solid rgba(199,164,106,.07);
+  animation:orbReverse 17s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes orb{
+  to{transform:rotate(360deg)}
+}
+
+@keyframes orbReverse{
+  to{transform:rotate(-360deg)}
+}
+
 .hero-grid{
-  max-width:1400px;width:100%;margin:auto;padding:150px 55px 90px;
-  display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;
+  max-width:1400px;
+  width:100%;
+  margin:auto;
+  padding:150px 55px 90px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
 }
+
 .eyebrow{
-  color:var(--gold2);font-size:10px;letter-spacing:4px;
-  text-transform:uppercase;margin-bottom:20px;
+  color:var(--gold2);
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:20px;
 }
+
 .hero h1{
-  font-family:"Playfair Display";font-size:clamp(55px,7vw,105px);
-  line-height:.92;font-weight:500;letter-spacing:-4px;
+  font-family:"Playfair Display";
+  font-size:clamp(55px,7vw,105px);
+  line-height:.92;
+  font-weight:500;
+  letter-spacing:-4px;
 }
+
 .hero h1 span{color:var(--gold2)}
+
 .hero-copy{
-  color:#aaa;max-width:530px;font-size:15px;line-height:1.8;
+  color:#aaa;
+  max-width:530px;
+  font-size:15px;
+  line-height:1.8;
   margin:28px 0 35px;
 }
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
 .btn{
-  border:1px solid var(--line);padding:14px 23px;
-  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
-  cursor:pointer;transition:.35s var(--ease);display:inline-flex;
-  align-items:center;justify-content:center;gap:9px;
-}
-.btn-primary{background:var(--text);color:#090909;border-color:var(--text)}
-.btn-primary:hover{background:var(--gold2);border-color:var(--gold2);transform:translateY(-3px)}
-.btn-outline{background:transparent;color:#eee}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-3px)}
-.hero-visual{
-  min-height:590px;position:relative;display:flex;align-items:center;
+  border:1px solid var(--line);
+  padding:14px 23px;
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.35s var(--ease);
+  display:inline-flex;
+  align-items:center;
   justify-content:center;
+  gap:9px;
 }
+
+.btn-primary{
+  background:var(--text);
+  color:#090909;
+  border-color:var(--text);
+}
+
+.btn-primary:hover{
+  background:var(--gold2);
+  border-color:var(--gold2);
+  transform:translateY(-3px);
+}
+
+.btn-outline{
+  background:transparent;
+  color:#eee;
+}
+
+.btn-outline:hover{
+  border-color:var(--gold);
+  color:var(--gold2);
+  transform:translateY(-3px);
+}
+
+/* PREMIUM HERO VISUAL */
+
+.hero-visual{
+  min-height:590px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1200px;
+}
+
+.hero-glow{
+  position:absolute;
+  width:390px;
+  height:390px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(199,164,106,.16),transparent 68%);
+  filter:blur(12px);
+  animation:heroGlow 5s ease-in-out infinite;
+}
+
+@keyframes heroGlow{
+  0%,100%{transform:scale(.92);opacity:.55}
+  50%{transform:scale(1.12);opacity:1}
+}
+
+.hero-ring{
+  position:absolute;
+  width:510px;
+  height:510px;
+  border:1px solid rgba(199,164,106,.10);
+  border-radius:50%;
+  animation:ringPulse 7s ease-in-out infinite;
+}
+
+.hero-ring:before{
+  content:"";
+  position:absolute;
+  inset:25px;
+  border:1px dashed rgba(199,164,106,.08);
+  border-radius:50%;
+  animation:orb 20s linear infinite;
+}
+
+@keyframes ringPulse{
+  0%,100%{transform:scale(.96);opacity:.55}
+  50%{transform:scale(1.04);opacity:1}
+}
+
 .hero-card{
-  width:min(440px,80%);height:540px;position:relative;overflow:hidden;
+  width:min(440px,80%);
+  height:540px;
+  position:relative;
+  overflow:hidden;
   transform:rotate(3deg);
-  box-shadow:30px 30px 90px rgba(0,0,0,.55);
+  box-shadow:
+    30px 30px 90px rgba(0,0,0,.55),
+    0 0 70px rgba(199,164,106,.08);
   animation:heroFloat 5s ease-in-out infinite;
+  z-index:2;
+  isolation:isolate;
 }
-.hero-card img{width:100%;height:100%;object-fit:cover}
+
+.hero-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.04);
+  animation:heroImageMotion 9s ease-in-out infinite alternate;
+}
+
+.hero-card:before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  z-index:2;
+  background:linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255,255,255,.10) 48%,
+    rgba(199,164,106,.16) 50%,
+    transparent 63%
+  );
+  transform:translateX(-80%) rotate(8deg);
+  animation:heroLightSweep 6s ease-in-out infinite;
+  pointer-events:none;
+}
+
 .hero-card:after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:
+    linear-gradient(180deg,transparent 50%,rgba(0,0,0,.60)),
+    linear-gradient(110deg,rgba(255,255,255,.03),transparent 40%);
+  pointer-events:none;
 }
+
 @keyframes heroFloat{
-  50%{transform:rotate(0deg) translateY(-12px)}
+  0%,100%{transform:rotate(3deg) translate3d(0,0,0)}
+  50%{transform:rotate(-.5deg) translate3d(0,-13px,0)}
 }
+
+@keyframes heroImageMotion{
+  0%{transform:scale(1.04) translate3d(0,0,0)}
+  100%{transform:scale(1.12) translate3d(-1%, -1%, 0)}
+}
+
+@keyframes heroLightSweep{
+  0%,45%{transform:translateX(-80%) rotate(8deg);opacity:0}
+  55%{opacity:1}
+  78%{transform:translateX(80%) rotate(8deg);opacity:0}
+  100%{transform:translateX(80%) rotate(8deg);opacity:0}
+}
+
 .floating-tag{
-  position:absolute;bottom:40px;left:15px;z-index:3;
-  background:rgba(8,9,9,.78);backdrop-filter:blur(12px);
-  padding:15px 20px;border:1px solid var(--line);
+  position:absolute;
+  bottom:40px;
+  left:15px;
+  z-index:4;
+  background:rgba(8,9,9,.78);
+  backdrop-filter:blur(12px);
+  padding:15px 20px;
+  border:1px solid var(--line);
+  animation:tagFloat 4s ease-in-out infinite;
 }
-.floating-tag small{display:block;color:#999;font-size:9px;letter-spacing:2px}
-.floating-tag strong{font-family:"Playfair Display";font-size:18px;font-weight:500}
 
-/* TICKER */
-.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.floating-tag small{
+  display:block;
+  color:#999;
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+.floating-tag strong{
+  font-family:"Playfair Display";
+  font-size:18px;
+  font-weight:500;
+}
+
+@keyframes tagFloat{
+  50%{transform:translateY(-5px)}
+}
+
+.hero-mini{
+  position:absolute;
+  z-index:5;
+  border:1px solid rgba(199,164,106,.25);
+  background:rgba(8,9,9,.72);
+  backdrop-filter:blur(10px);
+  padding:10px 13px;
+  font-size:8px;
+  letter-spacing:1.5px;
+  color:#aaa;
+  text-transform:uppercase;
+}
+
+.hero-mini.one{
+  right:2%;
+  top:20%;
+  animation:miniOne 4.5s ease-in-out infinite;
+}
+
+.hero-mini.two{
+  left:0;
+  bottom:19%;
+  animation:miniTwo 5s ease-in-out infinite;
+}
+
+@keyframes miniOne{
+  50%{transform:translate3d(7px,-8px,0)}
+}
+
+@keyframes miniTwo{
+  50%{transform:translate3d(-5px,7px,0)}
+}
+
+/* ================================
+   TICKER
+   ================================ */
+
+.ticker{
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
 .ticker-track{
-  display:flex;width:max-content;animation:ticker 24s linear infinite;
+  display:flex;
+  width:max-content;
+  animation:ticker 24s linear infinite;
 }
+
 .ticker span{
-  padding:17px 35px;font-size:10px;letter-spacing:3px;
-  color:#8d8d88;text-transform:uppercase;
+  padding:17px 35px;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#8d8d88;
+  text-transform:uppercase;
 }
-.ticker b{color:var(--gold);font-weight:400}
-@keyframes ticker{to{transform:translateX(-50%)}}
 
-/* GENERAL */
+.ticker b{
+  color:var(--gold);
+  font-weight:400;
+}
+
+@keyframes ticker{
+  to{transform:translateX(-50%)}
+}
+
+/* ================================
+   GENERAL
+   ================================ */
+
 .section{padding:120px 45px}
-.container{max-width:1400px;margin:auto}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+}
+
 .section-head{
-  display:flex;justify-content:space-between;align-items:end;
-  margin-bottom:42px;gap:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:42px;
+  gap:30px;
 }
+
 .section-title{
-  font-family:"Playfair Display";font-size:clamp(36px,5vw,64px);
-  font-weight:500;letter-spacing:-2px;
+  font-family:"Playfair Display";
+  font-size:clamp(36px,5vw,64px);
+  font-weight:500;
+  letter-spacing:-2px;
 }
-.section-desc{max-width:430px;color:#8f8f8a;line-height:1.7;font-size:13px}
-.section-label{color:var(--gold);font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:13px}
 
-/* INTRO */
+.section-desc{
+  max-width:430px;
+  color:#8f8f8a;
+  line-height:1.7;
+  font-size:13px;
+}
+
+.section-label{
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+
+/* ================================
+   INTRO
+   ================================ */
+
 .intro{background:#0c0d0d}
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.intro-big{
-  font-family:"Playfair Display";font-size:clamp(34px,4vw,57px);
-  line-height:1.08;font-weight:500;
-}
-.intro-big em{color:var(--gold2);font-style:normal}
-.intro-text{color:#92928d;font-size:14px;line-height:1.9}
-.values{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:45px}
-.value{border-top:1px solid var(--line);padding-top:18px}
-.value b{display:block;font-size:11px;letter-spacing:1px;margin-bottom:8px}
-.value p{font-size:11px;color:#777;line-height:1.6}
 
-/* PRODUCTS */
-.product-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+.intro-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
 }
-.product{
-  background:var(--panel);border:1px solid transparent;
-  transition:.45s var(--ease);position:relative;min-width:0;
+
+.intro-big{
+  font-family:"Playfair Display";
+  font-size:clamp(34px,4vw,57px);
+  line-height:1.08;
+  font-weight:500;
 }
-.product:hover{transform:translateY(-8px);border-color:rgba(199,164,106,.25)}
-.product-image{
-  height:420px;position:relative;overflow:hidden;background:#151616;
+
+.intro-big em{
+  color:var(--gold2);
+  font-style:normal;
 }
-.product-image img{
-  width:100%;height:100%;object-fit:cover;
-  transition:.7s var(--ease);
+
+.intro-text{
+  color:#92928d;
+  font-size:14px;
+  line-height:1.9;
 }
-.product:hover .product-image img{transform:scale(1.055)}
-.product-badge{
-  position:absolute;top:14px;left:14px;z-index:2;
-  background:#f2eee5;color:#111;padding:7px 10px;
-  font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
+
+.values{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:45px;
 }
-.product-actions{
-  position:absolute;right:12px;top:12px;z-index:3;
-  display:flex;flex-direction:column;gap:7px;
+
+.value{
+  border-top:1px solid var(--line);
+  padding-top:18px;
 }
-.round-btn{
-  width:35px;height:35px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
-  background:rgba(0,0,0,.55);color:#fff;cursor:pointer;
-  backdrop-filter:blur(8px);transition:.25s;
-}
-.round-btn:hover,.round-btn.active{background:var(--gold);color:#000;border-color:var(--gold)}
-.product-info{padding:18px}
-.product-name{
-  font-family:"Playfair Display";font-size:20px;font-weight:500;
+
+.value b{
+  display:block;
+  font-size:11px;
+  letter-spacing:1px;
   margin-bottom:8px;
 }
-.product-meta{font-size:10px;color:#777;text-transform:uppercase;letter-spacing:1px}
-.price-row{display:flex;gap:10px;align-items:center;margin-top:14px}
-.price{font-size:14px;font-weight:600}
-.old{font-size:11px;color:#666;text-decoration:line-through}
-.discount{font-size:9px;color:var(--gold)}
-.swatches{display:flex;gap:6px;margin:15px 0 16px}
-.swatch{
-  width:19px;height:19px;border-radius:50%;border:1px solid #555;
-  cursor:pointer;transition:.2s;
+
+.value p{
+  font-size:11px;
+  color:#777;
+  line-height:1.6;
 }
-.swatch:hover,.swatch.active{outline:2px solid var(--gold);outline-offset:2px}
-.product-bottom{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.product-bottom .btn{padding:11px 8px;font-size:9px}
+
+/* ================================
+   PRODUCTS
+   ================================ */
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.product{
+  background:var(--panel);
+  border:1px solid transparent;
+  transition:.45s var(--ease);
+  position:relative;
+  min-width:0;
+}
+
+.product:hover{
+  transform:translateY(-8px);
+  border-color:rgba(199,164,106,.25);
+}
+
+.product-image{
+  height:420px;
+  position:relative;
+  overflow:hidden;
+  background:#151616;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.7s var(--ease);
+}
+
+.product:hover .product-image img{
+  transform:scale(1.055);
+}
+
+.product-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:2;
+  background:#f2eee5;
+  color:#111;
+  padding:7px 10px;
+  font-size:8px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.product-actions{
+  position:absolute;
+  right:12px;
+  top:12px;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.round-btn{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  transition:.25s;
+}
+
+.round-btn:hover,
+.round-btn.active{
+  background:var(--gold);
+  color:#000;
+  border-color:var(--gold);
+}
+
+.product-info{padding:18px}
+
+.product-name{
+  font-family:"Playfair Display";
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+
+.product-meta{
+  font-size:10px;
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.price-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:14px;
+}
+
+.price{
+  font-size:14px;
+  font-weight:600;
+}
+
+.old{
+  font-size:11px;
+  color:#666;
+  text-decoration:line-through;
+}
+
+.discount{
+  font-size:9px;
+  color:var(--gold);
+}
+
+.swatches{
+  display:flex;
+  gap:6px;
+  margin:15px 0 16px;
+  flex-wrap:wrap;
+}
+
+.swatch{
+  width:19px;
+  height:19px;
+  border-radius:50%;
+  border:1px solid #555;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.swatch:hover,
+.swatch.active{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+
+.product-bottom{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.product-bottom .btn{
+  padding:11px 8px;
+  font-size:9px;
+}
 
 /* NO IMAGE */
+
 .coming{
-  height:100%;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:30px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
   background:
    radial-gradient(circle at 50% 30%,rgba(199,164,106,.12),transparent 35%),
    linear-gradient(145deg,#171818,#0b0c0c);
 }
-.coming div{border:1px solid rgba(199,164,106,.25);padding:35px 20px}
-.coming strong{font-family:"Playfair Display";font-size:23px;display:block;margin-bottom:9px}
-.coming small{font-size:9px;letter-spacing:2px;color:#777;text-transform:uppercase}
 
-/* FEATURE */
+.coming div{
+  border:1px solid rgba(199,164,106,.25);
+  padding:35px 20px;
+}
+
+.coming strong{
+  font-family:"Playfair Display";
+  font-size:23px;
+  display:block;
+  margin-bottom:9px;
+}
+
+.coming small{
+  font-size:9px;
+  letter-spacing:2px;
+  color:#777;
+  text-transform:uppercase;
+}
+
+/* ================================
+   FEATURE
+   ================================ */
+
 .feature{
-  margin:20px 0;padding:80px;
+  margin:20px 0;
+  padding:80px;
   background:linear-gradient(110deg,#151616,#0d0e0e);
   border:1px solid var(--line);
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
-  overflow:hidden;position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
 }
+
 .feature:after{
-  content:"MG";position:absolute;right:-40px;bottom:-110px;
-  font-family:"Playfair Display";font-size:350px;color:rgba(255,255,255,.025);
+  content:"MG";
+  position:absolute;
+  right:-40px;
+  bottom:-110px;
+  font-family:"Playfair Display";
+  font-size:350px;
+  color:rgba(255,255,255,.025);
 }
-.feature h2{font-family:"Playfair Display";font-size:55px;font-weight:500;line-height:1}
-.feature p{color:#888;line-height:1.8;font-size:13px;margin:22px 0}
 
-/* POD */
-.pod{
-  background:#0c0d0d;
+.feature h2{
+  font-family:"Playfair Display";
+  font-size:55px;
+  font-weight:500;
+  line-height:1;
 }
-.pod-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:55px;align-items:center}
-.pod-copy h2{font-family:"Playfair Display";font-size:clamp(42px,5vw,70px);font-weight:500;line-height:.98}
-.pod-copy p{color:#888;line-height:1.8;font-size:13px;margin:25px 0}
-.pod-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:25px}
-.pod-list div{border:1px solid var(--line);padding:15px;font-size:10px;color:#aaa}
-.pod-list b{color:var(--gold2);display:block;margin-bottom:5px}
-.pod-products{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+.feature p{
+  color:#888;
+  line-height:1.8;
+  font-size:13px;
+  margin:22px 0;
+}
+
+/* ================================
+   POD
+   ================================ */
+
+.pod{background:#0c0d0d}
+
+.pod-grid{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:55px;
+  align-items:center;
+}
+
+.pod-copy h2{
+  font-family:"Playfair Display";
+  font-size:clamp(42px,5vw,70px);
+  font-weight:500;
+  line-height:.98;
+}
+
+.pod-copy p{
+  color:#888;
+  line-height:1.8;
+  font-size:13px;
+  margin:25px 0;
+}
+
+.pod-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:25px;
+}
+
+.pod-list div{
+  border:1px solid var(--line);
+  padding:15px;
+  font-size:10px;
+  color:#aaa;
+}
+
+.pod-list b{
+  color:var(--gold2);
+  display:block;
+  margin-bottom:5px;
+}
+
+.pod-products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
 .pod-card{
-  background:#161717;border:1px solid var(--line);overflow:hidden;
-  cursor:pointer;transition:.35s;
+  background:#161717;
+  border:1px solid var(--line);
+  overflow:hidden;
+  cursor:pointer;
+  transition:.35s;
 }
-.pod-card:hover{transform:translateY(-5px);border-color:var(--gold)}
-.pod-card img{width:100%;height:260px;object-fit:cover}
-.pod-card p{padding:12px;font-size:10px;color:#aaa}
 
-/* FOOTER */
-footer{padding:80px 45px 35px;border-top:1px solid var(--line)}
-.footer-grid{max-width:1400px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-.footer-brand p{color:#777;line-height:1.8;font-size:12px;max-width:350px;margin-top:20px}
-footer h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;color:var(--gold2)}
-footer li{list-style:none;margin:11px 0;color:#777;font-size:11px}
-.footer-bottom{max-width:1400px;margin:60px auto 0;padding-top:20px;border-top:1px solid var(--line);color:#555;font-size:9px;display:flex;justify-content:space-between}
+.pod-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--gold);
+}
 
-/* DRAWER */
+.pod-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+.pod-card p{
+  padding:12px;
+  font-size:10px;
+  color:#aaa;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer{
+  padding:80px 45px 35px;
+  border-top:1px solid var(--line);
+}
+
+.footer-grid{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand p{
+  color:#777;
+  line-height:1.8;
+  font-size:12px;
+  max-width:350px;
+  margin-top:20px;
+}
+
+footer h4{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  color:var(--gold2);
+}
+
+footer li{
+  list-style:none;
+  margin:11px 0;
+  color:#777;
+  font-size:11px;
+}
+
+.footer-bottom{
+  max-width:1400px;
+  margin:60px auto 0;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#555;
+  font-size:9px;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* ================================
+   OVERLAY
+   ================================ */
+
 .overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.65);
-  z-index:1500;opacity:0;visibility:hidden;transition:.35s;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:1500;
+  opacity:0;
+  visibility:hidden;
+  transition:.35s;
 }
-.overlay.open{opacity:1;visibility:visible}
+
+.overlay.open{
+  opacity:1;
+  visibility:visible;
+}
+
+/* ================================
+   CART DRAWER
+   ================================ */
+
 .cart-drawer{
-  position:fixed;right:0;top:0;height:100%;width:min(480px,100%);
-  background:#101111;z-index:1600;transform:translateX(100%);
-  transition:.5s var(--ease);border-left:1px solid var(--line);
-  display:flex;flex-direction:column;
+  position:fixed;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(480px,100%);
+  background:#101111;
+  z-index:1600;
+  transform:translateX(100%);
+  transition:.5s var(--ease);
+  border-left:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
 }
+
 .cart-drawer.open{transform:translateX(0)}
+
 .drawer-head{
-  padding:25px;border-bottom:1px solid var(--line);
-  display:flex;justify-content:space-between;align-items:center;
+  padding:25px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.drawer-head h3{font-family:"Playfair Display";font-size:25px;font-weight:500}
-.cart-items{flex:1;overflow:auto;padding:18px}
+
+.drawer-head h3{
+  font-family:"Playfair Display";
+  font-size:25px;
+  font-weight:500;
+}
+
+.cart-items{
+  flex:1;
+  overflow:auto;
+  padding:18px;
+}
+
 .cart-item{
-  display:grid;grid-template-columns:80px 1fr auto;gap:14px;
-  padding:14px 0;border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:14px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
 }
-.cart-item img{width:80px;height:95px;object-fit:cover;background:#181919}
-.cart-item h4{font-size:13px;margin-bottom:5px}
-.cart-item p{font-size:10px;color:#777}
-.qty{display:flex;align-items:center;gap:8px;margin-top:10px}
+
+.cart-item img{
+  width:80px;
+  height:95px;
+  object-fit:cover;
+  background:#181919;
+}
+
+.cart-item h4{
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.cart-item p{
+  font-size:10px;
+  color:#777;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+
 .qty button{
-  width:23px;height:23px;background:#181919;color:#fff;border:1px solid #333;
+  width:23px;
+  height:23px;
+  background:#181919;
+  color:#fff;
+  border:1px solid #333;
   cursor:pointer;
 }
-.remove{background:none;border:0;color:#777;cursor:pointer;font-size:10px}
-.drawer-bottom{padding:22px;border-top:1px solid var(--line)}
-.total-row{display:flex;justify-content:space-between;margin-bottom:18px}
-.total-row span{color:#888;font-size:11px}
+
+.remove{
+  background:none;
+  border:0;
+  color:#777;
+  cursor:pointer;
+  font-size:10px;
+}
+
+.drawer-bottom{
+  padding:22px;
+  border-top:1px solid var(--line);
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.total-row span{
+  color:#888;
+  font-size:11px;
+}
+
 .total-row strong{font-size:18px}
+
 .drawer-bottom .btn{width:100%}
 
-/* MODAL */
+/* ================================
+   PRODUCT MODAL
+   ================================ */
+
 .modal{
-  position:fixed;inset:0;z-index:1700;display:grid;place-items:center;
-  padding:20px;opacity:0;visibility:hidden;transition:.35s;
+  position:fixed;
+  inset:0;
+  z-index:1700;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  opacity:0;
+  visibility:hidden;
+  transition:.35s;
 }
-.modal.open{opacity:1;visibility:visible}
+
+.modal.open{
+  opacity:1;
+  visibility:visible;
+}
+
 .modal-box{
-  width:min(950px,100%);max-height:92vh;overflow:auto;background:#111212;
-  border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;
-  transform:translateY(25px) scale(.97);transition:.45s var(--ease);
+  width:min(950px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#111212;
+  border:1px solid var(--line);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  transform:translateY(25px) scale(.97);
+  transition:.45s var(--ease);
 }
+
 .modal.open .modal-box{transform:none}
-.modal-image{min-height:600px;background:#171818}
-.modal-image img{width:100%;height:100%;object-fit:cover}
+
+.modal-image{
+  min-height:600px;
+  background:#171818;
+}
+
+.modal-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
 .modal-info{padding:45px}
+
 .close{
-  position:absolute;right:28px;top:25px;background:none;border:0;
-  color:#fff;font-size:25px;cursor:pointer;z-index:3;
+  position:absolute;
+  right:28px;
+  top:25px;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+  z-index:3;
 }
-.modal-info h2{font-family:"Playfair Display";font-size:42px;font-weight:500}
-.modal-info .description{color:#888;font-size:13px;line-height:1.8;margin:18px 0 25px}
-.option-title{font-size:9px;letter-spacing:2px;color:#777;text-transform:uppercase;margin:22px 0 10px}
-.size-list{display:flex;gap:7px;flex-wrap:wrap}
+
+.modal-info h2{
+  font-family:"Playfair Display";
+  font-size:42px;
+  font-weight:500;
+}
+
+.modal-info .description{
+  color:#888;
+  font-size:13px;
+  line-height:1.8;
+  margin:18px 0 25px;
+}
+
+.option-title{
+  font-size:9px;
+  letter-spacing:2px;
+  color:#777;
+  text-transform:uppercase;
+  margin:22px 0 10px;
+}
+
+.size-list{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
 .size{
-  min-width:42px;padding:10px;border:1px solid #333;background:none;color:#ddd;
-  cursor:pointer;font-size:10px;
+  min-width:42px;
+  padding:10px;
+  border:1px solid #333;
+  background:none;
+  color:#ddd;
+  cursor:pointer;
+  font-size:10px;
 }
-.size.active{background:#eee;color:#000;border-color:#eee}
-.modal-qty{display:flex;align-items:center;gap:14px;margin:20px 0}
-.modal-qty button{width:35px;height:35px;background:#181919;color:#fff;border:1px solid #333;cursor:pointer}
-.modal-qty span{min-width:25px;text-align:center}
-.modal-info .btn{width:100%;margin-top:8px}
 
-/* CHECKOUT */
+.size.active{
+  background:#eee;
+  color:#000;
+  border-color:#eee;
+}
+
+.modal-qty{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:20px 0;
+}
+
+.modal-qty button{
+  width:35px;
+  height:35px;
+  background:#181919;
+  color:#fff;
+  border:1px solid #333;
+  cursor:pointer;
+}
+
+.modal-qty span{
+  min-width:25px;
+  text-align:center;
+}
+
+.modal-info .btn{
+  width:100%;
+  margin-top:8px;
+}
+
+/* ================================
+   CHECKOUT
+   ================================ */
+
 .checkout{
-  position:fixed;inset:0;z-index:1800;background:#090a0a;
-  overflow:auto;display:none;
+  position:fixed;
+  inset:0;
+  z-index:1800;
+  background:#090a0a;
+  overflow:auto;
+  display:none;
 }
-.checkout.open{display:block}
-.checkout-wrap{max-width:1000px;margin:auto;padding:40px 25px}
-.checkout-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:45px}
-.checkout-top h2{font-family:"Playfair Display";font-size:40px;font-weight:500}
-.checkout-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:30px}
-.checkout-form,.checkout-summary{background:#111212;border:1px solid var(--line);padding:28px}
-.checkout-form h3,.checkout-summary h3{font-family:"Playfair Display";font-weight:500;font-size:24px;margin-bottom:25px}
-.field{margin-bottom:15px}
-.field label{display:block;color:#777;font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
-.field input,.field textarea,.field select{
-  width:100%;background:#090a0a;border:1px solid #2b2c2c;color:#eee;
-  padding:13px;outline:none;font:inherit;font-size:12px;
-}
-.field textarea{min-height:90px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.summary-line{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0;font-size:11px;color:#888}
-.summary-total{display:flex;justify-content:space-between;padding-top:20px;font-size:17px}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(35px);transition:1s var(--ease)}
-.reveal.visible{opacity:1;transform:none}
+.checkout.open{display:block}
+
+.checkout-wrap{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 25px;
+}
+
+.checkout-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:45px;
+}
+
+.checkout-top h2{
+  font-family:"Playfair Display";
+  font-size:40px;
+  font-weight:500;
+}
+
+.checkout-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:30px;
+}
+
+.checkout-form,
+.checkout-summary{
+  background:#111212;
+  border:1px solid var(--line);
+  padding:28px;
+}
+
+.checkout-form h3,
+.checkout-summary h3{
+  font-family:"Playfair Display";
+  font-weight:500;
+  font-size:24px;
+  margin-bottom:25px;
+}
+
+.field{margin-bottom:15px}
+
+.field label{
+  display:block;
+  color:#777;
+  font-size:9px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  background:#090a0a;
+  border:1px solid #2b2c2c;
+  color:#eee;
+  padding:13px;
+  outline:none;
+  font:inherit;
+  font-size:12px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:rgba(199,164,106,.55);
+}
+
+.field textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+/* BANK TRANSFER */
+
+.bank-transfer{
+  display:none;
+  margin:-2px 0 18px;
+  padding:20px;
+  border:1px solid rgba(199,164,106,.25);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(199,164,106,.09),transparent 40%),
+    #0d0e0e;
+  animation:bankReveal .35s var(--ease);
+}
+
+.bank-transfer.show{display:block}
+
+@keyframes bankReveal{
+  from{
+    opacity:0;
+    transform:translateY(-7px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.bank-transfer-title{
+  color:var(--gold2);
+  font-family:"Playfair Display";
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.bank-detail{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:11px;
+}
+
+.bank-detail:last-of-type{border-bottom:0}
+
+.bank-detail span{color:#777}
+
+.bank-detail strong{
+  color:#eee;
+  text-align:right;
+  word-break:break-word;
+}
+
+.bank-note{
+  color:#777;
+  font-size:10px;
+  line-height:1.7;
+  margin-top:14px;
+}
+
+/* SUMMARY */
+
+.summary-line{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+  font-size:11px;
+  color:#888;
+  gap:15px;
+}
+
+.summary-total{
+  display:flex;
+  justify-content:space-between;
+  padding-top:20px;
+  font-size:17px;
+}
+
+/* ================================
+   CONFIRMATION
+   ================================ */
+
+.confirmation{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(14px);
+}
+
+.confirmation.open{display:flex}
+
+.confirmation-box{
+  width:min(520px,100%);
+  background:#111212;
+  border:1px solid rgba(199,164,106,.30);
+  padding:45px 35px;
+  text-align:center;
+  box-shadow:0 30px 100px rgba(0,0,0,.6);
+  animation:confirmIn .55s var(--ease);
+}
+
+@keyframes confirmIn{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.confirm-icon{
+  width:64px;
+  height:64px;
+  margin:0 auto 20px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--gold2);
+  font-size:25px;
+  box-shadow:0 0 35px rgba(199,164,106,.12);
+}
+
+.confirmation-box .section-label{margin-bottom:10px}
+
+.confirmation-box h2{
+  font-family:"Playfair Display";
+  font-size:40px;
+  font-weight:500;
+  margin-bottom:14px;
+}
+
+.confirmation-box p{
+  color:#8d8d88;
+  font-size:13px;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+.confirm-actions{
+  display:grid;
+  gap:9px;
+}
+
+.confirm-actions .btn{width:100%}
+
+/* ================================
+   PROFESSIONAL TOAST
+   ================================ */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  z-index:4000;
+  transform:translate(-50%,25px);
+  width:min(420px,calc(100% - 30px));
+  background:#151616;
+  border:1px solid rgba(199,164,106,.30);
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
+  padding:16px 18px;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s var(--ease);
+  text-align:center;
+}
+
+.toast.show{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,0);
+}
+
+.toast strong{
+  display:block;
+  font-family:"Playfair Display";
+  font-size:17px;
+  color:#eee;
+  margin-bottom:4px;
+}
+
+.toast span{
+  display:block;
+  font-size:10px;
+  color:#888;
+  line-height:1.6;
+}
+
+/* ================================
+   REVEAL
+   ================================ */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:1s var(--ease);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
 .product.reveal:nth-child(2){transition-delay:.08s}
 .product.reveal:nth-child(3){transition-delay:.16s}
 .product.reveal:nth-child(4){transition-delay:.24s}
 
-/* MOBILE */
+/* ================================
+   MOBILE
+   ================================ */
+
 @media(max-width:1000px){
+
   .nav-links{display:none}
+
   .menu{display:block}
-  .hero-grid,.intro-grid,.pod-grid,.feature{grid-template-columns:1fr}
+
+  .hero-grid,
+  .intro-grid,
+  .pod-grid,
+  .feature{
+    grid-template-columns:1fr;
+  }
+
   .hero{min-height:auto}
+
   .hero-grid{padding-top:145px}
+
   .hero-visual{min-height:500px}
+
   .product-grid{grid-template-columns:repeat(2,1fr)}
+
   .pod-products{grid-template-columns:repeat(2,1fr)}
+
   .footer-grid{grid-template-columns:1fr 1fr}
+
   .modal-box{grid-template-columns:1fr}
-  .modal-image{height:430px;min-height:0}
+
+  .modal-image{
+    height:430px;
+    min-height:0;
+  }
+
   .checkout-grid{grid-template-columns:1fr}
 }
+
 @media(max-width:600px){
-  .announcement{font-size:8px;letter-spacing:1.5px}
-  .nav{height:70px;padding:0 17px}
+
+  .announcement{
+    font-size:8px;
+    letter-spacing:1.5px;
+  }
+
+  .nav{
+    height:70px;
+    padding:0 17px;
+  }
+
   .brand strong{font-size:17px}
-  .brand-icon{width:36px;height:36px}
-  .nav-actions .icon-btn{width:36px;height:36px}
+
+  .brand-icon{
+    width:36px;
+    height:36px;
+  }
+
+  .nav-actions .icon-btn{
+    width:36px;
+    height:36px;
+  }
+
   .section{padding:75px 17px}
-  .hero-grid{padding:130px 20px 70px;gap:20px}
-  .hero h1{font-size:55px;letter-spacing:-2.5px}
-  .hero-visual{min-height:430px}
-  .hero-card{height:410px;width:82%}
+
+  .hero-grid{
+    padding:130px 20px 70px;
+    gap:20px;
+  }
+
+  .hero h1{
+    font-size:55px;
+    letter-spacing:-2.5px;
+  }
+
+  .hero-visual{min-height:470px}
+
+  .hero-card{
+    height:410px;
+    width:82%;
+  }
+
+  .hero-ring{
+    width:390px;
+    height:390px;
+  }
+
+  .hero-glow{
+    width:300px;
+    height:300px;
+  }
+
+  .hero-mini.one{
+    right:-1%;
+    top:17%;
+  }
+
+  .hero-mini.two{
+    left:-3%;
+    bottom:17%;
+  }
+
   .section-head{display:block}
+
   .section-desc{margin-top:15px}
-  .product-grid{grid-template-columns:1fr 1fr;gap:9px}
+
+  .product-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
   .product-image{height:270px}
+
   .product-info{padding:12px}
+
   .product-name{font-size:16px}
+
   .product-bottom{grid-template-columns:1fr}
+
   .values{grid-template-columns:1fr}
+
   .feature{padding:35px 22px}
+
   .feature h2{font-size:39px}
+
   .pod-list{grid-template-columns:1fr}
+
   .pod-products{grid-template-columns:1fr 1fr}
+
   .pod-card img{height:200px}
+
   footer{padding:60px 20px 25px}
+
   .footer-grid{grid-template-columns:1fr 1fr}
+
   .footer-brand{grid-column:1/-1}
-  .footer-bottom{display:block;line-height:2}
+
+  .footer-bottom{
+    display:block;
+    line-height:2;
+  }
+
   .form-row{grid-template-columns:1fr}
+
   .modal-info{padding:25px}
+
   .modal-info h2{font-size:34px}
+
+  .checkout-wrap{
+    padding:25px 17px 50px;
+  }
+
+  .checkout-top{
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .checkout-top .brand strong{font-size:16px}
+
+  .checkout-top .btn{
+    padding:11px 12px;
+    font-size:8px;
+  }
+
+  .checkout-form,
+  .checkout-summary{
+    padding:20px;
+  }
+
+  .bank-detail{
+    display:block;
+  }
+
+  .bank-detail strong{
+    display:block;
+    text-align:left;
+    margin-top:4px;
+  }
+
+  .confirmation-box{
+    padding:38px 22px;
+  }
+
+  .confirmation-box h2{
+    font-size:34px;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- ================================
+     LOADER
+     ================================ -->
 
 <div class="loader" id="loader">
   <div class="loader-inner">
@@ -480,10 +1785,13 @@ footer li{list-style:none;margin:11px 0;color:#777;font-size:11px}
   </div>
 </div>
 
-<div class="announcement">Premium Menswear · Crafted for Everyday Confidence · Mehka Garment</div>
+<div class="announcement">
+  Premium Menswear · Crafted for Everyday Confidence · Mehka Garment
+</div>
 
 <header id="header">
 <nav class="nav">
+
   <a href="#home" class="brand">
     <span class="brand-icon">MG</span>
     <strong>Mehka Garment</strong>
@@ -499,697 +1807,2695 @@ footer li{list-style:none;margin:11px 0;color:#777;font-size:11px}
 
   <div class="nav-actions">
     <button class="icon-btn menu" onclick="scrollToSection('shirts')">☰</button>
-    <button class="icon-btn" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></button>
+
+    <button class="icon-btn" onclick="openCart()">
+      🛒
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
   </div>
+
 </nav>
 </header>
 
 <main>
 
+<!-- ================================
+     HERO
+     ================================ -->
+
 <section class="hero" id="home">
+
   <div class="hero-grid">
+
     <div class="hero-content reveal">
+
       <div class="eyebrow">The Mehka Standard</div>
-      <h1>Wear<br><span>Confidence.</span></h1>
+
+      <h1>
+        Wear<br>
+        <span>Confidence.</span>
+      </h1>
+
       <p class="hero-copy">
         Premium menswear designed around clean silhouettes, refined colours
         and everyday comfort. Discover pieces made to look sharp without
         trying too hard.
       </p>
+
       <div class="hero-buttons">
-        <a class="btn btn-primary" href="#shirts">Explore Collection →</a>
-        <a class="btn btn-outline" href="#pod">Create Your Own</a>
+        <a class="btn btn-primary" href="#shirts">
+          Explore Collection →
+        </a>
+
+        <a class="btn btn-outline" href="#pod">
+          Create Your Own
+        </a>
       </div>
+
     </div>
 
     <div class="hero-visual reveal">
+
+      <div class="hero-glow"></div>
+      <div class="hero-ring"></div>
+
+      <div class="hero-mini one">
+        PREMIUM · MODERN · REFINED
+      </div>
+
+      <div class="hero-mini two">
+        MEHKA STANDARD · 2026
+      </div>
+
       <div class="hero-card">
-        <img src="assets/images/classic-contrast-polo.jpg" alt="Mehka Garment">
+
+        <img
+          src="assets/images/classic-contrast-polo.jpg"
+          alt="Mehka Garment Classic Contrast Polo"
+        >
+
         <div class="floating-tag">
           <small>FEATURED</small>
           <strong>Classic Contrast Polo</strong>
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
+<!-- ================================
+     TICKER
+     ================================ -->
+
 <div class="ticker">
+
   <div class="ticker-track">
+
     <span>Premium Fabric <b>✦</b></span>
     <span>Modern Fit <b>✦</b></span>
     <span>Everyday Luxury <b>✦</b></span>
     <span>Made for Men <b>✦</b></span>
+
     <span>Premium Fabric <b>✦</b></span>
     <span>Modern Fit <b>✦</b></span>
     <span>Everyday Luxury <b>✦</b></span>
     <span>Made for Men <b>✦</b></span>
+
   </div>
+
 </div>
 
+<!-- ================================
+     INTRO
+     ================================ -->
+
 <section class="section intro">
+
  <div class="container">
+
   <div class="intro-grid reveal">
+
     <div>
-      <div class="section-label">Our Philosophy</div>
+
+      <div class="section-label">
+        Our Philosophy
+      </div>
+
       <div class="intro-big">
         Simple pieces.<br>
         <em>Strong presence.</em>
       </div>
+
     </div>
+
     <div>
+
       <p class="intro-text">
         Mehka Garment brings together premium everyday essentials and
         modern menswear in one refined collection. From clean polos and
         structured shirts to denim, cotton pants and relaxed trousers,
         every category is designed to work together.
       </p>
+
       <div class="values">
-        <div class="value"><b>01 — QUALITY</b><p>Focused on premium-looking finishes and dependable everyday wear.</p></div>
-        <div class="value"><b>02 — FIT</b><p>Modern silhouettes designed for effortless styling.</p></div>
-        <div class="value"><b>03 — STYLE</b><p>Timeless colours with contemporary character.</p></div>
+
+        <div class="value">
+          <b>01 — QUALITY</b>
+          <p>
+            Focused on premium-looking finishes and dependable everyday wear.
+          </p>
+        </div>
+
+        <div class="value">
+          <b>02 — FIT</b>
+          <p>
+            Modern silhouettes designed for effortless styling.
+          </p>
+        </div>
+
+        <div class="value">
+          <b>03 — STYLE</b>
+          <p>
+            Timeless colours with contemporary character.
+          </p>
+        </div>
+
       </div>
+
     </div>
+
   </div>
+
  </div>
+
 </section>
 
-<!-- SHIRTS -->
+<!-- ================================
+     SHIRTS
+     ================================ -->
+
 <section class="section" id="shirts">
+
  <div class="container">
+
   <div class="section-head reveal">
+
     <div>
-      <div class="section-label">01 — Collection</div>
-      <h2 class="section-title">Premium Shirts<br>& T-Shirts</h2>
+
+      <div class="section-label">
+        01 — Collection
+      </div>
+
+      <h2 class="section-title">
+        Premium Shirts<br>
+        & T-Shirts
+      </h2>
+
     </div>
-    <p class="section-desc">Polos, formal shirts, essential tees and signature stripe designs built for a polished everyday wardrobe.</p>
+
+    <p class="section-desc">
+      Polos, formal shirts, essential tees and signature stripe designs built
+      for a polished everyday wardrobe.
+    </p>
+
   </div>
+
   <div class="product-grid" id="shirtsGrid"></div>
+
  </div>
+
 </section>
+
+<!-- ================================
+     FEATURE
+     ================================ -->
 
 <section class="section" style="padding-top:0">
+
  <div class="container">
+
   <div class="feature reveal">
+
     <div>
-      <div class="section-label">The Mehka Edit</div>
-      <h2>Style that<br>speaks quietly.</h2>
-      <p>Build a wardrobe around versatile pieces that move from everyday plans to elevated occasions without losing their character.</p>
-      <a class="btn btn-outline" href="#denim">Explore Denim →</a>
+
+      <div class="section-label">
+        The Mehka Edit
+      </div>
+
+      <h2>
+        Style that<br>
+        speaks quietly.
+      </h2>
+
+      <p>
+        Build a wardrobe around versatile pieces that move from everyday plans
+        to elevated occasions without losing their character.
+      </p>
+
+      <a class="btn btn-outline" href="#denim">
+        Explore Denim →
+      </a>
+
     </div>
+
     <div></div>
+
   </div>
+
  </div>
+
 </section>
 
-<!-- DENIM -->
+<!-- ================================
+     DENIM
+     ================================ -->
+
 <section class="section" id="denim">
+
  <div class="container">
+
   <div class="section-head reveal">
+
     <div>
-      <div class="section-label">02 — Collection</div>
-      <h2 class="section-title">Premium Denim</h2>
+
+      <div class="section-label">
+        02 — Collection
+      </div>
+
+      <h2 class="section-title">
+        Premium Denim
+      </h2>
+
     </div>
-    <p class="section-desc">Straight silhouettes, brushed denim and wide-leg baggy fits for a stronger modern wardrobe.</p>
+
+    <p class="section-desc">
+      Straight silhouettes, brushed denim and wide-leg baggy fits for a
+      stronger modern wardrobe.
+    </p>
+
   </div>
+
   <div class="product-grid" id="denimGrid"></div>
+
  </div>
+
 </section>
 
-<!-- COTTON -->
+<!-- ================================
+     COTTON
+     ================================ -->
+
 <section class="section" id="cotton">
+
  <div class="container">
+
   <div class="section-head reveal">
+
     <div>
-      <div class="section-label">03 — Collection</div>
-      <h2 class="section-title">Premium Cotton<br>Pants</h2>
+
+      <div class="section-label">
+        03 — Collection
+      </div>
+
+      <h2 class="section-title">
+        Premium Cotton<br>
+        Pants
+      </h2>
+
     </div>
-    <p class="section-desc">Soft, versatile cotton silhouettes designed for clean everyday outfits and effortless comfort.</p>
+
+    <p class="section-desc">
+      Soft, versatile cotton silhouettes designed for clean everyday outfits
+      and effortless comfort.
+    </p>
+
   </div>
+
   <div class="product-grid" id="cottonGrid"></div>
+
  </div>
+
 </section>
 
-<!-- TROUSERS -->
+<!-- ================================
+     TROUSERS
+     ================================ -->
+
 <section class="section" id="trousers">
+
  <div class="container">
+
   <div class="section-head reveal">
+
     <div>
-      <div class="section-label">04 — Collection</div>
-      <h2 class="section-title">Modern<br>Trousers</h2>
+
+      <div class="section-label">
+        04 — Collection
+      </div>
+
+      <h2 class="section-title">
+        Modern<br>
+        Trousers
+      </h2>
+
     </div>
-    <p class="section-desc">Relaxed Korean-inspired cuts, urban baggy fits and clean statement trousers.</p>
+
+    <p class="section-desc">
+      Relaxed Korean-inspired cuts, urban baggy fits and clean statement
+      trousers.
+    </p>
+
   </div>
+
   <div class="product-grid" id="trouserGrid"></div>
+
  </div>
+
 </section>
 
-<!-- POD -->
+<!-- ================================
+     PRINT ON DEMAND
+     ================================ -->
+
 <section class="section pod" id="pod">
+
  <div class="container">
+
   <div class="pod-grid">
+
    <div class="pod-copy reveal">
-    <div class="section-label">05 — Print on Demand</div>
-    <h2>Your idea.<br>Your T-shirt.</h2>
+
+    <div class="section-label">
+      05 — Print on Demand
+    </div>
+
+    <h2>
+      Your idea.<br>
+      Your T-shirt.
+    </h2>
+
     <p>
       Choose your preferred T-shirt colour and create your own unique design.
       Our premium-quality round-neck T-shirts are made for comfortable everyday
       wear. Send us your artwork, logo, text, or custom design, and we'll print
       it for you with a clean, professional finish.
     </p>
+
     <div class="pod-list">
-      <div><b>01</b>White & Black T-Shirts</div>
-      <div><b>02</b>Your Artwork</div>
-      <div><b>03</b>Logo / Text</div>
-      <div><b>04</b>Clean Professional Print</div>
+
+      <div>
+        <b>01</b>
+        White & Black T-Shirts
+      </div>
+
+      <div>
+        <b>02</b>
+        Your Artwork
+      </div>
+
+      <div>
+        <b>03</b>
+        Logo / Text
+      </div>
+
+      <div>
+        <b>04</b>
+        Clean Professional Print
+      </div>
+
     </div>
-    <button class="btn btn-primary" onclick="openCustom()">Start Custom Design →</button>
+
+    <button
+      class="btn btn-primary"
+      onclick="openCustom()"
+    >
+      Start Custom Design →
+    </button>
+
    </div>
-   <div class="pod-products reveal" id="podGrid"></div>
+
+   <div
+     class="pod-products reveal"
+     id="podGrid"
+   ></div>
+
   </div>
+
  </div>
+
 </section>
 
 </main>
 
+<!-- ================================
+     FOOTER
+     ================================ -->
+
 <footer>
+
  <div class="footer-grid">
+
   <div class="footer-brand">
-    <a href="#home" class="brand"><span class="brand-icon">MG</span><strong>Mehka Garment</strong></a>
-    <p>Premium men's clothing with a modern point of view. Designed for everyday confidence.</p>
+
+    <a href="#home" class="brand">
+      <span class="brand-icon">MG</span>
+      <strong>Mehka Garment</strong>
+    </a>
+
+    <p>
+      Premium men's clothing with a modern point of view.
+      Designed for everyday confidence.
+    </p>
+
   </div>
+
   <div>
+
     <h4>Collections</h4>
+
     <ul>
       <li><a href="#shirts">Shirts & T-Shirts</a></li>
       <li><a href="#denim">Denim</a></li>
       <li><a href="#cotton">Cotton Pants</a></li>
       <li><a href="#trousers">Trousers</a></li>
     </ul>
+
   </div>
+
   <div>
+
     <h4>Services</h4>
+
     <ul>
       <li>Print on Demand</li>
       <li>Custom Designs</li>
       <li>Premium Collections</li>
     </ul>
+
   </div>
+
   <div>
+
     <h4>Mehka</h4>
+
     <ul>
       <li>About Us</li>
       <li>Contact</li>
       <li>Shipping</li>
       <li>Returns</li>
     </ul>
+
   </div>
+
  </div>
+
  <div class="footer-bottom">
-  <span>© 2026 Mehka Garment. All rights reserved.</span>
-  <span>Premium Menswear · Made to Move</span>
+
+  <span>
+    © 2026 Mehka Garment. All rights reserved.
+  </span>
+
+  <span>
+    Premium Menswear · Made to Move
+  </span>
+
  </div>
+
 </footer>
 
-<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<!-- ================================
+     OVERLAY
+     ================================ -->
 
-<!-- CART -->
-<aside class="cart-drawer" id="cartDrawer">
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeAll()"
+></div>
+
+<!-- ================================
+     CART
+     ================================ -->
+
+<aside
+  class="cart-drawer"
+  id="cartDrawer"
+>
+
  <div class="drawer-head">
+
    <h3>Your Cart</h3>
-   <button class="icon-btn" onclick="closeCart()">×</button>
+
+   <button
+     class="icon-btn"
+     onclick="closeCart()"
+   >
+     ×
+   </button>
+
  </div>
- <div class="cart-items" id="cartItems"></div>
+
+ <div
+   class="cart-items"
+   id="cartItems"
+ ></div>
+
  <div class="drawer-bottom">
-   <div class="total-row"><span>Subtotal</span><strong id="cartTotal">Rs. 0</strong></div>
-   <button class="btn btn-primary" onclick="openCheckout()">Proceed to Checkout →</button>
+
+   <div class="total-row">
+
+     <span>Subtotal</span>
+
+     <strong id="cartTotal">
+       Rs. 0
+     </strong>
+
+   </div>
+
+   <button
+     class="btn btn-primary"
+     onclick="openCheckout()"
+   >
+     Proceed to Checkout →
+   </button>
+
  </div>
+
 </aside>
 
-<!-- PRODUCT MODAL -->
-<div class="modal" id="productModal">
- <div class="modal-box" id="modalBox">
-   <button class="close" onclick="closeProduct()">×</button>
-   <div class="modal-image"><img id="modalImg" src="" alt=""></div>
+<!-- ================================
+     PRODUCT MODAL
+     ================================ -->
+
+<div
+  class="modal"
+  id="productModal"
+>
+
+ <div
+   class="modal-box"
+   id="modalBox"
+ >
+
+   <button
+     class="close"
+     onclick="closeProduct()"
+   >
+     ×
+   </button>
+
+   <div class="modal-image">
+
+     <img
+       id="modalImg"
+       src=""
+       alt=""
+     >
+
+   </div>
+
    <div class="modal-info">
-     <div class="section-label" id="modalCategory"></div>
+
+     <div
+       class="section-label"
+       id="modalCategory"
+     ></div>
+
      <h2 id="modalName"></h2>
-     <div class="price-row"><span class="price" id="modalPrice"></span><span class="old" id="modalOld"></span><span class="discount" id="modalDiscount"></span></div>
-     <p class="description" id="modalDescription"></p>
 
-     <div class="option-title">Colour</div>
-     <div class="swatches" id="modalSwatches"></div>
+     <div class="price-row">
 
-     <div class="option-title">Size</div>
-     <div class="size-list" id="modalSizes"></div>
+       <span
+         class="price"
+         id="modalPrice"
+       ></span>
 
-     <div class="option-title">Quantity</div>
-     <div class="modal-qty">
-       <button onclick="changeModalQty(-1)">−</button>
-       <span id="modalQty">1</span>
-       <button onclick="changeModalQty(1)">+</button>
+       <span
+         class="old"
+         id="modalOld"
+       ></span>
+
+       <span
+         class="discount"
+         id="modalDiscount"
+       ></span>
+
      </div>
 
-     <button class="btn btn-primary" onclick="addModalToCart()">Add to Cart — <span id="modalAddPrice"></span></button>
+     <p
+       class="description"
+       id="modalDescription"
+     ></p>
+
+     <div class="option-title">
+       Colour
+     </div>
+
+     <div
+       class="swatches"
+       id="modalSwatches"
+     ></div>
+
+     <div class="option-title">
+       Size
+     </div>
+
+     <div
+       class="size-list"
+       id="modalSizes"
+     ></div>
+
+     <div class="option-title">
+       Quantity
+     </div>
+
+     <div class="modal-qty">
+
+       <button onclick="changeModalQty(-1)">
+         −
+       </button>
+
+       <span id="modalQty">
+         1
+       </span>
+
+       <button onclick="changeModalQty(1)">
+         +
+       </button>
+
+     </div>
+
+     <button
+       class="btn btn-primary"
+       onclick="addModalToCart()"
+     >
+       Add to Cart —
+       <span id="modalAddPrice"></span>
+     </button>
+
    </div>
+
  </div>
+
 </div>
 
-<!-- CHECKOUT -->
-<div class="checkout" id="checkout">
+<!-- ================================
+     CHECKOUT
+     ================================ -->
+
+<div
+  class="checkout"
+  id="checkout"
+>
+
  <div class="checkout-wrap">
+
    <div class="checkout-top">
-     <a href="#home" class="brand"><span class="brand-icon">MG</span><strong>Mehka Garment</strong></a>
-     <button class="btn btn-outline" onclick="closeCheckout()">← Back to Store</button>
+
+     <a
+       href="#home"
+       class="brand"
+     >
+       <span class="brand-icon">MG</span>
+       <strong>Mehka Garment</strong>
+     </a>
+
+     <button
+       class="btn btn-outline"
+       onclick="closeCheckout()"
+     >
+       ← Back to Store
+     </button>
+
    </div>
 
    <div class="checkout-grid">
-    <form class="checkout-form" onsubmit="placeOrder(event)">
-      <h3>Complete Your Order</h3>
+
+    <!-- ORDER FORM -->
+
+    <form
+      class="checkout-form"
+      id="checkoutForm"
+      onsubmit="placeOrder(event)"
+    >
+
+      <h3>
+        Complete Your Order
+      </h3>
+
       <div class="form-row">
-       <div class="field"><label>First Name</label><input required></div>
-       <div class="field"><label>Last Name</label><input required></div>
+
+       <div class="field">
+
+         <label>
+           First Name
+         </label>
+
+         <input
+           id="firstName"
+           type="text"
+           autocomplete="given-name"
+           required
+         >
+
+       </div>
+
+       <div class="field">
+
+         <label>
+           Last Name
+         </label>
+
+         <input
+           id="lastName"
+           type="text"
+           autocomplete="family-name"
+           required
+         >
+
+       </div>
+
       </div>
-      <div class="field"><label>Phone</label><input type="tel" required></div>
-      <div class="field"><label>Email</label><input type="email" required></div>
-      <div class="field"><label>Address</label><textarea required></textarea></div>
-      <div class="form-row">
-       <div class="field"><label>City</label><input required></div>
-       <div class="field"><label>Postal Code</label><input></div>
-      </div>
+
       <div class="field">
-       <label>Payment Method</label>
-       <select>
-        <option>Cash on Delivery</option>
-        <option>Bank Transfer</option>
-        <option>Online Payment — Coming Soon</option>
-       </select>
+
+        <label>
+          Phone
+        </label>
+
+        <input
+          id="customerPhone"
+          type="tel"
+          autocomplete="tel"
+          required
+        >
+
       </div>
-      <button class="btn btn-primary" style="width:100%">Place Order →</button>
+
+      <div class="field">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="customerEmail"
+          type="email"
+          autocomplete="email"
+          required
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Address
+        </label>
+
+        <textarea
+          id="customerAddress"
+          autocomplete="street-address"
+          required
+        ></textarea>
+
+      </div>
+
+      <div class="form-row">
+
+       <div class="field">
+
+         <label>
+           City
+         </label>
+
+         <input
+           id="customerCity"
+           autocomplete="address-level2"
+           required
+         >
+
+       </div>
+
+       <div class="field">
+
+         <label>
+           Postal Code
+         </label>
+
+         <input
+           id="customerPostal"
+           autocomplete="postal-code"
+         >
+
+       </div>
+
+      </div>
+
+      <div class="field">
+
+       <label>
+         Payment Method
+       </label>
+
+       <select
+         id="paymentMethod"
+         onchange="toggleBankTransfer()"
+         required
+       >
+
+        <option value="Cash on Delivery">
+          Cash on Delivery
+        </option>
+
+        <option value="Bank Transfer">
+          Bank Transfer
+        </option>
+
+        <option value="Online Payment — Coming Soon">
+          Online Payment — Coming Soon
+        </option>
+
+       </select>
+
+      </div>
+
+      <!-- BANK TRANSFER DETAILS -->
+
+      <div
+        class="bank-transfer"
+        id="bankTransferBox"
+      >
+
+        <div class="bank-transfer-title">
+          Meezan Bank Transfer
+        </div>
+
+        <div class="bank-detail">
+
+          <span>
+            Bank
+          </span>
+
+          <strong>
+            Meezan Bank
+          </strong>
+
+        </div>
+
+        <div class="bank-detail">
+
+          <span>
+            Account Title
+          </span>
+
+          <strong>
+            Faisalur Rehman
+          </strong>
+
+        </div>
+
+        <div class="bank-detail">
+
+          <span>
+            Account Number
+          </span>
+
+          <strong>
+            99930104474571
+          </strong>
+
+        </div>
+
+        <p class="bank-note">
+          Please complete your bank transfer using the details above.
+          Enter your payment/reference number below so our team can match
+          your order with the transfer.
+        </p>
+
+        <div
+          class="field"
+          style="margin-top:16px;margin-bottom:0"
+        >
+
+          <label>
+            Payment / Transfer Reference
+          </label>
+
+          <input
+            id="paymentReference"
+            type="text"
+            placeholder="Enter your transfer reference"
+          >
+
+        </div>
+
+      </div>
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+        style="width:100%"
+      >
+        Place Order →
+      </button>
+
     </form>
 
+    <!-- ORDER SUMMARY -->
+
     <div class="checkout-summary">
-      <h3>Order Summary</h3>
+
+      <h3>
+        Order Summary
+      </h3>
+
       <div id="checkoutItems"></div>
-      <div class="summary-total"><span>Total</span><strong id="checkoutTotal">Rs. 0</strong></div>
+
+      <div class="summary-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="checkoutTotal">
+          Rs. 0
+        </strong>
+
+      </div>
+
     </div>
+
    </div>
+
  </div>
+
+</div>
+
+<!-- ================================
+     ORDER CONFIRMATION
+     ================================ -->
+
+<div
+  class="confirmation"
+  id="confirmation"
+>
+
+  <div class="confirmation-box">
+
+    <div class="confirm-icon">
+      ✓
+    </div>
+
+    <div class="section-label">
+      Mehka Garment
+    </div>
+
+    <h2>
+      Order Confirmed
+    </h2>
+
+    <p>
+      Your order has been received successfully.
+      Please send the order details to Mehka Garment on WhatsApp
+      so our team can confirm your order and contact you shortly.
+    </p>
+
+    <div class="confirm-actions">
+
+      <button
+        class="btn btn-primary"
+        id="whatsappOrderBtn"
+        onclick="sendOrderToWhatsApp()"
+      >
+        Send Order on WhatsApp →
+      </button>
+
+      <button
+        class="btn btn-outline"
+        onclick="finishOrder()"
+      >
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ================================
+     TOAST
+     ================================ -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  <strong id="toastTitle">
+    Mehka Garment
+  </strong>
+
+  <span id="toastMessage">
+    Your request has been received.
+  </span>
 </div>
 
 <script>
-/* ================================
+
+/* =========================================================
    MEHKA GARMENT PRODUCT DATA
-   ================================ */
+   ========================================================= */
 
 const A="assets/images/";
 
 const products=[
-/* SHIRTS & T-SHIRTS */
-{id:"classic-contrast",name:"Classic Contrast Polo",category:"Shirts & T-Shirts",price:2999,old:3999,images:["classic-contrast-polo.jpg"],colors:["Classic"],desc:"A refined contrast polo designed for a clean premium everyday look."},
-{id:"executive-stripe",name:"Executive Stripe Polo",category:"Shirts & T-Shirts",price:3199,old:4299,images:["executive-stripe-polo.jpg"],colors:["Stripe"],desc:"Sharp stripe detailing with an elevated executive-inspired silhouette."},
-{id:"heritage-stripe",name:"Heritage Stripe Polo",category:"Shirts & T-Shirts",price:3099,old:4199,images:["heritage-stripe-polo.jpg"],colors:["Heritage"],desc:"A timeless stripe polo with a modern premium finish."},
-{id:"urban-luxe",name:"Urban Luxe Stripe Polo",category:"Shirts & T-Shirts",price:3299,old:4499,images:["urban-luxe-stripe-polo.jpg"],colors:["Urban"],desc:"Contemporary stripe detailing made for effortless city styling."},
-{id:"signature-stripe",name:"Signature Stripe Polo",category:"Shirts & T-Shirts",price:3199,old:4299,images:["signature-stripe-polo.jpg"],colors:["Signature"],desc:"A signature striped design with an understated luxury feel."},
 
-{id:"simple-polo",name:"Simple Polo",category:"Shirts & T-Shirts",price:2899,old:3799,
- images:["simple-polo-jet-black.jpg","simple-polo-burgendy-wine.jpg","simple-polo-deep-forest-green.jpg","simple-polo-ocean-teal-blue.jpg","simple-polo-rich-mocha-brown.jpg"],
- colors:["Jet Black","Burgundy Wine","Deep Forest Green","Ocean Teal Blue","Rich Mocha Brown"],
- desc:"Clean, minimal and versatile. The Simple Polo is an everyday essential."},
+/* ================================
+   SHIRTS & T-SHIRTS
+   ================================ */
 
-{id:"essential-collar",name:"Essential Collar T-Shirt",category:"Shirts & T-Shirts",price:2499,old:3299,
- images:["essential-collar-tshirt-black.jpg","essential-collar-tshirt-mocha-brown.jpg","essential-collar-tshirt-navy-blue.jpg","essential-collar-tshirt-sage-green.jpg","essential-collar-tshirt-white.jpg"],
- colors:["Black","Mocha Brown","Navy Blue","Sage Green","White"],
- desc:"A refined collar T-shirt designed around simplicity, comfort and versatility."},
+{
+ id:"classic-contrast",
+ name:"Classic Contrast Polo",
+ category:"Shirts & T-Shirts",
+ price:2999,
+ old:3999,
+ images:["classic-contrast-polo.jpg"],
+ colors:["Classic"],
+ desc:"A refined contrast polo designed for a clean premium everyday look."
+},
 
-{id:"premium-check",name:"Premium Check Shirt",category:"Shirts & T-Shirts",price:3499,old:4699,
- images:["premium-check-shirt-black-ivory-stripe.jpg","premium-check-shirt-ivory-sand.jpg","premium-check-shirt-midnight-navy.jpg","premium-check-shirt-navy-burgundy.jpg","premium-check-shirt-slate-blue.jpg"],
- colors:["Black Ivory","Ivory Sand","Midnight Navy","Navy Burgundy","Slate Blue"],
- desc:"Premium check patterns with sophisticated colour combinations."},
+{
+ id:"executive-stripe",
+ name:"Executive Stripe Polo",
+ category:"Shirts & T-Shirts",
+ price:3199,
+ old:4299,
+ images:["executive-stripe-polo.jpg"],
+ colors:["Stripe"],
+ desc:"Sharp stripe detailing with an elevated executive-inspired silhouette."
+},
 
-{id:"signature-formal",name:"Signature Formal Shirt",category:"Shirts & T-Shirts",price:3599,old:4799,
- images:["signature-formal-shirt-black.jpg","signature-formal-shirt-olive.jpg","signature-formal-shirt-sky-blue.jpg","signature-formal-shirt-white.jpg"],
- colors:["Black","Olive","Sky Blue","White"],
- desc:"A polished formal shirt for elevated occasions and sharp everyday dressing."},
+{
+ id:"heritage-stripe",
+ name:"Heritage Stripe Polo",
+ category:"Shirts & T-Shirts",
+ price:3099,
+ old:4199,
+ images:["heritage-stripe-polo.jpg"],
+ colors:["Heritage"],
+ desc:"A timeless stripe polo with a modern premium finish."
+},
 
-{id:"jet-black-essential",name:"Jet Black Essential",category:"Shirts & T-Shirts",price:2399,old:3199,images:["jet-black-essential.jpg"],colors:["Jet Black"],desc:"A clean essential built around a confident monochrome aesthetic."},
-{id:"olive-green-essential",name:"Olive Green Essential",category:"Shirts & T-Shirts",price:2399,old:3199,images:["olive-green-essential.jpg"],colors:["Olive Green"],desc:"An earthy essential with a modern relaxed character."},
-{id:"silver-grey-essential",name:"Silver Grey Essential",category:"Shirts & T-Shirts",price:2399,old:3199,images:["silver-grey-essential.jpg"],colors:["Silver Grey"],desc:"Minimal silver-grey styling for a clean everyday wardrobe."},
-{id:"poder-light-grey",name:"Poder Light Grey",category:"Shirts & T-Shirts",price:2399,old:3199,images:["poder-light-grey.jpg"],colors:["Light Grey"],desc:"A refined light-grey essential with understated style."},
+{
+ id:"urban-luxe",
+ name:"Urban Luxe Stripe Polo",
+ category:"Shirts & T-Shirts",
+ price:3299,
+ old:4499,
+ images:["urban-luxe-stripe-polo.jpg"],
+ colors:["Urban"],
+ desc:"Contemporary stripe detailing made for effortless city styling."
+},
 
-/* DENIM */
-{id:"straight-denim",name:"Straight Denim",category:"Premium Denim",price:3999,old:5299,
-images:["straigt-denim-paint-charcoal-black.jpg","straigt-denim-paint-classic-blue.jpg","straigt-denim-paint-indigo-blue.jpg","straigt-denim-paint-sky-blue.jpg"],
-colors:["Charcoal Black","Classic Blue","Indigo Blue","Sky Blue"],desc:"Classic straight denim with a clean modern profile."},
+{
+ id:"signature-stripe",
+ name:"Signature Stripe Polo",
+ category:"Shirts & T-Shirts",
+ price:3199,
+ old:4299,
+ images:["signature-stripe-polo.jpg"],
+ colors:["Signature"],
+ desc:"A signature striped design with an understated luxury feel."
+},
 
-{id:"blast-denim",name:"Blast Denim",category:"Premium Denim",price:4199,old:5499,images:[],colors:[],desc:"A statement denim design from the Mehka Denim collection."},
-{id:"premium-blast-denim",name:"Premium Blast Denim",category:"Premium Denim",price:4499,old:5999,images:[],colors:[],desc:"Elevated blast detailing for a stronger premium denim look."},
+{
+ id:"simple-polo",
+ name:"Simple Polo",
+ category:"Shirts & T-Shirts",
+ price:2899,
+ old:3799,
+ images:[
+  "simple-polo-jet-black.jpg",
+  "simple-polo-burgendy-wine.jpg",
+  "simple-polo-deep-forest-green.jpg",
+  "simple-polo-ocean-teal-blue.jpg",
+  "simple-polo-rich-mocha-brown.jpg"
+ ],
+ colors:[
+  "Jet Black",
+  "Burgundy Wine",
+  "Deep Forest Green",
+  "Ocean Teal Blue",
+  "Rich Mocha Brown"
+ ],
+ desc:"Clean, minimal and versatile. The Simple Polo is an everyday essential."
+},
 
-{id:"baggy-denim",name:"Baggy Denim",category:"Premium Denim",price:4299,old:5699,
-images:["wide-leg-baggy-jeans-deep-indigo-blue.jpg","wide-leg-baggy-jeans-ice-blue.jpg","wide-leg-baggy-jeans-mid-blue.jpg"],
-colors:["Deep Indigo Blue","Ice Blue","Mid Blue"],desc:"Relaxed wide-leg denim for a contemporary street-luxury silhouette."},
+{
+ id:"essential-collar",
+ name:"Essential Collar T-Shirt",
+ category:"Shirts & T-Shirts",
+ price:2499,
+ old:3299,
+ images:[
+  "essential-collar-tshirt-black.jpg",
+  "essential-collar-tshirt-mocha-brown.jpg",
+  "essential-collar-tshirt-navy-blue.jpg",
+  "essential-collar-tshirt-sage-green.jpg",
+  "essential-collar-tshirt-white.jpg"
+ ],
+ colors:[
+  "Black",
+  "Mocha Brown",
+  "Navy Blue",
+  "Sage Green",
+  "White"
+ ],
+ desc:"A refined collar T-shirt designed around simplicity, comfort and versatility."
+},
 
-/* COTTON */
-{id:"washing-wear",name:"Cotton Wash-Wear",category:"Premium Cotton Pants",price:3299,old:4399,
-images:["washing-wear-paint-dark-cocoa.jpg","washing-wear-paint-obsidian-black.jpg","washing-wear-paint-royal-navy.jpg","washing-wear-paint-sage-olive.jpg","washing-wear-paint-smoke-grey.jpg"],
-colors:["Dark Cocoa","Obsidian Black","Royal Navy","Sage Olive","Smoke Grey"],desc:"Comfort-first cotton trousers with a washed premium finish."},
+{
+ id:"premium-check",
+ name:"Premium Check Shirt",
+ category:"Shirts & T-Shirts",
+ price:3499,
+ old:4699,
+ images:[
+  "premium-check-shirt-black-ivory-stripe.jpg",
+  "premium-check-shirt-ivory-sand.jpg",
+  "premium-check-shirt-midnight-navy.jpg",
+  "premium-check-shirt-navy-burgundy.jpg",
+  "premium-check-shirt-slate-blue.jpg"
+ ],
+ colors:[
+  "Black Ivory",
+  "Ivory Sand",
+  "Midnight Navy",
+  "Navy Burgundy",
+  "Slate Blue"
+ ],
+ desc:"Premium check patterns with sophisticated colour combinations."
+},
 
-{id:"premium-chino",name:"Premium Cotton Chino",category:"Premium Cotton Pants",price:3499,old:4699,
-images:["primium-cotton-chino-paint-ash-grey.jpg","primium-cotton-chino-paint-ivory-cream.jpg","primium-cotton-chino-paint-olive-brown.jpg","primium-cotton-chino-paint-onyx-black.jpg","primium-cotton-chino-paint-sand-beige.jpg"],
-colors:["Ash Grey","Ivory Cream","Olive Brown","Onyx Black","Sand Beige"],desc:"Clean premium cotton chinos designed for effortless smart-casual dressing."},
+{
+ id:"signature-formal",
+ name:"Signature Formal Shirt",
+ category:"Shirts & T-Shirts",
+ price:3599,
+ old:4799,
+ images:[
+  "signature-formal-shirt-black.jpg",
+  "signature-formal-shirt-olive.jpg",
+  "signature-formal-shirt-sky-blue.jpg",
+  "signature-formal-shirt-white.jpg"
+ ],
+ colors:[
+  "Black",
+  "Olive",
+  "Sky Blue",
+  "White"
+ ],
+ desc:"A polished formal shirt for elevated occasions and sharp everyday dressing."
+},
 
-/* TROUSERS */
-{id:"china-leggar",name:"China Leggar Trousers",category:"Modern Trousers",price:3199,old:4299,images:[],colors:[],desc:"A clean contemporary trouser silhouette for polished everyday outfits."},
-{id:"baggy-trouser",name:"Baggy Trousers",category:"Modern Trousers",price:3299,old:4399,
-images:["urban-baggy-trouser-charcoal-grey.jpg","urban-baggy-trouser-graphite-grey.jpg","urban-baggy-trouser-midnight-black.jpg","urban-baggy-trouser-navy-blue.jpg"],
-colors:["Charcoal Grey","Graphite Grey","Midnight Black","Navy Blue"],desc:"Relaxed urban trousers with a modern wide silhouette."},
-{id:"korean-trouser",name:"Korean Trousers",category:"Modern Trousers",price:3399,old:4499,
-images:["korean-relaxed-trouser-forest-olive.jpg","korean-relaxed-trouser-frost-grey.jpg","korean-relaxed-trouser-jet-black.jpg","korean-relaxed-trouser-pearl-white.jpg"],
-colors:["Forest Olive","Frost Grey","Jet Black","Pearl White"],desc:"Relaxed Korean-inspired trousers with clean lines and premium styling."}
+{
+ id:"jet-black-essential",
+ name:"Jet Black Essential",
+ category:"Shirts & T-Shirts",
+ price:2399,
+ old:3199,
+ images:["jet-black-essential.jpg"],
+ colors:["Jet Black"],
+ desc:"A clean essential built around a confident monochrome aesthetic."
+},
+
+{
+ id:"olive-green-essential",
+ name:"Olive Green Essential",
+ category:"Shirts & T-Shirts",
+ price:2399,
+ old:3199,
+ images:["olive-green-essential.jpg"],
+ colors:["Olive Green"],
+ desc:"An earthy essential with a modern relaxed character."
+},
+
+{
+ id:"silver-grey-essential",
+ name:"Silver Grey Essential",
+ category:"Shirts & T-Shirts",
+ price:2399,
+ old:3199,
+ images:["silver-grey-essential.jpg"],
+ colors:["Silver Grey"],
+ desc:"Minimal silver-grey styling for a clean everyday wardrobe."
+},
+
+{
+ id:"poder-light-grey",
+ name:"Poder Light Grey",
+ category:"Shirts & T-Shirts",
+ price:2399,
+ old:3199,
+ images:["poder-light-grey.jpg"],
+ colors:["Light Grey"],
+ desc:"A refined light-grey essential with understated style."
+},
+
+/* ================================
+   DENIM
+   ================================ */
+
+{
+ id:"straight-denim",
+ name:"Straight Denim",
+ category:"Premium Denim",
+ price:3999,
+ old:5299,
+ images:[
+  "straigt-denim-paint-charcoal-black.jpg",
+  "straigt-denim-paint-classic-blue.jpg",
+  "straigt-denim-paint-indigo-blue.jpg",
+  "straigt-denim-paint-sky-blue.jpg"
+ ],
+ colors:[
+  "Charcoal Black",
+  "Classic Blue",
+  "Indigo Blue",
+  "Sky Blue"
+ ],
+ desc:"Classic straight denim with a clean modern profile."
+},
+
+{
+ id:"blast-denim",
+ name:"Blast Denim",
+ category:"Premium Denim",
+ price:4199,
+ old:5499,
+ images:[],
+ colors:[],
+ desc:"A statement denim design from the Mehka Denim collection."
+},
+
+{
+ id:"premium-blast-denim",
+ name:"Premium Blast Denim",
+ category:"Premium Denim",
+ price:4499,
+ old:5999,
+ images:[],
+ colors:[],
+ desc:"Elevated blast detailing for a stronger premium denim look."
+},
+
+{
+ id:"baggy-denim",
+ name:"Baggy Denim",
+ category:"Premium Denim",
+ price:4299,
+ old:5699,
+ images:[
+  "wide-leg-baggy-jeans-deep-indigo-blue.jpg",
+  "wide-leg-baggy-jeans-ice-blue.jpg",
+  "wide-leg-baggy-jeans-mid-blue.jpg"
+ ],
+ colors:[
+  "Deep Indigo Blue",
+  "Ice Blue",
+  "Mid Blue"
+ ],
+ desc:"Relaxed wide-leg denim for a contemporary street-luxury silhouette."
+},
+
+/* ================================
+   COTTON
+   ================================ */
+
+{
+ id:"washing-wear",
+ name:"Cotton Wash-Wear",
+ category:"Premium Cotton Pants",
+ price:3299,
+ old:4399,
+ images:[
+  "washing-wear-paint-dark-cocoa.jpg",
+  "washing-wear-paint-obsidian-black.jpg",
+  "washing-wear-paint-royal-navy.jpg",
+  "washing-wear-paint-sage-olive.jpg",
+  "washing-wear-paint-smoke-grey.jpg"
+ ],
+ colors:[
+  "Dark Cocoa",
+  "Obsidian Black",
+  "Royal Navy",
+  "Sage Olive",
+  "Smoke Grey"
+ ],
+ desc:"Comfort-first cotton trousers with a washed premium finish."
+},
+
+{
+ id:"premium-chino",
+ name:"Premium Cotton Chino",
+ category:"Premium Cotton Pants",
+ price:3499,
+ old:4699,
+ images:[
+  "primium-cotton-chino-paint-ash-grey.jpg",
+  "primium-cotton-chino-paint-ivory-cream.jpg",
+  "primium-cotton-chino-paint-olive-brown.jpg",
+  "primium-cotton-chino-paint-onyx-black.jpg",
+  "primium-cotton-chino-paint-sand-beige.jpg"
+ ],
+ colors:[
+  "Ash Grey",
+  "Ivory Cream",
+  "Olive Brown",
+  "Onyx Black",
+  "Sand Beige"
+ ],
+ desc:"Clean premium cotton chinos designed for effortless smart-casual dressing."
+},
+
+/* ================================
+   TROUSERS
+   ================================ */
+
+{
+ id:"china-leggar",
+ name:"China Leggar Trousers",
+ category:"Modern Trousers",
+ price:3199,
+ old:4299,
+ images:[],
+ colors:[],
+ desc:"A clean contemporary trouser silhouette for polished everyday outfits."
+},
+
+{
+ id:"baggy-trouser",
+ name:"Baggy Trousers",
+ category:"Modern Trousers",
+ price:3299,
+ old:4399,
+ images:[
+  "urban-baggy-trouser-charcoal-grey.jpg",
+  "urban-baggy-trouser-graphite-grey.jpg",
+  "urban-baggy-trouser-midnight-black.jpg",
+  "urban-baggy-trouser-navy-blue.jpg"
+ ],
+ colors:[
+  "Charcoal Grey",
+  "Graphite Grey",
+  "Midnight Black",
+  "Navy Blue"
+ ],
+ desc:"Relaxed urban trousers with a modern wide silhouette."
+},
+
+{
+ id:"korean-trouser",
+ name:"Korean Trousers",
+ category:"Modern Trousers",
+ price:3399,
+ old:4499,
+ images:[
+  "korean-relaxed-trouser-forest-olive.jpg",
+  "korean-relaxed-trouser-frost-grey.jpg",
+  "korean-relaxed-trouser-jet-black.jpg",
+  "korean-relaxed-trouser-pearl-white.jpg"
+ ],
+ colors:[
+  "Forest Olive",
+  "Frost Grey",
+  "Jet Black",
+  "Pearl White"
+ ],
+ desc:"Relaxed Korean-inspired trousers with clean lines and premium styling."
+}
+
 ];
+
+/* ================================
+   PRINT ON DEMAND
+   ================================ */
 
 const pod=[
-["better-days.jpg","Better Days"],
-["motor-sport.jpeg","Motor Sport"],
-["mountain-adventure.jpeg","Mountain Adventure"],
-["shadow-anime.jpg","Shadow Anime"],
-["sunset-breeze.jpg","Sunset Breeze"],
-["swoosh-essential.jpg","Swoosh Essential"],
-["tokyo-wave.jpg","Tokyo Wave"]
+ ["better-days.jpg","Better Days"],
+ ["motor-sport.jpeg","Motor Sport"],
+ ["mountain-adventure.jpeg","Mountain Adventure"],
+ ["shadow-anime.jpg","Shadow Anime"],
+ ["sunset-breeze.jpg","Sunset Breeze"],
+ ["swoosh-essential.jpg","Swoosh Essential"],
+ ["tokyo-wave.jpg","Tokyo Wave"]
 ];
 
+/* ================================
+   ORDER / CART STATE
+   ================================ */
+
 let cart=JSON.parse(localStorage.getItem("mehkaCart")||"[]");
-let likes=JSON.parse(localStorage.getItem("mehkaLikes")||"{}");
-let dislikes=JSON.parse(localStorage.getItem("mehkaDislikes")||"{}");
+
+let likes=JSON.parse(
+  localStorage.getItem("mehkaLikes")||"{}"
+);
+
+let dislikes=JSON.parse(
+  localStorage.getItem("mehkaDislikes")||"{}"
+);
+
 let modalProduct=null;
 let modalImageIndex=0;
 let modalSize="M";
 let modalQty=1;
 
-/* HELPERS */
-const money=n=>"Rs. "+n.toLocaleString("en-PK");
-const imgPath=x=>A+x;
+let lastOrderMessage="";
+let toastTimer=null;
+
+/* ================================
+   HELPERS
+   ================================ */
+
+const money=n =>
+  "Rs. "+n.toLocaleString("en-PK");
+
+const imgPath=x =>
+  A+x;
 
 function save(){
- localStorage.setItem("mehkaCart",JSON.stringify(cart));
- localStorage.setItem("mehkaLikes",JSON.stringify(likes));
- localStorage.setItem("mehkaDislikes",JSON.stringify(dislikes));
- updateCart();
+
+  localStorage.setItem(
+    "mehkaCart",
+    JSON.stringify(cart)
+  );
+
+  localStorage.setItem(
+    "mehkaLikes",
+    JSON.stringify(likes)
+  );
+
+  localStorage.setItem(
+    "mehkaDislikes",
+    JSON.stringify(dislikes)
+  );
+
+  updateCart();
 }
 
 function productImage(p,i=0){
- return p.images&&p.images.length?imgPath(p.images[i]):null;
+
+  return p.images&&p.images.length
+    ? imgPath(p.images[i])
+    : null;
 }
 
-/* PRODUCT CARD */
+/* ================================
+   PROFESSIONAL MESSAGE
+   ================================ */
+
+function showToast(title,message){
+
+  const toast=document.getElementById("toast");
+
+  document.getElementById("toastTitle").textContent=title;
+  document.getElementById("toastMessage").textContent=message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer=setTimeout(()=>{
+    toast.classList.remove("show");
+  },3500);
+}
+
+/* ================================
+   PRODUCT CARD
+   ================================ */
+
 function card(p){
- const image=productImage(p);
- const discount=Math.round((1-p.price/p.old)*100);
- return `
+
+  const image=productImage(p);
+
+  const discount=Math.round(
+    (1-p.price/p.old)*100
+  );
+
+  return `
+
  <article class="product reveal">
+
    <div class="product-image">
-    ${image?`<img src="${image}" alt="${p.name}" loading="lazy">`
-      :`<div class="coming"><div><strong>${p.name}</strong><small>Coming Soon</small></div></div>`}
-    <span class="product-badge">${p.images.length?"Premium":"Coming Soon"}</span>
+
+    ${
+      image
+      ?
+      `<img
+        src="${image}"
+        alt="${p.name}"
+        loading="lazy"
+      >`
+      :
+      `
+      <div class="coming">
+        <div>
+          <strong>${p.name}</strong>
+          <small>Coming Soon</small>
+        </div>
+      </div>
+      `
+    }
+
+    <span class="product-badge">
+      ${p.images.length?"Premium":"Coming Soon"}
+    </span>
 
     <div class="product-actions">
-      <button class="round-btn ${likes[p.id]?'active':''}" onclick="event.stopPropagation();vote('${p.id}','like')">♥</button>
-      <button class="round-btn ${dislikes[p.id]?'active':''}" onclick="event.stopPropagation();vote('${p.id}','dislike')">⌄</button>
+
+      <button
+        class="round-btn ${likes[p.id]?'active':''}"
+        onclick="event.stopPropagation();vote('${p.id}','like')"
+        aria-label="Like"
+      >
+        ♥
+      </button>
+
+      <button
+        class="round-btn ${dislikes[p.id]?'active':''}"
+        onclick="event.stopPropagation();vote('${p.id}','dislike')"
+        aria-label="Dislike"
+      >
+        ⌄
+      </button>
+
     </div>
+
    </div>
 
    <div class="product-info">
-    <div class="product-name">${p.name}</div>
-    <div class="product-meta">${p.category}</div>
 
-    ${p.colors.length?`
-    <div class="swatches">
-      ${p.colors.map((c,i)=>`
-       <span class="swatch ${i===0?'active':''}"
-        title="${c}"
-        style="background:${swatchColor(c)}"
-        onclick="event.stopPropagation();switchCardImage(this,'${p.id}',${i})"></span>
-      `).join("")}
-    </div>`:""}
+    <div class="product-name">
+      ${p.name}
+    </div>
+
+    <div class="product-meta">
+      ${p.category}
+    </div>
+
+    ${
+      p.colors.length
+      ?
+      `
+      <div class="swatches">
+
+        ${
+          p.colors.map((c,i)=>`
+
+          <span
+            class="swatch ${i===0?'active':''}"
+            title="${c}"
+            style="background:${swatchColor(c)}"
+            onclick="
+              event.stopPropagation();
+              switchCardImage(this,'${p.id}',${i})
+            "
+          ></span>
+
+          `).join("")
+        }
+
+      </div>
+      `
+      :
+      ""
+    }
 
     <div class="price-row">
-      <span class="price">${money(p.price)}</span>
-      <span class="old">${money(p.old)}</span>
-      <span class="discount">-${discount}%</span>
+
+      <span class="price">
+        ${money(p.price)}
+      </span>
+
+      <span class="old">
+        ${money(p.old)}
+      </span>
+
+      <span class="discount">
+        -${discount}%
+      </span>
+
     </div>
 
     <div class="product-bottom">
-      <button class="btn btn-outline" onclick="openProduct('${p.id}')">Details</button>
-      <button class="btn btn-primary" ${!p.images.length?'disabled':''} onclick="addQuick('${p.id}')">Add Cart</button>
+
+      <button
+        class="btn btn-outline"
+        onclick="openProduct('${p.id}')"
+      >
+        Details
+      </button>
+
+      <button
+        class="btn btn-primary"
+        ${!p.images.length?'disabled':''}
+        onclick="addQuick('${p.id}')"
+      >
+        Add Cart
+      </button>
+
     </div>
+
    </div>
- </article>`;
+
+ </article>
+
+ `;
 }
 
+/* ================================
+   SWATCH COLOURS
+   ================================ */
+
 function swatchColor(c){
+
  const map={
- "Jet Black":"#090909","Black":"#111","White":"#f5f4ed",
- "Burgundy Wine":"#681c2a","Deep Forest Green":"#18382a",
- "Ocean Teal Blue":"#17666c","Rich Mocha Brown":"#634536",
- "Navy Blue":"#162a50","Midnight Navy":"#111d36","Sky Blue":"#87b9d7",
- "Sage Green":"#82957a","Mocha Brown":"#765847","Ivory Cream":"#e7dfce",
- "Sand Beige":"#cbb79a","Ash Grey":"#989895","Olive Brown":"#70634b",
- "Onyx Black":"#111","Dark Cocoa":"#50382e","Obsidian Black":"#111",
- "Royal Navy":"#182c56","Sage Olive":"#737e61","Smoke Grey":"#747675",
- "Charcoal Grey":"#444746","Graphite Grey":"#35383a","Midnight Black":"#090909",
- "Forest Olive":"#52604a","Frost Grey":"#c1c3bf","Pearl White":"#ece9df",
- "Classic Blue":"#355d91","Indigo Blue":"#263f69","Charcoal Black":"#252525",
- "Ice Blue":"#a7bfd1","Mid Blue":"#4d7096","Deep Indigo Blue":"#233c67",
- "Olive Green":"#697659","Silver Grey":"#a9aaa7","Light Grey":"#b5b5b2"
+
+ "Jet Black":"#090909",
+ "Black":"#111",
+ "White":"#f5f4ed",
+
+ "Burgundy Wine":"#681c2a",
+ "Deep Forest Green":"#18382a",
+ "Ocean Teal Blue":"#17666c",
+ "Rich Mocha Brown":"#634536",
+
+ "Navy Blue":"#162a50",
+ "Midnight Navy":"#111d36",
+ "Sky Blue":"#87b9d7",
+
+ "Sage Green":"#82957a",
+ "Mocha Brown":"#765847",
+
+ "Ivory Cream":"#e7dfce",
+ "Sand Beige":"#cbb79a",
+ "Ash Grey":"#989895",
+ "Olive Brown":"#70634b",
+ "Onyx Black":"#111",
+
+ "Dark Cocoa":"#50382e",
+ "Obsidian Black":"#111",
+ "Royal Navy":"#182c56",
+ "Sage Olive":"#737e61",
+ "Smoke Grey":"#747675",
+
+ "Charcoal Grey":"#444746",
+ "Graphite Grey":"#35383a",
+ "Midnight Black":"#090909",
+
+ "Forest Olive":"#52604a",
+ "Frost Grey":"#c1c3bf",
+ "Pearl White":"#ece9df",
+
+ "Classic Blue":"#355d91",
+ "Indigo Blue":"#263f69",
+ "Charcoal Black":"#252525",
+
+ "Ice Blue":"#a7bfd1",
+ "Mid Blue":"#4d7096",
+ "Deep Indigo Blue":"#233c67",
+
+ "Olive Green":"#697659",
+ "Silver Grey":"#a9aaa7",
+ "Light Grey":"#b5b5b2"
+
  };
+
  return map[c]||"#777";
 }
 
-function render(){
- document.getElementById("shirtsGrid").innerHTML=products.filter(p=>p.category==="Shirts & T-Shirts").map(card).join("");
- document.getElementById("denimGrid").innerHTML=products.filter(p=>p.category==="Premium Denim").map(card).join("");
- document.getElementById("cottonGrid").innerHTML=products.filter(p=>p.category==="Premium Cotton Pants").map(card).join("");
- document.getElementById("trouserGrid").innerHTML=products.filter(p=>p.category==="Modern Trousers").map(card).join("");
+/* ================================
+   RENDER
+   ================================ */
 
- document.getElementById("podGrid").innerHTML=pod.map((x,i)=>`
-  <div class="pod-card" onclick="openCustom('${x[0]}')">
-    <img src="${A+x[0]}" alt="${x[1]}" loading="lazy">
-    <p>${x[1]}</p>
-  </div>`).join("");
+function render(){
+
+ document.getElementById("shirtsGrid").innerHTML=
+   products
+   .filter(p=>p.category==="Shirts & T-Shirts")
+   .map(card)
+   .join("");
+
+ document.getElementById("denimGrid").innerHTML=
+   products
+   .filter(p=>p.category==="Premium Denim")
+   .map(card)
+   .join("");
+
+ document.getElementById("cottonGrid").innerHTML=
+   products
+   .filter(p=>p.category==="Premium Cotton Pants")
+   .map(card)
+   .join("");
+
+ document.getElementById("trouserGrid").innerHTML=
+   products
+   .filter(p=>p.category==="Modern Trousers")
+   .map(card)
+   .join("");
+
+ document.getElementById("podGrid").innerHTML=
+
+   pod.map((x,i)=>`
+
+    <div
+      class="pod-card"
+      onclick="openCustom('${x[0]}')"
+    >
+
+      <img
+        src="${A+x[0]}"
+        alt="${x[1]}"
+        loading="lazy"
+      >
+
+      <p>${x[1]}</p>
+
+    </div>
+
+   `).join("");
 
  observe();
  updateCart();
 }
 
+/* ================================
+   CARD IMAGE SWITCH
+   ================================ */
+
 function switchCardImage(el,id,i){
+
  const p=products.find(x=>x.id===id);
+
  const cardEl=el.closest(".product");
- const im=cardEl.querySelector(".product-image img");
+
+ const im=cardEl.querySelector(
+   ".product-image img"
+ );
+
  if(im&&p.images[i]){
+
    im.style.opacity="0";
-   setTimeout(()=>{im.src=imgPath(p.images[i]);im.style.opacity="1"},150);
+
+   setTimeout(()=>{
+
+     im.src=imgPath(p.images[i]);
+
+     im.style.opacity="1";
+
+   },150);
+
  }
- cardEl.querySelectorAll(".swatch").forEach(x=>x.classList.remove("active"));
+
+ cardEl
+   .querySelectorAll(".swatch")
+   .forEach(x=>x.classList.remove("active"));
+
  el.classList.add("active");
 }
 
+/* ================================
+   LIKE / DISLIKE
+   ================================ */
+
 function vote(id,type){
+
  if(type==="like"){
+
    likes[id]=!likes[id];
-   if(likes[id])dislikes[id]=false;
+
+   if(likes[id])
+     dislikes[id]=false;
+
  }else{
+
    dislikes[id]=!dislikes[id];
-   if(dislikes[id])likes[id]=false;
+
+   if(dislikes[id])
+     likes[id]=false;
+
  }
- save();render();
+
+ save();
+ render();
 }
 
-/* PRODUCT */
+/* ================================
+   PRODUCT DETAILS
+   ================================ */
+
 function openProduct(id){
- modalProduct=products.find(p=>p.id===id);
+
+ modalProduct=products.find(
+   p=>p.id===id
+ );
+
  if(!modalProduct)return;
 
- modalImageIndex=0;modalQty=1;modalSize="M";
- document.getElementById("modalImg").src=productImage(modalProduct)||"";
- document.getElementById("modalName").textContent=modalProduct.name;
- document.getElementById("modalCategory").textContent=modalProduct.category;
- document.getElementById("modalPrice").textContent=money(modalProduct.price);
- document.getElementById("modalOld").textContent=money(modalProduct.old);
- document.getElementById("modalDiscount").textContent="-"+Math.round((1-modalProduct.price/modalProduct.old)*100)+"%";
- document.getElementById("modalDescription").textContent=modalProduct.desc;
+ modalImageIndex=0;
+ modalQty=1;
+ modalSize="M";
+
+ document.getElementById("modalImg").src=
+   productImage(modalProduct)||"";
+
+ document.getElementById("modalName").textContent=
+   modalProduct.name;
+
+ document.getElementById("modalCategory").textContent=
+   modalProduct.category;
+
+ document.getElementById("modalPrice").textContent=
+   money(modalProduct.price);
+
+ document.getElementById("modalOld").textContent=
+   money(modalProduct.old);
+
+ document.getElementById("modalDiscount").textContent=
+   "-"+
+   Math.round(
+     (1-modalProduct.price/modalProduct.old)*100
+   )+
+   "%";
+
+ document.getElementById("modalDescription").textContent=
+   modalProduct.desc;
+
  document.getElementById("modalQty").textContent="1";
- document.getElementById("modalAddPrice").textContent=money(modalProduct.price);
 
- document.getElementById("modalSwatches").innerHTML=modalProduct.colors.length?
+ document.getElementById("modalAddPrice").textContent=
+   money(modalProduct.price);
+
+ document.getElementById("modalSwatches").innerHTML=
+
+ modalProduct.colors.length
+
+ ?
+
  modalProduct.colors.map((c,i)=>`
-  <span class="swatch ${i===0?'active':''}" title="${c}"
-   style="background:${swatchColor(c)}" onclick="modalColor(${i},this)"></span>`).join(""):"";
 
- document.getElementById("modalSizes").innerHTML=["S","M","L","XL","XXL"].map(x=>
- `<button class="size ${x==="M"?"active":""}" onclick="selectSize('${x}',this)">${x}</button>`).join("");
+  <span
+    class="swatch ${i===0?'active':''}"
+    title="${c}"
+    style="background:${swatchColor(c)}"
+    onclick="modalColor(${i},this)"
+  ></span>
 
- document.getElementById("productModal").classList.add("open");
- document.getElementById("overlay").classList.add("open");
+ `).join("")
+
+ :
+
+ "";
+
+ document.getElementById("modalSizes").innerHTML=
+
+ [
+   "S",
+   "M",
+   "L",
+   "XL",
+   "XXL"
+ ].map(x=>
+
+ `<button
+    class="size ${x==="M"?"active":""}"
+    onclick="selectSize('${x}',this)"
+  >
+    ${x}
+  </button>`
+
+ ).join("");
+
+ document.getElementById(
+   "productModal"
+ ).classList.add("open");
+
+ document.getElementById(
+   "overlay"
+ ).classList.add("open");
 }
 
 function modalColor(i,el){
+
  if(!modalProduct.images[i])return;
+
  modalImageIndex=i;
- document.getElementById("modalImg").src=imgPath(modalProduct.images[i]);
- document.querySelectorAll("#modalSwatches .swatch").forEach(x=>x.classList.remove("active"));
+
+ document.getElementById("modalImg").src=
+   imgPath(modalProduct.images[i]);
+
+ document
+   .querySelectorAll("#modalSwatches .swatch")
+   .forEach(x=>x.classList.remove("active"));
+
  el.classList.add("active");
 }
 
 function selectSize(x,el){
+
  modalSize=x;
- document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
+
+ document
+   .querySelectorAll(".size")
+   .forEach(s=>s.classList.remove("active"));
+
  el.classList.add("active");
 }
 
 function changeModalQty(n){
- modalQty=Math.max(1,modalQty+n);
- document.getElementById("modalQty").textContent=modalQty;
+
+ modalQty=Math.max(
+   1,
+   modalQty+n
+ );
+
+ document.getElementById(
+   "modalQty"
+ ).textContent=modalQty;
 }
 
 function addModalToCart(){
- if(!modalProduct||!modalProduct.images.length)return;
- addToCart(modalProduct,modalImageIndex,modalSize,modalQty);
+
+ if(
+   !modalProduct||
+   !modalProduct.images.length
+ )return;
+
+ addToCart(
+   modalProduct,
+   modalImageIndex,
+   modalSize,
+   modalQty
+ );
+
  closeProduct();
  openCart();
 }
 
-/* CART */
+/* ================================
+   CART
+   ================================ */
+
 function addQuick(id){
+
  const p=products.find(x=>x.id===id);
+
  if(!p.images.length)return;
- addToCart(p,0,"M",1);
+
+ addToCart(
+   p,
+   0,
+   "M",
+   1
+ );
 }
 
-function addToCart(p,imageIndex,size,qty){
- const key=p.id+"-"+imageIndex+"-"+size;
- const found=cart.find(x=>x.key===key);
+function addToCart(
+ p,
+ imageIndex,
+ size,
+ qty
+){
 
- if(found)found.qty+=qty;
- else cart.push({
-  key,id:p.id,name:p.name,price:p.price,
-  image:p.images[imageIndex],color:p.colors[imageIndex]||p.colors[0]||"Standard",
-  size,qty
- });
- save();
-}
+ const key=
+   p.id+
+   "-"+
+   imageIndex+
+   "-"+
+   size;
 
-function updateCart(){
- document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
+ const found=
+   cart.find(x=>x.key===key);
 
- const box=document.getElementById("cartItems");
+ if(found){
 
- if(!cart.length){
-  box.innerHTML=`<div style="text-align:center;padding:80px 20px;color:#777">
-   <div style="font-family:'Playfair Display';font-size:28px;color:#ddd;margin-bottom:10px">Your cart is empty</div>
-   <p style="font-size:11px;line-height:1.7">Discover something from the Mehka collection.</p>
-  </div>`;
+   found.qty+=qty;
+
  }else{
-  box.innerHTML=cart.map((x,i)=>`
-   <div class="cart-item">
-    <img src="${A+x.image}" alt="${x.name}">
-    <div>
-     <h4>${x.name}</h4>
-     <p>${x.color} · Size ${x.size}</p>
-     <p>${money(x.price)}</p>
-     <div class="qty">
-      <button onclick="cartQty(${i},-1)">−</button>
-      <span>${x.qty}</span>
-      <button onclick="cartQty(${i},1)">+</button>
-     </div>
-    </div>
-    <button class="remove" onclick="removeCart(${i})">Remove</button>
-   </div>`).join("");
+
+   cart.push({
+
+     key,
+     id:p.id,
+     name:p.name,
+     price:p.price,
+     image:p.images[imageIndex],
+     color:
+       p.colors[imageIndex]||
+       p.colors[0]||
+       "Standard",
+     size,
+     qty
+
+   });
+
  }
 
- const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
- document.getElementById("cartTotal").textContent=money(total);
+ save();
+
+ showToast(
+   "Added to Cart",
+   p.name+" has been added to your cart."
+ );
 }
 
+/* ================================
+   CART UPDATE
+   ================================ */
+
+function updateCart(){
+
+ document.getElementById("cartCount").textContent=
+   cart.reduce(
+     (a,x)=>a+x.qty,
+     0
+   );
+
+ const box=
+   document.getElementById("cartItems");
+
+ if(!cart.length){
+
+   box.innerHTML=`
+
+    <div
+      style="
+        text-align:center;
+        padding:80px 20px;
+        color:#777
+      "
+    >
+
+      <div
+        style="
+          font-family:'Playfair Display';
+          font-size:28px;
+          color:#ddd;
+          margin-bottom:10px
+        "
+      >
+        Your cart is empty
+      </div>
+
+      <p
+        style="
+          font-size:11px;
+          line-height:1.7
+        "
+      >
+        Discover something from the Mehka collection.
+      </p>
+
+    </div>
+
+   `;
+
+ }else{
+
+   box.innerHTML=
+
+   cart.map((x,i)=>`
+
+    <div class="cart-item">
+
+      <img
+        src="${A+x.image}"
+        alt="${x.name}"
+      >
+
+      <div>
+
+        <h4>
+          ${x.name}
+        </h4>
+
+        <p>
+          ${x.color} · Size ${x.size}
+        </p>
+
+        <p>
+          ${money(x.price)}
+        </p>
+
+        <div class="qty">
+
+          <button
+            onclick="cartQty(${i},-1)"
+          >
+            −
+          </button>
+
+          <span>
+            ${x.qty}
+          </span>
+
+          <button
+            onclick="cartQty(${i},1)"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <button
+        class="remove"
+        onclick="removeCart(${i})"
+      >
+        Remove
+      </button>
+
+    </div>
+
+   `).join("");
+
+ }
+
+ const total=
+   cart.reduce(
+     (a,x)=>a+x.price*x.qty,
+     0
+   );
+
+ document.getElementById(
+   "cartTotal"
+ ).textContent=
+   money(total);
+}
+
+/* ================================
+   CART QUANTITY
+   ================================ */
+
 function cartQty(i,n){
+
  cart[i].qty+=n;
- if(cart[i].qty<=0)cart.splice(i,1);
+
+ if(cart[i].qty<=0)
+   cart.splice(i,1);
+
  save();
 }
 
 function removeCart(i){
- cart.splice(i,1);save();
+
+ cart.splice(i,1);
+
+ save();
+
+ showToast(
+   "Cart Updated",
+   "The item has been removed from your cart."
+ );
 }
+
+/* ================================
+   DRAWER
+   ================================ */
 
 function openCart(){
- updateCart();
- document.getElementById("cartDrawer").classList.add("open");
- document.getElementById("overlay").classList.add("open");
-}
-function closeCart(){
- document.getElementById("cartDrawer").classList.remove("open");
- if(!document.getElementById("productModal").classList.contains("open"))
- document.getElementById("overlay").classList.remove("open");
-}
-function closeProduct(){
- document.getElementById("productModal").classList.remove("open");
- if(!document.getElementById("cartDrawer").classList.contains("open"))
- document.getElementById("overlay").classList.remove("open");
-}
-function closeAll(){
- closeCart();closeProduct();
-}
-function scrollToSection(x){document.getElementById(x)?.scrollIntoView({behavior:"smooth"})}
 
-/* CHECKOUT */
-function openCheckout(){
- if(!cart.length){alert("Your cart is empty.");return}
- document.getElementById("checkout").classList.add("open");
- document.getElementById("cartDrawer").classList.remove("open");
- document.getElementById("overlay").classList.remove("open");
- renderCheckout();
+ updateCart();
+
+ document
+   .getElementById("cartDrawer")
+   .classList.add("open");
+
+ document
+   .getElementById("overlay")
+   .classList.add("open");
 }
-function closeCheckout(){document.getElementById("checkout").classList.remove("open")}
+
+function closeCart(){
+
+ document
+   .getElementById("cartDrawer")
+   .classList.remove("open");
+
+ if(
+   !document
+   .getElementById("productModal")
+   .classList.contains("open")
+ ){
+
+   document
+     .getElementById("overlay")
+     .classList.remove("open");
+
+ }
+
+}
+
+function closeProduct(){
+
+ document
+   .getElementById("productModal")
+   .classList.remove("open");
+
+ if(
+   !document
+   .getElementById("cartDrawer")
+   .classList.contains("open")
+ ){
+
+   document
+     .getElementById("overlay")
+     .classList.remove("open");
+
+ }
+
+}
+
+function closeAll(){
+
+ closeCart();
+ closeProduct();
+}
+
+function scrollToSection(x){
+
+ document
+   .getElementById(x)
+   ?.scrollIntoView({
+     behavior:"smooth"
+   });
+}
+
+/* ================================
+   CHECKOUT
+   ================================ */
+
+function openCheckout(){
+
+ if(!cart.length){
+
+   showToast(
+     "Your Cart Is Empty",
+     "Please add a product before proceeding to checkout."
+   );
+
+   return;
+ }
+
+ document
+   .getElementById("checkout")
+   .classList.add("open");
+
+ document
+   .getElementById("cartDrawer")
+   .classList.remove("open");
+
+ document
+   .getElementById("overlay")
+   .classList.remove("open");
+
+ renderCheckout();
+
+ toggleBankTransfer();
+
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
+}
+
+function closeCheckout(){
+
+ document
+   .getElementById("checkout")
+   .classList.remove("open");
+}
+
+/* ================================
+   CHECKOUT SUMMARY
+   ================================ */
 
 function renderCheckout(){
- const box=document.getElementById("checkoutItems");
- box.innerHTML=cart.map(x=>`
+
+ const box=
+   document.getElementById("checkoutItems");
+
+ box.innerHTML=
+
+ cart.map(x=>`
+
   <div class="summary-line">
-   <span>${x.name} × ${x.qty}</span>
-   <span>${money(x.price*x.qty)}</span>
-  </div>`).join("");
- const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
- document.getElementById("checkoutTotal").textContent=money(total);
+
+    <span>
+      ${x.name} × ${x.qty}
+      <br>
+      <small
+        style="
+          color:#666;
+          font-size:9px;
+        "
+      >
+        ${x.color} · Size ${x.size}
+      </small>
+    </span>
+
+    <span>
+      ${money(x.price*x.qty)}
+    </span>
+
+  </div>
+
+ `).join("");
+
+ const total=
+   cart.reduce(
+     (a,x)=>a+x.price*x.qty,
+     0
+   );
+
+ document.getElementById(
+   "checkoutTotal"
+ ).textContent=
+   money(total);
 }
+
+/* ================================
+   BANK TRANSFER TOGGLE
+   ================================ */
+
+function toggleBankTransfer(){
+
+ const method=
+   document.getElementById(
+     "paymentMethod"
+   ).value;
+
+ const bankBox=
+   document.getElementById(
+     "bankTransferBox"
+   );
+
+ const reference=
+   document.getElementById(
+     "paymentReference"
+   );
+
+ if(method==="Bank Transfer"){
+
+   bankBox.classList.add("show");
+
+   reference.required=true;
+
+ }else{
+
+   bankBox.classList.remove("show");
+
+   reference.required=false;
+   reference.value="";
+ }
+}
+
+/* ================================
+   BUILD WHATSAPP ORDER
+   ================================ */
+
+function buildOrderMessage(){
+
+ const first=
+   document.getElementById("firstName").value.trim();
+
+ const last=
+   document.getElementById("lastName").value.trim();
+
+ const phone=
+   document.getElementById("customerPhone").value.trim();
+
+ const email=
+   document.getElementById("customerEmail").value.trim();
+
+ const address=
+   document.getElementById("customerAddress").value.trim();
+
+ const city=
+   document.getElementById("customerCity").value.trim();
+
+ const postal=
+   document.getElementById("customerPostal").value.trim();
+
+ const payment=
+   document.getElementById("paymentMethod").value;
+
+ const reference=
+   document.getElementById("paymentReference").value.trim();
+
+ const total=
+   cart.reduce(
+     (a,x)=>a+x.price*x.qty,
+     0
+   );
+
+ let message="";
+
+ message+="*MEHKA GARMENT — NEW ORDER*\\n";
+ message+="━━━━━━━━━━━━━━━━━━━━\\n\\n";
+
+ message+="*CUSTOMER DETAILS*\\n";
+ message+="Name: "+first+" "+last+"\\n";
+ message+="Phone: "+phone+"\\n";
+ message+="Email: "+email+"\\n";
+ message+="Address: "+address+"\\n";
+ message+="City: "+city+"\\n";
+
+ if(postal)
+   message+="Postal Code: "+postal+"\\n";
+
+ message+="\\n";
+
+ message+="*ORDER DETAILS*\\n";
+
+ cart.forEach((x,i)=>{
+
+   message+=
+     "\\n"+
+     (i+1)+". *"+x.name+"*\\n"+
+     "Colour: "+x.color+"\\n"+
+     "Size: "+x.size+"\\n"+
+     "Quantity: "+x.qty+"\\n"+
+     "Unit Price: "+money(x.price)+"\\n"+
+     "Item Total: "+money(x.price*x.qty)+"\\n";
+
+ });
+
+ message+="\\n";
+ message+="━━━━━━━━━━━━━━━━━━━━\\n";
+ message+="*TOTAL: "+money(total)+"*\\n";
+ message+="Payment: "+payment+"\\n";
+
+ if(payment==="Bank Transfer"){
+
+   message+="Bank: Meezan Bank\\n";
+   message+="Account Title: Faisalur Rehman\\n";
+   message+="Account Number: 99930104474571\\n";
+   message+="Transfer Reference: "+reference+"\\n";
+
+ }
+
+ message+="\\n";
+ message+="Please confirm this order.\\n";
+ message+="Thank you — Mehka Garment.";
+
+ return message;
+}
+
+/* ================================
+   PLACE ORDER
+   ================================ */
 
 function placeOrder(e){
+
  e.preventDefault();
- alert("Order form ready! Connect your preferred backend/payment service to receive real orders.");
+
+ if(!cart.length){
+
+   showToast(
+     "Your Cart Is Empty",
+     "Please add a product before placing an order."
+   );
+
+   return;
+ }
+
+ const method=
+   document.getElementById(
+     "paymentMethod"
+   ).value;
+
+ if(
+   method==="Bank Transfer" &&
+   !document
+     .getElementById("paymentReference")
+     .value.trim()
+ ){
+
+   showToast(
+     "Payment Reference Required",
+     "Please enter your bank transfer reference."
+   );
+
+   document
+     .getElementById("paymentReference")
+     .focus();
+
+   return;
+ }
+
+ lastOrderMessage=
+   buildOrderMessage();
+
+ document
+   .getElementById("checkout")
+   .classList.remove("open");
+
+ document
+   .getElementById("confirmation")
+   .classList.add("open");
 }
 
-/* CUSTOM */
+/* ================================
+   SEND ORDER TO WHATSAPP
+   ================================ */
+
+function sendOrderToWhatsApp(){
+
+ if(!lastOrderMessage){
+
+   showToast(
+     "Order Details Unavailable",
+     "Please return to checkout and place the order again."
+   );
+
+   return;
+ }
+
+ const whatsappNumber=
+   "923152314334";
+
+ const url=
+   "https://wa.me/"+
+   whatsappNumber+
+   "?text="+
+   encodeURIComponent(lastOrderMessage);
+
+ window.open(
+   url,
+   "_blank",
+   "noopener"
+ );
+}
+
+/* ================================
+   FINISH ORDER
+   ================================ */
+
+function finishOrder(){
+
+ document
+   .getElementById("confirmation")
+   .classList.remove("open");
+
+ cart=[];
+
+ localStorage.setItem(
+   "mehkaCart",
+   JSON.stringify(cart)
+ );
+
+ updateCart();
+
+ lastOrderMessage="";
+
+ window.scrollTo({
+   top:0,
+   behavior:"smooth"
+ });
+
+ showToast(
+   "Thank You",
+   "We look forward to serving you at Mehka Garment."
+ );
+}
+
+/* ================================
+   CUSTOM / POD
+   ================================ */
+
 function openCustom(){
- alert("Print on Demand: Choose White or Black T-shirt, then send your artwork, logo, text or custom design to Mehka Garment.");
+
+ showToast(
+   "Custom Design",
+   "Choose your preferred T-shirt colour and send your artwork, logo, text or design to Mehka Garment."
+ );
+
 }
 
-/* SCROLL */
+/* ================================
+   SCROLL REVEAL
+   ================================ */
+
 function observe(){
- const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-   if(e.isIntersecting)e.target.classList.add("visible");
-  });
- },{threshold:.08});
- document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+
+ const io=
+   new IntersectionObserver(
+     entries=>{
+
+       entries.forEach(e=>{
+
+         if(e.isIntersecting)
+           e.target.classList.add("visible");
+
+       });
+
+     },
+     {threshold:.08}
+   );
+
+ document
+   .querySelectorAll(".reveal")
+   .forEach(x=>io.observe(x));
 }
 
-window.addEventListener("scroll",()=>{
- document.getElementById("header").classList.toggle("scrolled",scrollY>60);
-});
+/* ================================
+   HEADER SCROLL
+   ================================ */
 
-/* INIT */
-window.addEventListener("load",()=>{
- setTimeout(()=>document.getElementById("loader").classList.add("hide"),700);
- render();
-});
+window.addEventListener(
+  "scroll",
+  ()=>{
+
+    document
+      .getElementById("header")
+      .classList.toggle(
+        "scrolled",
+        scrollY>60
+      );
+
+  }
+);
+
+/* ================================
+   INIT
+   ================================ */
+
+window.addEventListener(
+  "load",
+  ()=>{
+
+    setTimeout(
+      ()=>{
+        document
+          .getElementById("loader")
+          .classList.add("hide");
+      },
+      700
+    );
+
+    render();
+
+  }
+);
+
 </script>
 
 </body>
