@@ -55,8 +55,8 @@ const products = [
     name: "Mehka Heritage Check Shirt",
     description:
       "A sophisticated check pattern built for modern everyday dressing and polished casual looks.",
-    oldPrice: 4290,
-    price: 3190,
+    oldPrice: 2899,
+    price: 2999,
     badge: "Heritage",
     sizes: ["S", "M", "L", "XL", "XXL"],
 
