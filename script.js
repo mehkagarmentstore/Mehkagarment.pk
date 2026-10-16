@@ -22,8 +22,8 @@ const products = [
     name: "Mehka Signature Formal Shirt",
     description:
       "A refined formal shirt with a clean silhouette, premium finish and effortless executive character.",
-    oldPrice: 3990,
-    price: 2990,
+    oldPrice: 2050,
+    price: 1599,
     badge: "Signature",
     sizes: ["S", "M", "L", "XL", "XXL"],
 
