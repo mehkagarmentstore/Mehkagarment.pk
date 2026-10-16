@@ -199,8 +199,8 @@ const products = [
     name: "Mehka Signature Stripe Polo",
     description:
       "A distinctive signature stripe design made to elevate relaxed everyday dressing.",
-    oldPrice: 3990,
-    price: 2990,
+    oldPrice: 2199,
+    price: 1599,
     badge: "Signature Stripe",
     sizes: ["S", "M", "L", "XL", "XXL"],
 
